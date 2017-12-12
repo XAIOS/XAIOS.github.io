@@ -80,7 +80,7 @@
     
 
     <!-- Post Content -->
-    <p><em>About：本文将由 0 开始搭建一个 Github 上的部落格，而你只需要一点简单易懂的 markdown 知识，当然如果需要搭建更完美的部落格，还需要一点编程能力</em></p>
+    <p><em>About：本文将由 0 开始搭建一个 Github 上的部落格，而你只需要一点简单易懂的 markdown 知识，如果需要搭建得更完美，还需要一点编程能力</em></p>
 <a id="more"></a>
 <h1>由 0 开始的部落格搭建</h1><h2>事前准备</h2><h3>一、安装 Git</h3><p>访问 Git 的<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">下载网站</a>，根据你的系统版本下载对应的 Git 安装包，并进行安装，因为一些众所周知的原因，下载速度可能会较慢，可自备梯子。安装过程中一般情况下无需进行额外的配置，可以选择一直下一步，最后完成安装操作，关闭安装程序。</p>
 <h3>二、安装 Node.js</h3><p>访问 Node.js 的中文网 <a href="http://nodejs.cn/download" target="_blank" rel="noopener">nodejs.cn</a>，根据你的系统版本下载对应的 Node.js 安装包，并进行安装，安装过程中一般情况下无需进行额外的配置，可以选择一直下一步，最后完成安装操作，关闭安装程序。</p>
@@ -122,8 +122,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd /d D:\Blog</span><br><span class="line">$ npm i hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 <p>然后配置部落格目录下的 <code>_config.yml</code> 文件，修改末尾的 <code>deploy</code> 字段相关内容为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type:     git</span><br><span class="line">  repo:     &apos;你的 github.io 仓库的地址&apos;</span><br></pre></td></tr></table></figure>
-<p>最后，执行以下命令，就可以前往你的 github.io 查看效果了，但因为存在生效时延的问题，可能需要等待一分钟左右才会看到效果：</p>
+<p>最后，执行以下命令，就可以前往你的 github.io 查看效果了，但因为存在生效时延的问题，可能需要等待几分钟才会看到效果：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d    // hexo deploy 的缩写</span><br></pre></td></tr></table></figure>
+<h2>写在最后</h2><p>花了几天时间熟悉 Hexo 的架构，修改主题文件为我喜欢的样子（还顺带解决了一个 Hexo 的 BUG），将搭建过程作为我的第一篇文章写下来，可能写的不太好，但会是一个不错的开端（至少我是这样子觉得的）。想着在未来的一段时间内，将我从事前端开发的这几个月间遇到的问题和解决方案，一个个写成文章并发到这里，感觉也是一个不错的成就呢 ~ ~</p>
+<p>当前被我修改过的主题的 Git 地址：<a href="https://github.com/XAIOS/Hexo-AlphaDust-Mine" target="_blank" rel="noopener">AlphaDust</a>（不定期更新）</p>
+<p>至于为什么我不是叫博客而是叫部落格，可能是因为这个吧：</p>
+<p><img src="https://github.com/XAIOS/My-Photos/blob/master/nekopara01.jpg?raw=true" alt=""></p>
 
   </div>
 
