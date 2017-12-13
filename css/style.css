@@ -122,50 +122,36 @@ section.main .post .post-header {
   position: relative;
   width: 100%;
 }
-section.main .post .post-header:before {
-  position: absolute;
-  padding: 5px;
-  top: -10px;
-  bottom: -10px;
-  left: -5px;
-  content: "  ";
-  border-left: 1px solid #d7ecff;
-  border-bottom: 1px solid #d7ecff;
-  border-top: 1px solid #d7ecff;
-  transition: left 0.3s ease;
-}
-@media (max-width: 47.9em) {
-  section.main .post .post-header:before {
-    display: none;
-  }
-}
+section.main .post .post-header:before,
 section.main .post .post-header:after {
+  content: '';
   position: absolute;
-  content: "  ";
-  padding: 5px;
   top: -10px;
   bottom: -10px;
-  right: -5px;
-  border-right: 1px solid #d7ecff;
-  border-bottom: 1px solid #d7ecff;
+  padding: 5px;
   border-top: 1px solid #d7ecff;
-  transition: right 0.3s ease;
+  border-bottom: 1px solid #d7ecff;
 }
 @media (max-width: 47.9em) {
+  section.main .post .post-header:before,
   section.main .post .post-header:after {
     display: none;
   }
 }
-section.main .post .post-header h1.title {
-  text-align: center;
-  font-family: "Orbitron", sans-serif;
-  transition: all 0.3s;
+section.main .post .post-header:before {
+  left: -5px;
+  border-left: 1px solid #d7ecff;
+  transition: left 0.3s ease;
 }
-section.main .post .post-header h1.title a,
-section.main .post .post-header h1.title a:link,
-section.main .post .post-header h1.title a:visited,
-section.main .post .post-header h1.title a:active {
-  border-bottom: none;
+section.main .post .post-header:after {
+  right: -5px;
+  border-right: 1px solid #d7ecff;
+  transition: right 0.3s ease;
+}
+section.main .post .post-header h1.title {
+  font-family: "Orbitron", sans-serif;
+  text-align: center;
+  transition: all 0.3s;
 }
 @media (max-width: 33.9em) {
   section.main .post .post-header h1.title {
@@ -187,10 +173,10 @@ section.main .post .post-header.animation:hover .post-info {
   text-shadow: 0 0 1px #fff, 0 0 5px #fff, 0 0 15px #228dff;
 }
 section.main .post .post-header.animation:hover:before {
-  left: 5px;
+  left: 10px;
 }
 section.main .post .post-header.animation:hover:after {
-  right: 5px;
+  right: 10px;
 }
 section.main .post .content {
   margin-top: 65px;
@@ -206,7 +192,7 @@ section.main .post .content .gallery-container {
   display: block;
 }
 section.main .post .content .gallery-container:after {
-  content: " ";
+  content: '';
   visibility: hidden;
   display: block;
   height: 50px;
@@ -363,7 +349,7 @@ section.main .post .content blockquote footer {
   overflow: auto;
 }
 section.main .post .content blockquote footer strong:before {
-  content: "-";
+  content: '-';
   padding-right: 10px;
 }
 section.main .post .content blockquote footer cite {
@@ -625,74 +611,62 @@ figure.highlight table tbody tr td pre {
   color: #a9b7c6;
 }
 figure.highlight table tbody tr td pre .comment,
-figure.highlight table tbody tr td pre .template_comment,
-figure.highlight table tbody tr td pre .diff .header,
-figure.highlight table tbody tr td pre .doctype,
-figure.highlight table tbody tr td pre .pi,
-figure.highlight table tbody tr td pre .lisp .string,
-figure.highlight table tbody tr td pre .javadoc {
-  color: #808080;
+figure.highlight table tbody tr td pre .quote {
+  color: #5c6370;
   font-style: italic;
 }
+figure.highlight table tbody tr td pre .doctag,
 figure.highlight table tbody tr td pre .keyword,
-figure.highlight table tbody tr td pre .winutils,
-figure.highlight table tbody tr td pre .method,
-figure.highlight table tbody tr td pre .addition,
-figure.highlight table tbody tr td pre .css .tag,
-figure.highlight table tbody tr td pre .request,
-figure.highlight table tbody tr td pre .status,
-figure.highlight table tbody tr td pre .nginx .title {
-  color: #cc7832;
+figure.highlight table tbody tr td pre .formula {
+  color: #c678dd;
 }
-figure.highlight table tbody tr td pre .number,
-figure.highlight table tbody tr td pre .command,
-figure.highlight table tbody tr td pre .tag .value,
-figure.highlight table tbody tr td pre .phpdoc,
-figure.highlight table tbody tr td pre .tex .formula,
+figure.highlight table tbody tr td pre .section,
+figure.highlight table tbody tr td pre .name,
+figure.highlight table tbody tr td pre .selector-tag,
+figure.highlight table tbody tr td pre .deletion,
+figure.highlight table tbody tr td pre .subst {
+  color: #e06c75;
+}
+figure.highlight table tbody tr td pre .literal {
+  color: #56b6c2;
+}
+figure.highlight table tbody tr td pre .string,
 figure.highlight table tbody tr td pre .regexp,
-figure.highlight table tbody tr td pre .hexcolor {
-  color: #6897bb;
-}
-figure.highlight table tbody tr td pre .string {
-  color: #6a8759;
-}
-figure.highlight table tbody tr td pre .title,
-figure.highlight table tbody tr td pre .localvars,
-figure.highlight table tbody tr td pre .chunk,
-figure.highlight table tbody tr td pre .decorator,
-figure.highlight table tbody tr td pre .built_in,
-figure.highlight table tbody tr td pre .identifier,
-figure.highlight table tbody tr td pre .vhdl,
-figure.highlight table tbody tr td pre .literal,
-figure.highlight table tbody tr td pre .id {
-  color: #268bd2;
-}
+figure.highlight table tbody tr td pre .addition,
 figure.highlight table tbody tr td pre .attribute,
+figure.highlight table tbody tr td pre .meta-string {
+  color: #98c379;
+}
+figure.highlight table tbody tr td pre .built_in,
+figure.highlight table tbody tr td pre .class .title {
+  color: #e6c07b;
+}
+figure.highlight table tbody tr td pre .attr,
 figure.highlight table tbody tr td pre .variable,
-figure.highlight table tbody tr td pre .lisp .body,
-figure.highlight table tbody tr td pre .smalltalk .number,
-figure.highlight table tbody tr td pre .constant,
-figure.highlight table tbody tr td pre .class .title,
-figure.highlight table tbody tr td pre .parent,
-figure.highlight table tbody tr td pre .haskell .type {
-  color: #6a8759;
+figure.highlight table tbody tr td pre .template-variable,
+figure.highlight table tbody tr td pre .type,
+figure.highlight table tbody tr td pre .selector-class,
+figure.highlight table tbody tr td pre .selector-attr,
+figure.highlight table tbody tr td pre .selector-pseudo,
+figure.highlight table tbody tr td pre .number {
+  color: #d19a66;
 }
-figure.highlight table tbody tr td pre .preprocessor,
-figure.highlight table tbody tr td pre .preprocessor .keyword,
-figure.highlight table tbody tr td pre .shebang,
 figure.highlight table tbody tr td pre .symbol,
-figure.highlight table tbody tr td pre .symbol .string,
-figure.highlight table tbody tr td pre .diff .change,
-figure.highlight table tbody tr td pre .special,
-figure.highlight table tbody tr td pre .attr_selector,
-figure.highlight table tbody tr td pre .important,
-figure.highlight table tbody tr td pre .subst,
-figure.highlight table tbody tr td pre .cdata,
-figure.highlight table tbody tr td pre .clojure .title {
-  color: #e8bf6a;
+figure.highlight table tbody tr td pre .bullet,
+figure.highlight table tbody tr td pre .link,
+figure.highlight table tbody tr td pre .meta,
+figure.highlight table tbody tr td pre .selector-id,
+figure.highlight table tbody tr td pre .title {
+  color: #61aeee;
 }
-figure.highlight table tbody tr td pre .deletion {
-  color: #dc322f;
+figure.highlight table tbody tr td pre .emphasis {
+  font-style: italic;
+}
+figure.highlight table tbody tr td pre .strong {
+  font-weight: bold;
+}
+figure.highlight table tbody tr td pre .link {
+  text-decoration: underline;
 }
 ::-webkit-scrollbar {
   display: none;
@@ -707,4 +681,7 @@ em {
 }
 .end-date {
   float: right;
+}
+.animation {
+  cursor: default;
 }
