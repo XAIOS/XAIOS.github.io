@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<meta charset=utf-8>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name=viewport content='width=device-width, initial-scale=1'>
+<title>Create live server</title>
+<meta name=author content='AIOS'>
+<meta name=description content=''>
+<!--[if IE]>
+  <meta http-equiv=refresh content='0, http://browsehappy.com'>
+<![endif]-->
+<link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css>
+<link rel=stylesheet href=//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css>
+<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css>
+<link rel="stylesheet" href="/css/style.css">
+
+
+<body>
+  <div class=bg-gradient></div>
+  <div class=bg-pattern></div>
+
+  <div class=menu-bg>
+  <div class=menu-container>
+    <ul>
+      
+        <li class=menu-item>
+          <a href='/'>Home</a>
+        </li>
+      
+        <li class=menu-item>
+          <a href='/archives'>Docs</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+<nav>
+  <a></a>
+</nav>
+
+
+  <div class=container>
+    <div class=row>
+  <div class=col-sm-12>
+    <header>
+  <div class=logo>
+    <h1 id=main-title class=title><a href=/><i class='logo-icon fa fa-terminal' aria-hidden></i> 艾芷枫 の Blog</a></h1>
+  </div>
+</header>
+
+
+    <section class=main>
+      
+<div class=post>
+  <div class=post-header>
+    <h1 class=title>Create live server</h1>
+    <div class=post-info>
+      <span class=date>2017-12-13</span>
+
+      
+    </div>
+  </div>
+
+  <div class=content>
+    <!-- Gallery -->
+    
+
+    <p><em>About：本文需要少少 Node.js 基础和 ES6 语法知识辅助阅读，通过本文，你可以在任意主机搭建服务器环境，当所监听的目录发生文件变化时刷新所有正在访问本主机的设备上的页面，所见即所得</em></p>
+<a id="more"></a>
+<h1>一、事前准备</h1><h2>1. 安装 Node.js</h2><p>访问 Node.js 的中文网 <a href="http://nodejs.cn/download" target="_blank" rel="noopener">nodejs.cn</a>，根据系统版本下载对应的 Node.js 安装包，并进行安装，安装过程中一般情况下无需进行额外的配置，可以选择一直下一步，最后完成安装操作，关闭安装程序。</p>
+<p>在终端运行以下代码验证是否安装成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">node</span> -v</span><br></pre></td></tr></table></figure>
+<p>Node.js 提供 live-server 所需的运行环境，要安装 live-server ，还需要借助 NPM， NPM 在高版本的 Node.js 中自带，也可以自行安装。</p>
+<h2>2. 安装 live-server</h2><p>首先准备一个文件夹作为将要被监听的目录，此处默认为 D 盘根目录下的 Web 文件夹，进入该文件夹，并执行命令安装 live-server：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /d D:\Web</span><br><span class="line">$ <span class="built_in">npm</span> i live-server</span><br></pre></td></tr></table></figure>
+<p>等待下载并安装，完成后 Web 文件夹内会生成一个 <code>node_modules</code> 文件夹和一个 <code>package.json</code> 文件（或 <code>package-lock.json</code> 文件），两个 json 文件可以删除，对往后的操作不会造成任何不良影响。</p>
+<h1>二、创建服务器</h1><p>在 Web 文件夹内创建一个 js 文件，命名随意，此处默认为 <code>live.js</code>，编辑文件内容为如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Live = <span class="built_in">require</span>(<span class="string">'live-server'</span>)                                           <span class="comment">// 加载 live-server 模块</span></span><br><span class="line">network = <span class="built_in">require</span>(<span class="string">'os'</span>).networkInterfaces()                             <span class="comment">// 加载系统模块并读取网络接口</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> network)                                                <span class="comment">// 循环网络接口信息</span></span><br><span class="line">  <span class="keyword">if</span> (!key.includes(<span class="string">'VM'</span>))                                              <span class="comment">// 过滤虚拟网卡信息</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> item <span class="keyword">of</span> network[key])                                      <span class="comment">// 循环目标网络接口</span></span><br><span class="line">      <span class="keyword">if</span> (item.family == <span class="string">'IPv4'</span> &amp;&amp; item.address != <span class="string">'127.0.0.1'</span>)&#123;        <span class="comment">// 获取非 127.0.0.1 的 IPv4 地址</span></span><br><span class="line">        host = item.address                                             <span class="comment">// 获取 IP 地址</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'\n\t当前监听的 IP 地址为：'</span> + host)                  <span class="comment">// 在控制台输出本机 IP 地址</span></span><br><span class="line">        <span class="keyword">break</span>                                                           <span class="comment">// 跳出循环</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">Live.start(&#123;                                                            <span class="comment">// 配置 live-server 信息并启动服务器</span></span><br><span class="line">  host,                                                                 <span class="comment">// 刚刚获取到的 IP 地址</span></span><br><span class="line">  port: <span class="number">80</span>,                                                             <span class="comment">// 需要监听的主机端口</span></span><br><span class="line">  open: <span class="literal">false</span>,                                                          <span class="comment">// 禁止在启动服务器的时候自动打开浏览器</span></span><br><span class="line">  root: __dirname,                                                      <span class="comment">// 监听目录为 live.js 文件当前所在目录</span></span><br><span class="line">  logLevel: <span class="number">0</span>                                                           <span class="comment">// 不在控制台输出任何日志信息</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>关闭文件，在 Web 文件夹下打开终端，执行以下命令，就可以开启服务器了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">node</span> live         // 以 Node.js 运行 live.js 文件</span><br></pre></td></tr></table></figure>
+<p>控制台会输出可以访问到当前电脑的 IP 地址，如果端口号未设置为 80，还需要在 IP 地址后加上所设置的端口号，如果端口被占用将会开启失败，此时可以尝试设置为别的端口或去除端口占用，重新启动服务器。</p>
+<h1>三、见证奇迹之前</h1><p>在 Web 目录（被设定监听的目录）下创建一个 <code>index.html</code> 文件以供访问，内容随意（但必须包含一个 <code>body</code> 标签），创建完毕后，同一局域网内的设备可以通过浏览器访问到该文件，表示我们的服务器创建已经完毕了。</p>
+<p>在有设备访问的情况下，我们去修改一下 <code>index.html</code> 文件，或是在 Web 目录中新加入一个文件，触发修改目录内容的事件，这个时候可以看到正在访问该文件的浏览器页面被自动刷新了。</p>
+<p><em>但是，如果是微信浏览器，你会发现并不能实现预期的效果。</em></p>
+<p>这是因为微信浏览器屏蔽了 <code>location.reload()</code> 的效果，使刷新的方法失效，这个时候为了能够在微信浏览器上实现预期，我们得去修改一下 live-server 的源码，下面简单介绍下 live-server 的原理。</p>
+<p>为了实现刷新访问设备的效果，live-server 使用了 WebSocket 技术，在服务端与客户端之间建立了双向通信通道，在监听到目录变化的时候，向客户端发送刷新页面，或是重载 CSS 文件的命令。</p>
+<p>为了让客户端能够对命令做出响应，live-server 在客户端访问页面获取文档的时候，对文档作了一个处理，在 <code>body</code> 标签的最后插入了一段生成 WebSocket 通道并注册相关事件的代码，这就是为什么上面会注明 <code>index.html</code> 文件内必须包含 <code>body</code> 标签，就是以防你是像我一样，如非必要，连 <code>body</code> 标签都会去掉的极简主义者。</p>
+<p>通过阅读源码和翻阅文件夹加上大胆猜测，我发现 live-server 将那段 script 代码放进了一个文件内，而我们现在要做的，就是修改该文件的内容。</p>
+<p>打开 <code>node_modules</code> 目录下的 <code>live-server</code> 目录下的 <code>injected.html</code> 文件，修改其内容如下（当然你也可以自己去写一下或是在原基础上稍作改动）：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">ReLoad</span>(<span class="params">obj</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> [a, b] = obj.href.split(<span class="string">'?'</span>)</span></span><br><span class="line"><span class="javascript">      obj.href = <span class="string">`<span class="subst">$&#123;a&#125;</span>?<span class="subst">$&#123;b ? ++b : <span class="number">1</span>&#125;</span>`</span></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> socket = <span class="keyword">new</span> WebSocket(<span class="string">`<span class="subst">$&#123;location.protocol.replace(<span class="string">'http'</span>,<span class="string">'ws'</span>)&#125;</span>//<span class="subst">$&#123;location.host&#125;</span><span class="subst">$&#123;location.pathname&#125;</span>/ws`</span>)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    socket.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">if</span> (msg.data == <span class="string">'reload'</span>)</span></span><br><span class="line"><span class="undefined">        ReLoad(location)</span></span><br><span class="line"><span class="javascript">      <span class="keyword">else</span> <span class="keyword">if</span> (msg.data == <span class="string">'refreshcss'</span>)</span></span><br><span class="line"><span class="javascript">        <span class="keyword">for</span> (<span class="keyword">let</span> css <span class="keyword">of</span> <span class="built_in">document</span>.getElementsByTagName(<span class="string">'link'</span>))</span></span><br><span class="line"><span class="javascript">          css.rel == <span class="string">'stylesheet'</span> &amp;&amp; ReLoad(css)</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;)()</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>此处有一点要注意的是，我用了 ES6 语法，而上面这段代码是要发送到客户端执行的，如果客户端不支持 ES6 的语法，将会失效甚至导致页面白屏，关于这点需要在实际操作时稍微考虑。</p>
+<p>另外因为采用了 WebSocket 技术，部分落后的浏览器会出现不支持的情况，这是无法解决的事情，WebSocket 具体的浏览器支持性可以通过 <a href="https://caniuse.com/#search=Web%20Sockets" target="_blank" rel="noopener">caniuse.com</a> 查看。</p>
+<p>至此，基于 Node.js 和 live-server 的动态服务器已经搭建完毕，所监听的目录下的任何文件变化，都会使所有支持的设备进行刷新或是重绘，可以大大减轻前端开发时的工作量，不需要再不停地刷新各个设备进行调试，撒花 ~ ~</p>
+
+    <span class='date end-date'>2017-12-13</span>
+  </div>
+
+  
+
+  
+</div>
+
+    </section>
+  </div>
+</div>
+
+  </div>
+
+  <div class=push></div>
+
+<footer class=footer-content>
+  <div class=container>
+    <div class=row>
+      <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about'>
+        <h2>About</h2>
+        <section>
+          Theme developed by <a href=//github.com/klugjo target=_blank>Jonathan Klughertz</a><br>Contents created by <a href=//github.com/xaios target=_blank>AIOS</a>
+        </section>
+      </div>
+      
+  <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about'>
+    <h2>New Contents</h2>
+    <ul>
+      
+        <li>
+          <a class=footer-post href='/2017/12/CreateLiveServer/'>Create live server</a>
+        </li>
+      
+        <li>
+          <a class=footer-post href='/2017/12/CreateBlogByHexo/'>Create blog by Hexo</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+      
+
+    </div>
+    <div class=row>
+      <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+        <ul class='list-inline footer-social-icons'></ul>
+      </div>
+    </div>
+    <div class=row>
+      <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+        <div class=footer-copyright>@Untitled. All right reserved | Design & Hexo <a href=//www.codeblocq.com target=_blank>Jonathan Klughertz</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+<script src=//code.jquery.com/jquery-2.1.4.min.js></script>
+<script src=//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js></script>
+<script src=//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js></script>
+<script src="/js/main.js"></script>
+
