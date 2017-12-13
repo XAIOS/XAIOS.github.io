@@ -159,8 +159,7 @@ section.main .post .post-header:after {
 section.main .post .post-header h1.title {
   text-align: center;
   font-family: "Orbitron", sans-serif;
-  text-shadow: 0 0 1px #fff, 0 0 5px #fff, 0 0 15px #228dff;
-  cursor: pointer;
+  transition: all 0.3s;
 }
 section.main .post .post-header h1.title a,
 section.main .post .post-header h1.title a:link,
@@ -177,15 +176,20 @@ section.main .post .post-header .post-info {
   margin-top: 15px;
   text-align: center;
   text-transform: uppercase;
+  transition: all 0.3s;
   font-family: "Orbitron", sans-serif;
 }
 section.main .post .post-header .post-info span {
   padding: 10px;
 }
-section.main .post .post-header.hover:before {
+section.main .post .post-header.animation:hover h1.title,
+section.main .post .post-header.animation:hover .post-info {
+  text-shadow: 0 0 1px #fff, 0 0 5px #fff, 0 0 15px #228dff;
+}
+section.main .post .post-header.animation:hover:before {
   left: 5px;
 }
-section.main .post .post-header.hover:after {
+section.main .post .post-header.animation:hover:after {
   right: 5px;
 }
 section.main .post .content {
@@ -694,9 +698,13 @@ figure.highlight table tbody tr td pre .deletion {
   display: none;
 }
 p {
+  text-align: justify;
   text-indent: 2em;
 }
 em {
   font-style: normal;
   font-weight: bold;
+}
+.end-date {
+  float: right;
 }

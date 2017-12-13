@@ -70,8 +70,8 @@ var alphaDust = function() {
   return {
     initMenu: initMenu,
     displayArchives: displayArchives
-  };
-}();
+  }
+}()
 
 $(document).ready(function() {
   alphaDust.initMenu();
@@ -79,4 +79,4 @@ $(document).ready(function() {
   $('.menu-bg').on('touchmove',function(e){
     e.preventDefault()
   })
-});
+})
