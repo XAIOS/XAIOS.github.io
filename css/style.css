@@ -223,6 +223,7 @@ section.main .post .content .gallery-container .picture-container a .img-thumbna
   width: 100%;
 }
 section.main .post .read-more {
+  float: right;
   margin: 10px auto;
   font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
@@ -691,9 +692,6 @@ figure.highlight table tbody tr td pre .deletion {
 }
 ::-webkit-scrollbar {
   display: none;
-}
-.readmore {
-  float: right;
 }
 p {
   text-indent: 2em;

@@ -2,22 +2,6 @@ var alphaDust = function() {
 
   var _menuOn = false;
 
-  function initPostHeader() {
-    $('.main .post').each(function() {
-      var $post = $(this);
-      var $header = $post.find('.post-header.index');
-      var $title = $post.find('h1.title');
-      var $readMoreLink = $post.find('a.read-more');
-
-      var toggleHoverClass = function() {
-        $header.toggleClass('hover');
-      };
-
-      $title.hover(toggleHoverClass, toggleHoverClass);
-      $readMoreLink.hover(toggleHoverClass, toggleHoverClass);
-    });
-  }
-
   function _menuShow() {
     $('nav a').addClass('menu-active');
     $('.menu-bg').show();
@@ -84,14 +68,12 @@ var alphaDust = function() {
   }
 
   return {
-    initPostHeader: initPostHeader,
     initMenu: initMenu,
     displayArchives: displayArchives
   };
 }();
 
 $(document).ready(function() {
-  alphaDust.initPostHeader();
   alphaDust.initMenu();
   alphaDust.displayArchives();
   $('.menu-bg').on('touchmove',function(e){
