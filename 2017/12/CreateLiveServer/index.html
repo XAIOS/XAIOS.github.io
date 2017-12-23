@@ -14,11 +14,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
-<body>
-  <div class=bg-gradient></div>
-  <div class=bg-pattern></div>
-
-  <div class=menu-bg>
+<body oncontextmenu='return false'>
+  <div class=aios_content>
+    <div class=bg-gradient></div>
+    <div class=bg-pattern></div>
+    <div class=menu-bg>
   <div class=menu-container>
     <ul>
       
@@ -38,13 +38,12 @@
   <a></a>
 </nav>
 
-
-  <div class=container>
-    <div class=row>
+    <div class=container>
+      <div class=row>
   <div class=col-sm-12>
     <header>
   <div class=logo>
-    <h1 id=main-title class=title><a href=/><i class='logo-icon fa fa-terminal' aria-hidden></i> 艾芷枫 の Blog</a></h1>
+    <h1 id=main-title class=title><a href=/>艾芷枫 の Blog</a></h1>
   </div>
 </header>
 
@@ -75,7 +74,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /d D:\Web</span><br><span class="line">$ <span class="built_in">npm</span> i live-server</span><br></pre></td></tr></table></figure>
 <p>等待下载并安装，完成后 Web 文件夹内会生成一个 <code>node_modules</code> 文件夹和一个 <code>package.json</code> 文件（或 <code>package-lock.json</code> 文件），两个 json 文件可以删除，对往后的操作不会造成任何不良影响。</p>
 <h1>二、创建服务器</h1><p>在 Web 文件夹内创建一个 js 文件，命名随意，此处默认为 <code>live.js</code>，编辑文件内容为如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Live = <span class="built_in">require</span>(<span class="string">'live-server'</span>)                                           <span class="comment">// 加载 live-server 模块</span></span><br><span class="line">network = <span class="built_in">require</span>(<span class="string">'os'</span>).networkInterfaces()                             <span class="comment">// 加载系统模块并读取网络接口</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> network)                                                <span class="comment">// 循环网络接口信息</span></span><br><span class="line">  <span class="keyword">if</span> (!key.includes(<span class="string">'VM'</span>))                                              <span class="comment">// 过滤虚拟网卡信息</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> item <span class="keyword">of</span> network[key])                                      <span class="comment">// 循环目标网络接口</span></span><br><span class="line">      <span class="keyword">if</span> (item.family == <span class="string">'IPv4'</span> &amp;&amp; item.address != <span class="string">'127.0.0.1'</span>)&#123;        <span class="comment">// 获取非 127.0.0.1 的 IPv4 地址</span></span><br><span class="line">        host = item.address                                             <span class="comment">// 获取 IP 地址</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'\n\t当前监听的 IP 地址为：'</span> + host)                  <span class="comment">// 在控制台输出本机 IP 地址</span></span><br><span class="line">        <span class="keyword">break</span>                                                           <span class="comment">// 跳出循环</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">Live.start(&#123;                                                            <span class="comment">// 配置 live-server 信息并启动服务器</span></span><br><span class="line">  host,                                                                 <span class="comment">// 刚刚获取到的 IP 地址</span></span><br><span class="line">  port: <span class="number">80</span>,                                                             <span class="comment">// 需要监听的主机端口</span></span><br><span class="line">  open: <span class="literal">false</span>,                                                          <span class="comment">// 禁止在启动服务器的时候自动打开浏览器</span></span><br><span class="line">  root: __dirname,                                                      <span class="comment">// 监听目录为 live.js 文件当前所在目录</span></span><br><span class="line">  logLevel: <span class="number">0</span>                                                           <span class="comment">// 不在控制台输出任何日志信息</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Live = <span class="built_in">require</span>(<span class="string">'live-server'</span>)                                           <span class="comment">// 加载 live-server 模块</span></span><br><span class="line">network = <span class="built_in">require</span>(<span class="string">'os'</span>).networkInterfaces()                             <span class="comment">// 加载系统模块并读取网络接口</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> network)                                                <span class="comment">// 循环网络接口信息</span></span><br><span class="line">  <span class="keyword">if</span> (!key.includes(<span class="string">'VM'</span>))                                              <span class="comment">// 过滤虚拟网卡信息</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> item <span class="keyword">of</span> network[key])                                      <span class="comment">// 循环目标网络接口</span></span><br><span class="line">      <span class="keyword">if</span> (item.family == <span class="string">'IPv4'</span> &amp;&amp; item.address != <span class="string">'127.0.0.1'</span>)&#123;        <span class="comment">// 获取非 127.0.0.1 的 IPv4 地址</span></span><br><span class="line">        host = item.address                                             <span class="comment">// 获取 IP 地址</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'\n\t当前监听的 IP 地址为：'</span> + host)                  <span class="comment">// 在控制台输出本机 IP 地址</span></span><br><span class="line">        <span class="keyword">break</span>                                                           <span class="comment">// 跳出循环</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">Live.start(&#123;                                                            <span class="comment">// 配置 live-server 信息并启动服务器</span></span><br><span class="line">  host,                                                                 <span class="comment">// 刚刚获取到的 IP 地址</span></span><br><span class="line">  port: <span class="number">80</span>,                                                             <span class="comment">// 需要监听的主机端口</span></span><br><span class="line">  open: <span class="literal">false</span>,                                                          <span class="comment">// 禁止在启动服务器的时候自动打开浏览器</span></span><br><span class="line">  root: __dirname,                                                      <span class="comment">// 监听目录为 live.js 文件当前所在目录</span></span><br><span class="line">  logLevel: <span class="number">0</span>                                                           <span class="comment">// 不在控制台输出任何日志信息</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>关闭文件，在 Web 文件夹下打开终端，执行以下命令，就可以开启服务器了：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">node</span> live         // 以 Node.js 运行 live.js 文件</span><br></pre></td></tr></table></figure>
 <p>控制台会输出可以访问到当前电脑的 IP 地址，如果端口号未设置为 80，还需要在 IP 地址后加上所设置的端口号，如果端口被占用将会开启失败，此时可以尝试设置为别的端口或去除端口占用，重新启动服务器。</p>
@@ -104,11 +103,9 @@
   </div>
 </div>
 
+    </div>
   </div>
-
-  <div class=push></div>
-
-<footer class=footer-content>
+  <footer class=footer-content>
   <div class=container>
     <div class=row>
       <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about'>

@@ -59,20 +59,11 @@ a:hover {
 .btn:active {
   background: #62b4ff;
 }
-.push {
-  height: 150px;
-}
-@media (max-width: 33.9em) {
-  .push {
-    height: 60px;
-  }
-}
 header {
-  padding-top: 100px;
+  padding-top: 60px;
 }
 header .logo {
   margin: 0 auto;
-  text-align: center;
 }
 header .logo a,
 header .logo a:link,
@@ -80,23 +71,9 @@ header .logo a:visited,
 header .logo a:active {
   border-bottom: none;
 }
-header .logo .logo-icon {
-  font-size: 4rem;
-  color: #d7ecff;
-  text-shadow: 0 0 1px #fff, 0 0 5px #fff, 0 0 15px #228dff;
-}
-@media (max-width: 47.9em) {
-  header .logo .logo-icon {
-    font-size: 3rem;
-  }
-}
-header .logo img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
 header .logo .title {
   font-size: 3rem;
+  text-align: center;
   line-height: 100px;
   color: #d7ecff;
   font-family: "Orbitron", sans-serif;
@@ -512,31 +489,29 @@ nav a:hover {
   pointer-events: none;
 }
 footer.footer-content {
-  padding-top: 100px;
   width: 100%;
-  min-height: 350px;
-  background: #0f1516;
+  padding-top: 60px;
   color: #d7ecff;
-  border-top: 1px dotted #d7ecff;
   text-align: center;
+  background: #0f1516;
+  border-top: 1px dotted #d7ecff;
 }
 @media (max-width: 33.9em) {
   footer.footer-content {
-    min-height: 250px;
-    padding-top: 60px;
+    padding-top: 20px;
   }
 }
 footer.footer-content a,
 footer.footer-content a:link,
 footer.footer-content a:visited,
 footer.footer-content a:active {
+  cursor: pointer;
   color: #d7ecff;
   text-decoration: none;
-  cursor: pointer;
 }
 footer.footer-content h2 {
   font-family: "Orbitron", sans-serif;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   font-size: 1.5em;
 }
 footer.footer-content ul {
@@ -564,6 +539,7 @@ footer.footer-content .footer-social-icons {
   }
 }
 footer.footer-content .footer-copyright {
+  margin-bottom: 20px;
   font-size: 0.7em;
 }
 code {
@@ -671,9 +647,17 @@ figure.highlight table tbody tr td pre .link {
 ::-webkit-scrollbar {
   display: none;
 }
+::selection {
+  background: 0;
+}
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
 p {
-  text-align: justify;
   text-indent: 2em;
+  text-align: justify;
 }
 em {
   font-style: normal;
@@ -684,4 +668,10 @@ em {
 }
 .animation {
   cursor: default;
+}
+.aios_content {
+  flex: 1;
+}
+.footer-content {
+  flex: 0;
 }
