@@ -655,6 +655,13 @@ body {
   flex-flow: column;
   min-height: 100vh;
 }
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  outline: 0;
+}
 p {
   text-indent: 2em;
   text-align: justify;

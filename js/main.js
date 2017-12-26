@@ -1,5 +1,3 @@
-var alphaDust = function() {
-
   var _menuOn = false;
 
   function _menuShow() {
@@ -42,7 +40,6 @@ var alphaDust = function() {
   }
 
   function initMenu() {
-
     $('nav a').click(function() {
       if (_menuOn) {
         _menuHide();
@@ -67,16 +64,8 @@ var alphaDust = function() {
     }, 0.15);
   }
 
-  return {
-    initMenu: initMenu,
-    displayArchives: displayArchives
-  }
-}()
-
-$(document).ready(function() {
-  alphaDust.initMenu();
-  alphaDust.displayArchives();
-  $('.menu-bg').on('touchmove',function(e){
-    e.preventDefault()
-  })
+initMenu();
+displayArchives();
+$('.menu-bg').on('touchmove', function(e) {
+  e.preventDefault()
 })

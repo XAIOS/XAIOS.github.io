@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<meta charset=utf-8>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name=viewport content='width=device-width, initial-scale=1, user-scalable=no'>
+<title>Normalize CSS in Web</title>
+<meta name=author content='AIOS'>
+<!--[if IE]>
+  <meta http-equiv=refresh content='0, http://browsehappy.com'>
+<![endif]-->
+<link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css>
+<link rel=stylesheet href=//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css>
+<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css>
+<link rel=stylesheet href=/css/style.css>
+
+
+<body oncontextmenu='return false'>
+  <div class=aios_content>
+    <div class=bg-gradient></div>
+    <div class=bg-pattern></div>
+    <div class=menu-bg>
+  <div class=menu-container>
+    <ul>
+      
+        <li class=menu-item>
+          <a href='/'>Home</a>
+        </li>
+      
+        <li class=menu-item>
+          <a href='/archives'>Docs</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+<nav>
+  <a></a>
+</nav>
+
+    <div class=container style='padding-bottom:40px'>
+      <div class=row>
+  <div class=col-sm-12>
+    <header>
+  <div class=logo>
+    <h1 id=main-title class=title><a href=/>艾芷枫 の Blog</a></h1>
+  </div>
+</header>
+
+
+    <section class=main>
+      <div class=post>
+  <div class=post-header>
+    <h1 class=title>Normalize CSS in Web</h1>
+    <div class=post-info>
+      <span class=date>2017-12-26</span>
+
+      
+    </div>
+  </div>
+
+  <div class=content>
+    <!-- Gallery -->
+    
+
+    <p><em>About：简单介绍 Web 开发中的 CSS Reset 以及 Normalize CSS ，并针对微信网页开发以及微信小程序开发，分享一份自用的 Normalize 方案</em></p>
+<a id="more"></a>
+<h1>一、CSS Reset</h1><p>在 Web 开发还是刀耕火种的年代，浏览器的世界堪比五胡十六国，除了主流的 Chrome、FireFox、IE 外，还有很多其他的国外的浏览器、国产的套壳浏览器，以及一些技术宅自行开发的浏览器，对于用户来说选择多样，百花齐放，也说得上是舒服，但对于需要兼容大部份浏览器的 Web 前端开发者来说，就很是痛苦了。</p>
+<p>到后来 JQuery 横空出世，兼容了各大主流浏览器的 API 并进行封装，使 JavaScript 的开发变得舒服了起来，虽然现在 JQuery 没有以前那么火了，甚至会被一部分（包括我）的开发者嫌弃，但在那个年代，JQuery 是伟大的。</p>
+<p>但浏览器间的差距并不是几个 JS 的 API 可以说得清的，除了逻辑处理，渲染机制和样式差异也是为开发者所诟病，但这也是没办法的事，毕竟每个厂商眼中的 Web 都是不一样的。</p>
+<p>自然而然的，在 Web 开发到了一个时期后，CSS Reset 的概念出现了，它主张破而后立，将所有浏览器的样式表现差异统统抹除，留下白纸一张，再任由开发人员布局，下面贴一份 <a href="http://nec.netease.com/framework/css-reset.html" target="_blank" rel="noopener">NEC</a> 上的 CSS Reset：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* nec css reset at 2012-11-15 */</span></span><br><span class="line"><span class="selector-tag">html</span>,<span class="selector-tag">body</span>,<span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">h4</span>,<span class="selector-tag">h5</span>,<span class="selector-tag">h6</span>,<span class="selector-tag">div</span>,<span class="selector-tag">dl</span>,<span class="selector-tag">dt</span>,<span class="selector-tag">dd</span>,<span class="selector-tag">ul</span>,<span class="selector-tag">ol</span>,<span class="selector-tag">li</span>,<span class="selector-tag">p</span>,<span class="selector-tag">blockquote</span>,<span class="selector-tag">pre</span>,<span class="selector-tag">hr</span>,<span class="selector-tag">figure</span>,<span class="selector-tag">table</span>,<span class="selector-tag">caption</span>,<span class="selector-tag">th</span>,<span class="selector-tag">td</span>,<span class="selector-tag">form</span>,<span class="selector-tag">fieldset</span>,<span class="selector-tag">legend</span>,<span class="selector-tag">input</span>,<span class="selector-tag">button</span>,<span class="selector-tag">textarea</span>,<span class="selector-tag">menu</span>&#123;<span class="attribute">margin</span>:<span class="number">0</span>;<span class="attribute">padding</span>:<span class="number">0</span>;&#125;</span><br><span class="line"><span class="selector-tag">header</span>,<span class="selector-tag">footer</span>,<span class="selector-tag">section</span>,<span class="selector-tag">article</span>,<span class="selector-tag">aside</span>,<span class="selector-tag">nav</span>,<span class="selector-tag">hgroup</span>,<span class="selector-tag">address</span>,<span class="selector-tag">figure</span>,<span class="selector-tag">figcaption</span>,<span class="selector-tag">menu</span>,<span class="selector-tag">details</span>&#123;<span class="attribute">display</span>:block;&#125;</span><br><span class="line"><span class="selector-tag">table</span>&#123;<span class="attribute">border-collapse</span>:collapse;<span class="attribute">border-spacing</span>:<span class="number">0</span>;&#125;</span><br><span class="line"><span class="selector-tag">caption</span>,<span class="selector-tag">th</span>&#123;<span class="attribute">text-align</span>:left;<span class="attribute">font-weight</span>:normal;&#125;</span><br><span class="line"><span class="selector-tag">html</span>,<span class="selector-tag">body</span>,<span class="selector-tag">fieldset</span>,<span class="selector-tag">img</span>,<span class="selector-tag">iframe</span>,<span class="selector-tag">abbr</span>&#123;<span class="attribute">border</span>:<span class="number">0</span>;&#125;</span><br><span class="line"><span class="selector-tag">i</span>,<span class="selector-tag">cite</span>,<span class="selector-tag">em</span>,<span class="selector-tag">var</span>,<span class="selector-tag">address</span>,<span class="selector-tag">dfn</span>&#123;<span class="attribute">font-style</span>:normal;&#125;</span><br><span class="line"><span class="selector-attr">[hidefocus]</span>,<span class="selector-tag">summary</span>&#123;<span class="attribute">outline</span>:<span class="number">0</span>;&#125;</span><br><span class="line"><span class="selector-tag">li</span>&#123;<span class="attribute">list-style</span>:none;&#125;</span><br><span class="line"><span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">h4</span>,<span class="selector-tag">h5</span>,<span class="selector-tag">h6</span>,<span class="selector-tag">small</span>&#123;<span class="attribute">font-size</span>:<span class="number">100%</span>;&#125;</span><br><span class="line"><span class="selector-tag">sup</span>,<span class="selector-tag">sub</span>&#123;<span class="attribute">font-size</span>:<span class="number">83%</span>;&#125;</span><br><span class="line"><span class="selector-tag">pre</span>,<span class="selector-tag">code</span>,<span class="selector-tag">kbd</span>,<span class="selector-tag">samp</span>&#123;<span class="attribute">font-family</span>:inherit;&#125;</span><br><span class="line"><span class="selector-tag">q</span><span class="selector-pseudo">:before</span>,<span class="selector-tag">q</span><span class="selector-pseudo">:after</span>&#123;<span class="attribute">content</span>:none;&#125;</span><br><span class="line"><span class="selector-tag">textarea</span>&#123;<span class="attribute">overflow</span>:auto;<span class="attribute">resize</span>:none;&#125;</span><br><span class="line"><span class="selector-tag">label</span>,<span class="selector-tag">summary</span>&#123;<span class="attribute">cursor</span>:default;&#125;</span><br><span class="line"><span class="selector-tag">a</span>,<span class="selector-tag">button</span>&#123;<span class="attribute">cursor</span>:pointer;&#125;</span><br><span class="line"><span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">h4</span>,<span class="selector-tag">h5</span>,<span class="selector-tag">h6</span>,<span class="selector-tag">em</span>,<span class="selector-tag">strong</span>,<span class="selector-tag">b</span>&#123;<span class="attribute">font-weight</span>:bold;&#125;</span><br><span class="line"><span class="selector-tag">del</span>,<span class="selector-tag">ins</span>,<span class="selector-tag">u</span>,<span class="selector-tag">s</span>,<span class="selector-tag">a</span>,<span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>&#123;<span class="attribute">text-decoration</span>:none;&#125;</span><br><span class="line"><span class="selector-tag">body</span>,<span class="selector-tag">textarea</span>,<span class="selector-tag">input</span>,<span class="selector-tag">button</span>,<span class="selector-tag">select</span>,<span class="selector-tag">keygen</span>,<span class="selector-tag">legend</span>&#123;<span class="attribute">font</span>:<span class="number">12px</span>/<span class="number">1.14</span> arial,\<span class="number">5</span>b8b\<span class="number">4</span>f53;<span class="attribute">color</span>:<span class="number">#333</span>;<span class="attribute">outline</span>:<span class="number">0</span>;&#125;</span><br><span class="line"><span class="selector-tag">body</span>&#123;<span class="attribute">background</span>:<span class="number">#fff</span>;&#125;</span><br><span class="line"><span class="selector-tag">a</span>,<span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>&#123;<span class="attribute">color</span>:<span class="number">#333</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p>粗略扫一眼，可以看到很多已经渐渐淡出 Web 舞台的 HTML 标签，毕竟这是一份 2012 年的代码，而写下这篇文章的时候，已经快到 2018 年了，这五年间的 Web 世界也是沧海桑田。</p>
+<p>而这五年间，浏览器在样式表现上越发趋向统一，它们的默认样式也慢慢变得一样，虽然说我们还是需要统一化每个浏览器的表现形式，但我们已经不需要书写（copy）那么多的 Reset 代码了，而且，在我们现在以及未来会触及的项目中，也很少会有用到上面全部标签的时候。</p>
+<p>为了写下这篇文章，我做了一点功课，而在查找资料中，我觉得有一类对 CSS Reset 的评价是很中肯且合适的，下面以我自己的话总结一下：</p>
+<blockquote>
+<p>CSS Reset 不是一段功能代码，而是一个概念，目的是去除浏览器样式差异，那份代码怎么写，是要结合时代，结合兼容需求，结合实际项目的</p>
+</blockquote>
+<p>所以 CSS Reset 虽然被人所诟病（代码臃肿，无用代码过多），但实际上这是一个很棒的概念，只是被开发者写错了。</p>
+<h1>二、Normalize CSS</h1><p>CSS Reset 之后，有大神耗费很多的时间和精力去考究了不同浏览器之间的差异，开源出了一份 CSS 文件，名为 Normalize.css ，意为标准化的 CSS。</p>
+<p>Normalize CSS 现在更新到了 7.0 的版本，有详细的文档解释里面的每一行 CSS 代码，长度其实也不大，有兴趣可以去它的<a href="http://necolas.github.io/normalize.css" target="_blank" rel="noopener">官网</a>，下载文件或查看文档，此处就不贴代码了。</p>
+<p>Normalize CSS 的理念比起 CSS Reset 的破而后立，显得更加的平和，它保留了不少浏览器只带的属性，也对一些标签做了表现上的优化调整，但和 CSS Reset 一样，这也是一份被别人总结出来的代码，具体要应用到自己项目当中的时候，也应该对其有一定的了解，以及代码的取舍，毕竟多出来用不到的，也是无用的代码。</p>
+<h1>三、CSS Reset Mine</h1><p>最后，分享一下我个人结合自身项目需求，移动端开发特性（主要是微信浏览器），以及 CSS Reset 和 Normalize CSS，做出的一份自用的 CSS Reset：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span> &#123;  <span class="comment">/* 1.去除元素点击时的蓝色遮罩，2.禁用字体缩放 */</span></span><br><span class="line">  <span class="attribute">-webkit-tap-highlight-color</span>: <span class="built_in">rgba</span>(0, 0, 0, 0);</span><br><span class="line">  <span class="attribute">-webkit-text-size-adjust</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;  <span class="comment">/* 1.去除页面内边距，2.去除元素间的小间隙 */</span></span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">header</span>, <span class="selector-tag">nav</span>, <span class="selector-tag">aside</span>, <span class="selector-tag">article</span>, <span class="selector-tag">section</span>, <span class="selector-tag">main</span>, <span class="selector-tag">menu</span>, <span class="selector-tag">footer</span> &#123;  <span class="comment">/* 块级化 HTML5 元素 */</span></span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>, <span class="selector-tag">hr</span> &#123;  <span class="comment">/* 对常用的元素进行边距消除 */</span></span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">a</span>, <span class="selector-tag">a</span><span class="selector-pseudo">:link</span>, <span class="selector-tag">a</span><span class="selector-pseudo">:visited</span>, <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>, <span class="selector-tag">a</span><span class="selector-pseudo">:active</span> &#123;  <span class="comment">/* 1.设置下划线样式，2.移除描边，3.统一交互颜色 */</span></span><br><span class="line">  <span class="attribute">-webkit-text-decoration-skip</span>: objects;</span><br><span class="line">  <span class="attribute">outline</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#333</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">button</span> &#123;  <span class="comment">/* 重置按钮的属性 */</span></span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">outline</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">table</span> &#123;  <span class="comment">/* 重置表格属性 */</span></span><br><span class="line">  <span class="attribute">border-collapse</span>: collapse;</span><br><span class="line">  <span class="attribute">border-spacing</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">li</span> &#123;  <span class="comment">/* 移除列表元素的序号点 */</span></span><br><span class="line">  <span class="attribute">list-style</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>涉及到的标签比较少，但已能满足我的开发需求，最后再贴上一份微信小程序开发时可能需要用到的 CSS Reset：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">page</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">button</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然，是否需要用到，还是取决于自己的项目的，希望各位都能在对这方面有一定考究后，有一份自己的 CSS Reset，而不是一味的在网上 copy。</p>
+
+    <span class='date end-date'>2017-12-26</span>
+  </div>
+
+  
+
+  
+</div>
+
+    </section>
+  </div>
+</div>
+
+    </div>
+  </div>
+  <footer class=footer-content>
+  <div class=container>
+    <div class=row>
+      <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about'>
+        <h2>About</h2>
+        <section>
+          Theme developed by <a href=//github.com/klugjo target=_blank>Jonathan Klughertz</a><br>Contents created by <a href=//github.com/xaios target=_blank>AIOS</a>
+        </section>
+      </div>
+      
+  <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about'>
+    <h2>New Contents</h2>
+    <ul>
+      
+        <li>
+          <a class=footer-post href='/2017/12/NormalizeCSSInWeb/'>Normalize CSS in Web</a>
+        </li>
+      
+        <li>
+          <a class=footer-post href='/2017/12/CreateLiveServer/'>Create live server</a>
+        </li>
+      
+        <li>
+          <a class=footer-post href='/2017/12/CreateBlogByHexo/'>Create blog by Hexo</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+      
+
+    </div>
+    <div class=row>
+      <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+        <ul class='list-inline footer-social-icons'></ul>
+      </div>
+    </div>
+    <div class=row>
+      <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+        <div class=footer-copyright>@Untitled. All right reserved | Design & Hexo <a href=//www.codeblocq.com target=_blank>Jonathan Klughertz</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+<script src=//code.jquery.com/jquery-2.1.4.min.js></script>
+<script src=//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js></script>
+<script src=//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js></script>
+<script src=/js/main.js></script>
+
