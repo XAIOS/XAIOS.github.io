@@ -71,7 +71,33 @@
 <p>至于 Babel，此处就不作详细描述了，可以通过访问它的<a href="https://babeljs.cn" target="_blank" rel="noopener">中文站</a>，获得更多的了解。</p>
 <p>说起使用 Babel，很多人会第一时间想到使用各种构建工具，如 Webpack 和 Gulp 等等，但构建工具的配置是比较麻烦的，即使有免于配置的工具，为了使用一个 Babel 而引入过多额外的东西进项目里面，某种意义上是不值得的，因为，我们完全可以单纯地使用 Babel，只转换我们需要转换的 js，而不用考虑其他的文件资源，遵循我们的单一职责原则。</p>
 <p>下面，将简单说明如何使用 Babel 转换项目中的 js 文件，且把对项目的影响降到最低，并给出自己构建的一个项目框架以供参考。</p>
-<h1>一、安装 Node.js</h1>
+<h1>一、安装 Node.js</h1><p>访问 Node.js 的中文网 <a href="http://nodejs.cn/download" target="_blank" rel="noopener">nodejs.cn</a>，根据系统版本下载对应的 Node.js 安装包，并进行安装，安装过程中一般情况下无需进行额外的配置，可以选择一直下一步，最后完成安装操作，关闭安装程序。</p>
+<p>在终端运行以下代码验证是否安装成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">node</span> -v</span><br></pre></td></tr></table></figure>
+<p>Node.js 提供 babel 及其余所需组件的运行环境，要安装 babel ，还需要借助 NPM， NPM 在高版本的 Node.js 中自带，也可以自行安装。</p>
+<h1>二、安装 Babel-CLI 及其余所需组件</h1><p>Babel 提供了一个命令行的版本，以供我们在终端中可以调用 Babel，虽然官方文档里面推荐以局部的方式安装 Babel-CLI，但经过考虑后我推荐在全局中安装，当然各位也可以按自己的实际情况来作选择。</p>
+<p>执行以下代码，在全局环境中安装 Babel-CLI：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">npm</span> i babel-cli -g</span><br></pre></td></tr></table></figure>
+<p>这样子就可以在当前用户的每一个目录终端中使用 Babel 的命令行了。</p>
+<p>为了便于项目的开发，我选用 D 盘根目录下的 Web 文件夹作为开发目录，为了能够将 Babel 轻松地作用在每个项目中，将会在 Web 目录中安装相关组件。</p>
+<p>执行以下代码，安装相关组件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">npm</span> i babel-preset-env <span class="built_in">node</span>-cmd</span><br></pre></td></tr></table></figure>
+<p>以上代码执行后会将 Babel 转换 ES2015 语法所需的基本插件 <code>preset-env</code> 以及在 nodejs 中调用 Windows CMD 终端所用到的 <code>node-cmd</code>，同时会在同一目录下生成 <code>node_modules</code> 文件夹以及 <code>package-lock.json</code> 文件，json 文件可以自由删除，但 <code>node_modules</code> 文件夹不能删除，因为里面就是上述安装的相关组件。</p>
+<p>在最后，为了能够使用 Babel，还需要写下一个配置文件，同样是在 Web 目录下，创建一个 <code>.babelrc</code> 文件，可以通过编辑器生成，或者在 powershell 或 cmd 中输入以下代码，生成文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ notepad .babelrc</span><br></pre></td></tr></table></figure>
+<p>执行后，记事本会提示该文件不存在，是否创建，点击确定即可，然后在其中写入如下内容：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"presets"</span>: [<span class="string">"env"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>保存文件，至此，准备工作就完成了，可以跟着 Babel 中文站提供的一些 Demo 试试看效果，此处就不作详细描述了。</p>
+<h1>三、优化功能，方便开发</h1><p>完成上面的步骤，虽然是可以使用了，但即使是使用 Babel 提供的文件检测方法，仍不免觉得使用起来很累，毕竟每次都需要打开终端，到目的目录后再执行相关命令，是很繁琐的。</p>
+<p>按着一贯的套路，既然终端可以完成的操作，那就是批处理可以完成的操作，那把相关的方法写在批处理文件里面，讲道理就没问题了，所以一开始我想到了使用 bat 文件。</p>
+<p>但由于我需要监听的文件目录路径包含中文名（为了方便辨识项目名），无论是 cmd 用的 bat 还是 powershell 用的 ps1 批处理，在编辑器甚至是记事本里面都存在编码错误的问题，虽然最后发现通过 powershell ise 可以解决编码问题，但开发成本的确是太高了，一定有可以优化的地方，最后，我想到了通过 nodejs 操作 cmd。</p>
+<p>这就是上面要安装 <code>node-cmd</code> 的原因了，有了这个组件，就可以很方便地进行目录监听了。</p>
+<p>创建一个 js 文件，文件名可以随意，但不要使用一些 cmd 的命令关键字，或是 babel，在写下这篇博文之前，我就曾因取名为 babel.js，而出了很多的状况，这里不得不说 powershell 比 cmd 完善很多。</p>
+<p>在 js 文件内写入以下内容：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CMD = <span class="built_in">require</span>(<span class="string">'node-cmd'</span>)</span><br><span class="line">CMD.run(<span class="string">'babel 监听目录路径 -w -d 输出目录路径'</span>)</span><br></pre></td></tr></table></figure>
+<p>将 js 文件关联为用 nodejs 运行，这样子只需要双击 js 文件，就可以开始进行 Babel 的监听文件并转换了，但此时控制台不会进行任何的输出，如果为了美观，可以在上面的代码中加入一两个 <code>console.log</code>。</p>
+<p>为了不监听多余的 js 文件，用于执行 babel 的 js 文件可以多复制几份，分别作用于不同的监听目录，鉴于同时开发的项目数量一般不会太高，即使这样子做也不会使目录过于凌乱。</p>
+
     <span class='date end-date'>2018-03-07</span>
   </div>
 
