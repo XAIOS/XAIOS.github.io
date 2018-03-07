@@ -348,8 +348,8 @@ section.main .post .content .pullquote.left {
 }
 section.main .post .content img {
   display: block;
+  width: 80%;
   margin: 0 auto;
-  max-width: 100%;
 }
 section.main .post .content .video-container {
   position: relative;

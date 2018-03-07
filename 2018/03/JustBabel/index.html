@@ -2,7 +2,7 @@
 <meta charset=utf-8>
 <meta http-equiv='X-UA-Compatible' content='IE=edge'>
 <meta name=viewport content='width=device-width, initial-scale=1, user-scalable=no'>
-<title>艾芷枫 の Blog</title>
+<title>Just Babel</title>
 <meta name=author content='AIOS'>
 <!--[if IE]>
   <meta http-equiv=refresh content='0, http://browsehappy.com'>
@@ -38,9 +38,7 @@
 </nav>
 
     <div class=container style='padding-bottom:40px'>
-      
-
-<div class=row>
+      <div class=row>
   <div class=col-sm-12>
     <header>
   <div class=logo>
@@ -48,36 +46,40 @@
   </div>
 </header>
 
-    <section class='main archive-container'>
-      
-        <div class=archive-post>
-  <a href='/2017/12/CreateBlogByHexo/'>
-    <span class=archive-date>Dec 2017</span>Create blog by Hexo
-  </a>
-</div>
+
+    <section class=main>
+      <div class=post>
+  <div class=post-header>
+    <h1 class=title>Just Babel</h1>
+    <div class=post-info>
+      <span class=date>2018-03-07</span>
 
       
-        <div class=archive-post>
-  <a href='/2017/12/CreateLiveServer/'>
-    <span class=archive-date>Dec 2017</span>Create live server
-  </a>
+    </div>
+  </div>
+
+  <div class=content>
+    <!-- Gallery -->
+    
+
+    <p><em>About：不依赖构建工具，借助 babel-cli 及 node.js ，拥抱 ES2015 或更高的语法</em></p>
+<a id="more"></a>
+<h1>前言</h1><p>ES2015 标准的出现，带来了很多有用的 API 和语法，如箭头函数和模板字符串等，都大大地优化了我们的开发体验，但无奈 js 的运行依赖于运行时环境，简单来说就是看浏览器厂商的脸色。</p>
+<p>国外的主流浏览器如 Chrome、FireFox、Opera 等，对更新是比较勤快的，也基本上是依着标准走，所以在 2018 年的今天，ES2015 的标准基本上是可以在这些浏览器的新版本上完美运行了。</p>
+<p>但对于一些老旧但用户群体不小的浏览器，如 IE、垃圾 360 等等，ES2015 的标准就寸步难行了，即使是在移动端，也同样存在因为浏览器版本问题产生的 ES2015 可用性问题，可以说是理想丰满，现实骨感。</p>
+<p>后来出现了 Babel 这样子的一个预处理工具，可以借助各种插件，对代码进行预处理，其中就有一个功能是转换 js 代码，让我们可以用 ES2015 开发，用兼容后的代码发布，大家都舒服。</p>
+<p>至于 Babel，此处就不作详细描述了，可以通过访问它的<a href="https://babeljs.cn" target="_blank" rel="noopener">中文站</a>，获得更多的了解。</p>
+<p>说起使用 Babel，很多人会第一时间想到使用各种构建工具，如 Webpack 和 Gulp 等等，但构建工具的配置是比较麻烦的，即使有免于配置的工具，为了使用一个 Babel 而引入过多额外的东西进项目里面，某种意义上是不值得的，因为，我们完全可以单纯地使用 Babel，只转换我们需要转换的 js，而不用考虑其他的文件资源，遵循我们的单一职责原则。</p>
+<p>下面，将简单说明如何使用 Babel 转换项目中的 js 文件，且把对项目的影响降到最低，并给出自己构建的一个项目框架以供参考。</p>
+<h1>一、安装 Node.js</h1>
+    <span class='date end-date'>2018-03-07</span>
+  </div>
+
+  
+
+  
 </div>
 
-      
-        <div class=archive-post>
-  <a href='/2018/03/JustBabel/'>
-    <span class=archive-date>Mar 2018</span>Just Babel
-  </a>
-</div>
-
-      
-        <div class=archive-post>
-  <a href='/2017/12/NormalizeCSSInWeb/'>
-    <span class=archive-date>Dec 2017</span>Normalize CSS in Web
-  </a>
-</div>
-
-      
     </section>
   </div>
 </div>
