@@ -666,6 +666,9 @@ p {
   text-indent: 2em;
   text-align: justify;
 }
+li p {
+  text-indent: 0;
+}
 em {
   font-style: normal;
   font-weight: bold;

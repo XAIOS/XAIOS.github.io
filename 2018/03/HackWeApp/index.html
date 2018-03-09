@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<meta charset=utf-8>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name=viewport content='width=device-width, initial-scale=1, user-scalable=no'>
+<title>Hack WeApp</title>
+<meta name=author content='AIOS'>
+<!--[if IE]>
+  <meta http-equiv=refresh content='0, http://browsehappy.com'>
+<![endif]-->
+<link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css>
+<link rel=stylesheet href=//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css>
+<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css>
+<link rel=stylesheet href=/css/style.css>
+
+
+<body oncontextmenu='return false'>
+  <div class=aios_content>
+    <div class=bg-gradient></div>
+    <div class=bg-pattern></div>
+    <div class=menu-bg>
+  <div class=menu-container>
+    <ul>
+      
+        <li class=menu-item>
+          <a href='/'>Home</a>
+        </li>
+      
+        <li class=menu-item>
+          <a href='/archives'>Docs</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+<nav>
+  <a></a>
+</nav>
+
+    <div class=container style='padding-bottom:40px'>
+      <div class=row>
+  <div class=col-sm-12>
+    <header>
+  <div class=logo>
+    <h1 id=main-title class=title><a href=/>艾芷枫 の Blog</a></h1>
+  </div>
+</header>
+
+
+    <section class=main>
+      <div class=post>
+  <div class=post-header>
+    <h1 class=title>Hack WeApp</h1>
+    <div class=post-info>
+      <span class=date>2018-03-09</span>
+
+      
+    </div>
+  </div>
+
+  <div class=content>
+    <!-- Gallery -->
+    
+
+    <p><em>About：封装微信小程序中的 setData 方法，像 Vue 一样，通过直接修改 this 的属性，实现视图更新</em></p>
+<a id="more"></a>
+<h1>前言</h1><p>实际上这个方法在几个月前就已经被我给 hack 出来了，但因为某（ge）些（ren）原（tai）因（lan），一直拖到今天才写下这篇博文，用以记载我开发小程序几个月来，最大的收获。</p>
+<p>微信小程序是什么，在 2018 年的今天已经不需要再多叙述了，它通过对底层的高度封装以及简单的 API 暴露，让开发者可以简答地进行复杂应用的开发，虽然看起来很厉害，但将复杂的事情变简单，是很不容易的，所以自小程序诞生以来，官方的 bug 就一直没有停止过修复，一些架构开发初期的问题也逐渐暴露出来（也可能是因为情况需要不得不采用的方案，但在使用者看来的确是架构设计的问题，这就见仁见智了），其中最为明显的，就是视图更新的控制了。</p>
+<p>在微信小程序出来之前，Vue 诞生了，其直接通过操作 this （Vue 实例）上的属性更新视图的方式一直为开发者所喜爱（笔者未使用过其他框架，描述之处若有错误，还望指正），而小程序的编程风格和 Vue 是相类似的，只是视图的更新需要借助 this 上的一个 API，<code>this.setData</code> 来实现，也就是为了更新视图你不得不写下至少三行代码，在需要多次更新视图的业务情况下，这样子的代码在某种程度上来说是不好维护的。</p>
+<p>在 2017 年的某一天，看过 Vue 基本原理解析的我，在开发小程序的时候，想到了将 Vue 的原理搬到小程序上，经过多次测试与封装，完成了十余行的代码，实现了对小程序的 hack。</p>
+<h1>Hack</h1><p>话不多说，先码为敬，在 <code>app.js</code> 中写入如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hack</span>(<span class="params">page</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> hack = &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> page.data)</span><br><span class="line">    <span class="keyword">if</span> (i[<span class="number">0</span>] != <span class="string">'_'</span>)</span><br><span class="line">      hack[i] = &#123;</span><br><span class="line">        get: <span class="function"><span class="params">()</span> =&gt;</span> page.data[i],</span><br><span class="line">        set: <span class="function"><span class="params">val</span> =&gt;</span> page.setData(&#123; [i]: val &#125;)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Object</span>.defineProperties(page, hack)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">APP(&#123; Hack &#125;)</span><br></pre></td></tr></table></figure>
+<p>使用方法如下，在 <code>page.js</code> 中写入如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; Hack &#125; = getApp()</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">  onLoad() &#123;</span><br><span class="line">    Hack(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>此处代码使用的 ES2015 语法包括箭头函数、解构赋值、对象方法简写、块级变量声明，此处不作扩展。</p>
+<p>至此，就可以通过修改 <code>this</code> 的属性值来更新视图了，但需要注意的是，和 <code>this.setData</code> 方法一样，能用于更新视图的属性只有在 <code>this.data</code> 中的属性。</p>
+<h1>原理</h1><p>原理其实并不复杂，和 Vue 的原理一样，通过设置 <code>this</code> 中属性的 setter，来调用 <code>this.setData</code> 方法，下面对每行代码作出解析：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hack</span>(<span class="params">page</span>) </span>&#123;                           <span class="comment">// 声明一个 Hack 方法，接收一个参数，为页面的 this 值</span></span><br><span class="line">  <span class="keyword">var</span> hack = &#123;&#125;                                 <span class="comment">// 创建一个对象，用于批量声明 this 上的属性</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> page.data)                      <span class="comment">// 遍历 this.data 属性</span></span><br><span class="line">    <span class="keyword">if</span> (i[<span class="number">0</span>] != <span class="string">'_'</span>)                            <span class="comment">// 如果当前遍历的属性首字符不为下划线，继续下一步，以过滤 this.data 中的一个预设属性</span></span><br><span class="line">      hack[i] = &#123;                               <span class="comment">// 以当前遍历的属性值为键名，在 hack 对象中创建一个新的属性</span></span><br><span class="line">        get: <span class="function"><span class="params">()</span> =&gt;</span> page.data[i],                <span class="comment">// 设置当前属性的 getter 方法，在获取该属性值时会触发，此处设置为返回 this.data 中该属性的值</span></span><br><span class="line">        set: <span class="function"><span class="params">val</span> =&gt;</span> page.setData(&#123; [i]: val &#125;)  <span class="comment">// 设置当前属性的 setter 方法，在设置该属性值时会触发，此处设置为调用 this.setData 更新视图</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Object</span>.defineProperties(page, hack)           <span class="comment">// 批量甚至属性值，在 this 上设置 hack 中的各个属性</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">APP(&#123; Hack &#125;)                                   <span class="comment">// 将 Hack 方法挂载到 APP 对象上，使其可通过 getApp() 在全局环境中获取</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// page.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; Hack &#125; = getApp()                       <span class="comment">// 获取 Hack 方法</span></span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">  onLoad() &#123;                                    <span class="comment">// 页面加载完毕后立即触发</span></span><br><span class="line">    Hack(<span class="keyword">this</span>)                                  <span class="comment">// 将 this 传入 Hack 方法中，完成 Hack 操作</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>从源码或解析中可知，使用此方法是有一定副作用的，当然其中部分副作用可以通过修改 Hack 的代码来消除，至于怎么改就是各位看官的事了，下面简单总结下副作用：</p>
+<ul>
+<li><p><code>this.data</code> 中首字符为下划线的属性会免疫当前 hack 操作，因为 <code>this.data</code> 中有一个预设的属性是以下划线开头的，需要将其移除，以保证程序的可预测性。</p>
+</li>
+<li><p>hack 完成后 <code>this</code> 对象上会存在与 <code>this.data</code> 中同名的多个属性值，所以程序中的自定义属性不能与 <code>this.data</code> 中的属性同名。</p>
+</li>
+<li><p>hack 后设置 <code>this</code> 更新视图相对于是逐个调用 <code>this.setData</code>，所以无法做到直接调用 <code>this.setData</code> 时批量更新视图，小程序中可能存在的对于更新视图的优化代码会被无效化。</p>
+</li>
+</ul>
+<p>副作用虽有，但影响其实是不大的，虽然会对性能有影响，但开发的过程会因为十余行代码的 hack，而变得很愉快。</p>
+
+    <span class='date end-date'>2018-03-09</span>
+  </div>
+
+  
+
+  
+</div>
+
+    </section>
+  </div>
+</div>
+
+    </div>
+  </div>
+  <footer class=footer-content>
+  <div class=container>
+    <div class=row>
+      <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about'>
+        <h2>About</h2>
+        <section>
+          Theme developed by <a href=//github.com/klugjo target=_blank>Jonathan Klughertz</a><br>Contents created by <a href=//github.com/xaios target=_blank>AIOS</a>
+        </section>
+      </div>
+      
+  <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about'>
+    <h2>New Contents</h2>
+    <ul>
+      
+        <li>
+          <a class=footer-post href='/2018/03/HackWeApp/'>Hack WeApp</a>
+        </li>
+      
+        <li>
+          <a class=footer-post href='/2018/03/JustBabel/'>Just Babel</a>
+        </li>
+      
+        <li>
+          <a class=footer-post href='/2017/12/NormalizeCSSInWeb/'>Normalize CSS in Web</a>
+        </li>
+      
+        <li>
+          <a class=footer-post href='/2017/12/CreateLiveServer/'>Create live server</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+      
+
+    </div>
+    <div class=row>
+      <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+        <ul class='list-inline footer-social-icons'></ul>
+      </div>
+    </div>
+    <div class=row>
+      <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+        <div class=footer-copyright>@Untitled. All right reserved | Design & Hexo <a href=//www.codeblocq.com target=_blank>Jonathan Klughertz</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+<script src=//code.jquery.com/jquery-2.1.4.min.js></script>
+<script src=//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js></script>
+<script src=//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js></script>
+<script src=/js/main.js></script>
+
