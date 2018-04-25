@@ -64,39 +64,37 @@
 
     <p><em>About：不依赖构建工具，借助 babel-cli 及 node.js ，拥抱 ES2015 或更高的语法</em></p>
 <a id="more"></a>
-<h1>前言</h1><p>ES2015 标准的出现，带来了很多有用的 API 和语法，如箭头函数和模板字符串等，都大大地优化了我们的开发体验，但无奈 js 的运行依赖于运行时环境，简单来说就是看浏览器厂商的脸色。</p>
-<p>国外的主流浏览器如 Chrome、FireFox、Opera 等，对更新是比较勤快的，也基本上是依着标准走，所以在 2018 年的今天，ES2015 的标准基本上是可以在这些浏览器的新版本上完美运行了。</p>
-<p>但对于一些老旧但用户群体不小的浏览器，如 IE、垃圾 360 等等，ES2015 的标准就寸步难行了，即使是在移动端，也同样存在因为浏览器版本问题产生的 ES2015 可用性问题，可以说是理想丰满，现实骨感。</p>
-<p>后来出现了 Babel 这样子的一个预处理工具，可以借助各种插件，对代码进行预处理，其中就有一个功能是转换 js 代码，让我们可以用 ES2015 开发，用兼容后的代码发布，大家都舒服。</p>
-<p>至于 Babel，此处就不作详细描述了，可以通过访问它的<a href="https://babeljs.cn" target="_blank" rel="noopener">中文站</a>，获得更多的了解。</p>
+<h1>前言</h1><p>ES2015 标准为开发者带来了很多新的 API 和语法，如箭头函数和模板字符串等，大大优化了我们的开发体验，但考虑到 js 的运行依赖于运行时环境，所以必须要对代码进行兼容性处理。</p>
+<p>但 ES2015 真的很棒，棒到只要尝试一次，就令人不想再去写低级的兼容代码，并且兼容代码是很无趣的，很机械化的，而机械化的事情在程序员的思想里面，就应该交由机械去处理。</p>
+<p>如果一件事可以通过程序解决，就应该交由程序处理。</p>
+<p>所以在后来出现了 Babel 之类的后处理工具，可以借助各种插件，对编写好的代码进行二次处理，其主要用处之一，就是将按 ES2015 标准书写的代码转换为更低级的语法，如 ES5，甚至 ES3 等，当然，可以做什么是看安装了什么插件的，安装最少的插件就可以完成语法的转换，但如果需要进行 API 的兼容，就需要一些 polyfill 了，可以自己写，也可以上 <a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener">MDN</a> 搜，在引入 polyfill 时最好考虑按需引入以及按当前需要情况处理 polyfill，此处不作过多描述。</p>
+<p>后处理工具很多，下面介绍的方法所选用的是 Babel，可以通过访问它的<a href="https://babeljs.cn" target="_blank" rel="noopener">中文站</a>，获得更多的了解。</p>
 <p>说起使用 Babel，很多人会第一时间想到使用各种构建工具，如 Webpack 和 Gulp 等等，但构建工具的配置是比较麻烦的，即使有免于配置的工具，为了使用一个 Babel 而引入过多额外的东西进项目里面，某种意义上是不值得的，因为，我们完全可以单纯地使用 Babel，只转换我们需要转换的 js，而不用考虑其他的文件资源，遵循我们的单一职责原则。</p>
-<p>下面，将简单说明如何使用 Babel 转换项目中的 js 文件，且把对项目的影响降到最低，并给出自己构建的一个项目框架以供参考。</p>
+<p>下面，将简单说明如何使用 Babel 转换项目中的 js 文件，且把对项目的影响降到最低，并给出自己构建的一个项目框架以供参考，优化部分是针对 Windows 平台的，OS X 平台和 Linux 平台的可以自行了解相关平台下类似 bat 的批处理文件（可执行文件），其余部分不区分平台。</p>
 <h1>一、安装 Node.js</h1><p>访问 Node.js 的中文网 <a href="http://nodejs.cn/download" target="_blank" rel="noopener">nodejs.cn</a>，根据系统版本下载对应的 Node.js 安装包，并进行安装，安装过程中一般情况下无需进行额外的配置，可以选择一直下一步，最后完成安装操作，关闭安装程序。</p>
 <p>在终端运行以下代码验证是否安装成功：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">node</span> -v</span><br></pre></td></tr></table></figure>
 <p>Node.js 提供 babel 及其余所需组件的运行环境，要安装 babel ，还需要借助 NPM， NPM 在高版本的 Node.js 中自带，也可以自行安装。</p>
-<h1>二、安装 Babel-CLI 及其余所需组件</h1><p>Babel 提供了一个命令行的版本，以供我们在终端中可以调用 Babel，虽然官方文档里面推荐以局部的方式安装 Babel-CLI，但经过考虑后我推荐在全局中安装，当然各位也可以按自己的实际情况来作选择。</p>
+<h1>二、安装 Babel-CLI 及所需组件</h1><p>Babel 提供了一个命令行的版本，以供我们在终端中可以调用 Babel，虽然官方文档里面推荐以局部的方式安装 Babel-CLI，但经过考虑后我推荐在全局中安装，当然各位也可以按自己的实际情况来作选择。</p>
 <p>执行以下代码，在全局环境中安装 Babel-CLI：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">npm</span> i babel-cli -g</span><br></pre></td></tr></table></figure>
 <p>这样子就可以在当前用户的每一个目录终端中使用 Babel 的命令行了。</p>
 <p>为了便于项目的开发，我选用 D 盘根目录下的 Web 文件夹作为开发目录，为了能够将 Babel 轻松地作用在每个项目中，将会在 Web 目录中安装相关组件。</p>
 <p>执行以下代码，安装相关组件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">npm</span> i babel-preset-env <span class="built_in">node</span>-cmd</span><br></pre></td></tr></table></figure>
-<p>以上代码执行后会将 Babel 转换 ES2015 语法所需的基本插件 <code>preset-env</code> 以及在 nodejs 中调用 Windows CMD 终端所用到的 <code>node-cmd</code>，同时会在同一目录下生成 <code>node_modules</code> 文件夹以及 <code>package-lock.json</code> 文件，json 文件可以自由删除，但 <code>node_modules</code> 文件夹不能删除，因为里面就是上述安装的相关组件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">npm</span> i babel-preset-env</span><br></pre></td></tr></table></figure>
+<p>以上代码执行后将会下载 Babel 转换 ES2015 语法所需的基本插件 <code>preset-env</code>，同时会在同一目录下生成 <code>node_modules</code> 文件夹以及 <code>package-lock.json</code> 文件，json 文件可以自由删除，但 <code>node_modules</code> 文件夹不能删除，因为里面存放的就是上面安装的相关组件。</p>
 <p>在最后，为了能够使用 Babel，还需要写下一个配置文件，同样是在 Web 目录下，创建一个 <code>.babelrc</code> 文件，可以通过编辑器生成，或者在 powershell 或 cmd 中输入以下代码，生成文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ notepad .babelrc</span><br></pre></td></tr></table></figure>
 <p>执行后，记事本会提示该文件不存在，是否创建，点击确定即可，然后在其中写入如下内容：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"presets"</span>: [<span class="string">"env"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>保存文件，至此，准备工作就完成了，可以跟着 Babel 中文站提供的一些 Demo 试试看效果，此处就不作详细描述了。</p>
 <h1>三、优化功能，方便开发</h1><p>完成上面的步骤，虽然是可以使用了，但即使是使用 Babel 提供的文件检测方法，仍不免觉得使用起来很累，毕竟每次都需要打开终端，到目的目录后再执行相关命令，是很繁琐的。</p>
-<p>按着一贯的套路，既然终端可以完成的操作，那就是批处理可以完成的操作，那把相关的方法写在批处理文件里面，讲道理就没问题了，所以一开始我想到了使用 bat 文件。</p>
-<p>但由于我需要监听的文件目录路径包含中文名（为了方便辨识项目名），无论是 cmd 用的 bat 还是 powershell 用的 ps1 批处理，在编辑器甚至是记事本里面都存在编码错误的问题，虽然最后发现通过 powershell ise 可以解决编码问题，但开发成本的确是太高了，一定有可以优化的地方，最后，我想到了通过 nodejs 操作 cmd。</p>
-<p>这就是上面要安装 <code>node-cmd</code> 的原因了，有了这个组件，就可以很方便地进行目录监听了。</p>
-<p>创建一个 js 文件，文件名可以随意，但不要使用一些 cmd 的命令关键字，或是 babel，在写下这篇博文之前，我就曾因取名为 babel.js，而出了很多的状况，这里不得不说 powershell 比 cmd 完善很多。</p>
-<p>在 js 文件内写入以下内容：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CMD = <span class="built_in">require</span>(<span class="string">'node-cmd'</span>)</span><br><span class="line">CMD.run(<span class="string">'babel 监听目录路径 -w -d 输出目录路径'</span>)</span><br></pre></td></tr></table></figure>
-<p>将 js 文件关联为用 nodejs 运行，这样子只需要双击 js 文件，就可以开始进行 Babel 的监听文件并转换了，但此时控制台不会进行任何的输出，如果为了美观，可以在上面的代码中加入一两个 <code>console.log</code>。</p>
-<p>为了不监听多余的 js 文件，用于执行 babel 的 js 文件可以多复制几份，分别作用于不同的监听目录，鉴于同时开发的项目数量一般不会太高，即使这样子做也不会使目录过于凌乱。</p>
+<p>按着一贯的套路，既然终端可以完成的操作，那就是批处理可以完成的操作，把相关的方法写在批处理文件里面，讲道理就没问题了，于是想到了使用 bat 文件。</p>
+<p>新建 bat 文件，键入以下代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">:: 关闭终端回显</span><br><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">:: 设置变量，通过修改变量值切换转化路径</span><br><span class="line"><span class="built_in">set</span> NAME=项目名字</span><br><span class="line">:: 输出空行，美化终端显示</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line">:: 输出当前监听项目名字</span><br><span class="line"><span class="built_in">echo</span>   正在监听项目：%NAME%</span><br><span class="line">:: 输出空行，美化终端显示</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line">:: 执行 babel 命令，监听指定目录内容，并将该目录内 js 文件转换到指定目录中，覆盖同名文件</span><br><span class="line">babel D:\Web\project_%NAME%\Scripts\Index.source -w -d D:\Web\project_%NAME%\Scripts\Index</span><br></pre></td></tr></table></figure>
+<p>以上命令执行完后会监听 <code>D:\Web\project_项目名字\Scripts\Index.source</code> 目录内的 js 文件变动，并将其转码覆盖到 <code>D:\Web\project_项目名字\Scripts\Index</code> 目录中。</p>
+<p>因为 bat 文件在 Windows 平台下是可执行文件，里面的每一行命令会依次被 cmd 执行，相对于我们双击这个 bat 文件后会自动在 cmd 中依次键入了以上的命令（两个冒号后跟着的是注释内容，不会被执行），这就免去了我们打开终端然后再进行目录监听的繁琐。</p>
+<p>为了便捷开发，用于执行 babel 的 bat 文件可以多复制几份，分别作用于不同的监听目录，鉴于同时开发的项目数量一般不会太高，即使这样子做也不会使目录过于凌乱，已经不会再进行开发的项目，bat 文件删掉也罢，要是从开，复制一份改个变量就可以执行了。</p>
 
     <span class='date end-date'>2018-03-07</span>
   </div>
