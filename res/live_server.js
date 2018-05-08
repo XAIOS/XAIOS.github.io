@@ -23,8 +23,7 @@ var LiveServer = {
 function escape(html) {
 	return String(html)
 		.replace(/&(?!\w+;)/g, '&amp;')
-		.replace(/</g, '&lt;')
-		.replace(/>/g, '&gt;')
+		.replace(//g, '&gt;')
 		.replace(/"/g, '&quot;');
 }
 
@@ -293,7 +292,7 @@ LiveServer.start = function(options) {
 	});
 
 	function handleChange(changePath) {
-		if (path.extname(changePath) != '.ts' || !changePath.includes('source')) {
+		if (path.extname(changePath) != '.ts') {
 			var cssChange = path.extname(changePath) === ".css"
 			clients.forEach(function(ws) {
 				if (ws)
