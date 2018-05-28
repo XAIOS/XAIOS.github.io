@@ -7,7 +7,6 @@ var fs = require('fs'),
 	url = require('url'),
 	http = require('http'),
 	send = require('send'),
-	open = require('opn'),
 	es = require("event-stream"),
 	os = require('os'),
 	chokidar = require('chokidar');
@@ -23,20 +22,15 @@ var LiveServer = {
 function escape(html) {
 	return String(html)
 		.replace(/&(?!\w+;)/g, '&amp;')
-		.replace(//g, '&gt;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
 		.replace(/"/g, '&quot;');
 }
 
 function staticServer(root) {
-	var isFile = false;
-	try { // For supporting mounting files instead of just directories
-		isFile = fs.statSync(root).isFile();
-	} catch (e) {
-		if (e.code !== "ENOENT") throw e;
-	}
 	return function(req, res, next) {
 		if (req.method !== "GET" && req.method !== "HEAD") return next();
-		var reqpath = isFile ? "" : url.parse(req.url).pathname;
+		var reqpath = url.parse(req.url).pathname;
 		var hasNoOrigin = !req.headers.origin;
 		var injectTag = null
 		var sourcePath
@@ -72,7 +66,7 @@ function staticServer(root) {
 		}
 
 		send(req, reqpath, {
-				root: root
+				root
 			})
 			.on('error', error)
 			.on('directory', directory)
@@ -82,11 +76,6 @@ function staticServer(root) {
 	};
 }
 
-/**
- * Rewrite request URL and pass it back to the static handler.
- * @param staticHandler {function} Next handler
- * @param file {string} Path to the entry point file
- */
 function entryPoint(staticHandler, file) {
 	if (!file) return function(req, res, next) {
 		next();
@@ -101,12 +90,11 @@ function entryPoint(staticHandler, file) {
 /**
  * Start a live server with parameters given as an object
  * @param host {string} Address to bind to (default: 0.0.0.0)
- * @param port {number} Port number (default: 8080)
+ * @param port {number} Port number (default: 80)
  * @param root {string} Path to root directory (default: cwd)
  * @param watch {array} Paths to exclusively watch for changes
  * @param ignore {array} Paths to ignore when watching files for changes
  * @param ignorePattern {regexp} Ignore files by RegExp
- * @param open {(string|string[])} Subpath(s) to open in browser, use false to suppress launch (default: server root)
  * @param mount {array} Mount directories onto a route, e.g. [['/components', './node_modules']].
  * @param file {string} Path to the entry point file
  * @param wait {number} Server will wait for all changes, before reloading
@@ -116,13 +104,10 @@ function entryPoint(staticHandler, file) {
 LiveServer.start = function(options) {
 	options = options || {};
 	var host = options.host || '0.0.0.0';
-	var port = options.port !== undefined ? options.port : 8080; // 0 means random
+	var port = options.port || 80;
 	var root = options.root || process.cwd();
 	var mount = options.mount || [];
 	var watchPaths = options.watch || [root];
-	var openPath = (options.open === undefined || options.open === true) ?
-		"" : ((options.open === null || options.open === false) ? null : options.open);
-	if (options.noBrowser) openPath = null; // Backwards compatibility with 0.7.0
 	var file = options.file;
 	var staticServerHandler = staticServer(root);
 	var wait = options.wait === undefined ? 100 : options.wait;
@@ -213,32 +198,7 @@ LiveServer.start = function(options) {
 	});
 
 	// Handle successful server
-	server.addListener('listening', function( /*e*/ ) {
-		LiveServer.server = server;
-
-		var address = server.address();
-		var serveHost = address.address === "0.0.0.0" ? "127.0.0.1" : address.address;
-		var openHost = host === "0.0.0.0" ? "127.0.0.1" : host;
-
-		var serveURL = protocol + '://' + serveHost + ':' + address.port;
-		var openURL = protocol + '://' + openHost + ':' + address.port;
-
-		var serveURLs = [serveURL];
-
-		// Launch browser
-		if (openPath !== null)
-			if (typeof openPath === "object") {
-				openPath.forEach(function(p) {
-					open(openURL + p, {
-						app: browser
-					});
-				});
-			} else {
-				open(openURL + openPath, {
-					app: browser
-				});
-			}
-	});
+	server.addListener('listening', () => LiveServer.server = server)
 
 	// Setup server to listen at port
 	server.listen(port, host);
@@ -247,9 +207,6 @@ LiveServer.start = function(options) {
 	var clients = [];
 	server.addListener('upgrade', function(request, socket, head) {
 		var ws = new WebSocket(request, socket, head);
-		ws.onopen = function() {
-			ws.send('connected');
-		};
 
 		if (wait > 0) {
 			(function() {
@@ -278,13 +235,13 @@ LiveServer.start = function(options) {
 		function(testPath) { // Always ignore dotfiles (important e.g. because editor hidden temp files)
 			return testPath !== "." && /(^[.#]|(?:__|~)$)/.test(path.basename(testPath));
 		}
-	];
-	if (options.ignore) {
+	]
+
+	if (options.ignore)
 		ignored = ignored.concat(options.ignore);
-	}
-	if (options.ignorePattern) {
+	if (options.ignorePattern)
 		ignored.push(options.ignorePattern);
-	}
+
 	// Setup file watcher
 	LiveServer.watcher = chokidar.watch(watchPaths, {
 		ignored: ignored,
@@ -292,35 +249,24 @@ LiveServer.start = function(options) {
 	});
 
 	function handleChange(changePath) {
-		if (path.extname(changePath) != '.ts') {
-			var cssChange = path.extname(changePath) === ".css"
+		var ex_name = path.extname(changePath)
+		if (ex_name != '.ts')
 			clients.forEach(function(ws) {
 				if (ws)
-					ws.send(cssChange ? 'refreshcss' : 'reload')
+					ws.send(ex_name === '.css' ? 'refreshcss' : 'reload')
 			})
-		}
 	}
-	LiveServer.watcher
-		.on("change", handleChange)
-		.on("add", handleChange)
-		.on("unlink", handleChange)
-		.on("addDir", handleChange)
-		.on("unlinkDir", handleChange)
-		.on("error", function(err) {
-			console.log("ERROR:".red, err);
-		});
+
+	LiveServer.watcher.on("add", handleChange).on("change", handleChange)
 
 	return server;
-};
+}
 
 LiveServer.shutdown = function() {
 	var watcher = LiveServer.watcher;
-	if (watcher) {
-		watcher.close();
-	}
+	watcher && watcher.close();
 	var server = LiveServer.server;
-	if (server)
-		server.close();
-};
+	server && server.close();
+}
 
-module.exports = LiveServer;
+module.exports = LiveServer
