@@ -22,7 +22,8 @@ var LiveServer = {
 function escape(html) {
 	return String(html)
 		.replace(/&(?!\w+;)/g, '&amp;')
-		.replace(//g, '&gt;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
 		.replace(/"/g, '&quot;');
 }
 
