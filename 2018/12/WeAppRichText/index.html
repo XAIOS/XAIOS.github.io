@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<meta charset=utf-8>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name=viewport content='width=device-width, initial-scale=1, user-scalable=no'>
+<title>Rich Text in WeApp</title>
+<meta name=author content='AIOS'>
+<!--[if IE]>
+  <meta http-equiv=refresh content='0, http://browsehappy.com'>
+<![endif]-->
+<link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css>
+<link rel=stylesheet href=//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css>
+<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css>
+<link rel=stylesheet href=/css/style.css>
+
+
+<body oncontextmenu='return false'>
+  <div class=aios_content>
+    <div class=bg-gradient></div>
+    <div class=bg-pattern></div>
+    <div class=menu-bg>
+  <div class=menu-container>
+    <ul>
+      
+        <li class=menu-item>
+          <a href='/'>Home</a>
+        </li>
+      
+        <li class=menu-item>
+          <a href='/archives'>Docs</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+<nav>
+  <a></a>
+</nav>
+
+    <div class=container style='padding-bottom:40px'>
+      <div class=row>
+  <div class=col-sm-12>
+    <header>
+  <div class=logo>
+    <h1 id=main-title class=title><a href=/>艾芷枫 の Blog</a></h1>
+  </div>
+</header>
+
+
+    <section class=main>
+      <div class=post>
+  <div class=post-header>
+    <h1 class=title>Rich Text in WeApp</h1>
+    <div class=post-info>
+      <span class=date>2018-12-21</span>
+
+      
+    </div>
+  </div>
+
+  <div class=content>
+    <!-- Gallery -->
+    
+
+    <p><em>About：通过正则表达式对富文本内容进行简单的二次处理，使其适应微信小程序的 rich-text 组件</em></p>
+<a id="more"></a>
+<h1>前言</h1><p>微信小程序中提供了 <code>&lt;rich-text /&gt;</code> 组件，为后端在前端插入富文本提供了接口，但其存在的限制非常多，存在的问题也不少，其中最主要的两个问题，是默认字体控制，和图片最大宽度。在 HTML5 开发中，这两个问题可以通过全局 style 或别的什么形式简单处理，但在小程序中这并不能实现，因为 <code>&lt;rich-text /&gt;</code> 组件拦截了大部分外部样式对其内容的影响，也在内部屏蔽了 <code>&lt;style&gt;</code> 标签，要修饰内部元素的话，成本是比较高的，这也需要后台开发人员以及所选的富文本编辑器的支持，理论上能实现，但通常情况下实现起来不现实，下面简单介绍一个纯前端的补丁方案，用于解决这两个问题。</p>
+<h1>字体控制</h1><p>无论是普通的 HTML5 站点还是小程序，或是别的相似的产品，都存在一个和字体大小相关的问题，那就是换行或缩进生成的空白文本节点，导致的元素间距与所设置不一致的情况，因为即使是空白的无内容的文本，也会受字体大小影响而占用一定大小的空间，所以一般情况下，开发的时候会在 css reset 中将 <code>font-size</code> 设置为 0。</p>
+<p>在小程序中，推荐在 <code>app.wxss</code> 中在 <code>page</code> 的样式上添加设置，但这样子会影响 <code>&lt;rich-text /&gt;</code> 组件内的字体大小，在富文本编辑器没设置字体大小的情况下，文本内容就不可见了，即使是不写在全局，只写到不影响富文本的地方，也会因为编辑器未设置字体大小，导致字体显示异常，通常是表现为大得离谱。</p>
+<p>修改富文本插件通常是比较麻烦的，所以在将富文本内容传递到 <code>nodes</code> 属性中之前，可以简单地包裹一层：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">RichText</span>(<span class="params">raw</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`&lt;div style="font-size:14px;"&gt;<span class="subst">$&#123;raw&#125;</span>&lt;/div&gt;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>抛砖引玉，通过类似的方式，可以很简单地操作默认字体，解决一个不算难，但很恶心的问题。</p>
+<h1>图片限制</h1><p>后台上传的图片如果没设置宽度，也没被富文本编辑器限制的话，会以原图大小的形式展示，最常见的问题，就是宽度过大，溢出了富文本容器，导致布局异常。</p>
+<p>而最简单直接也几乎不影响布局的方案，就是为每一个图片设置多一条样式：<code>max-width: 100% !important;</code>，下面同样通过纯前端的方式打个补丁，同时结合字体控制部分：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">RichText</span>(<span class="params">raw</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> pre = <span class="string">'style="max-width:100% !important;'</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> imgs = raw.match(<span class="regexp">/&lt;img[^&gt;]*&gt;/g</span>)</span><br><span class="line">  imgs &amp;&amp; imgs.forEach(<span class="function"><span class="params">i</span> =&gt;</span> raw = raw.replace(i, i =&gt; <span class="regexp">/style="/</span>.test(i) ? i.replace(<span class="string">'style="'</span>, pre) : i.replace(<span class="string">'&lt;img'</span>, <span class="string">`&lt;img <span class="subst">$&#123;pre&#125;</span>"`</span>)))</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="string">`&lt;div style="font-size:14px"&gt;<span class="subst">$&#123;raw&#125;</span>&lt;/div&gt;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简单地循环替换，为每个 <code>img</code> 标签添加了最大宽度限制，高度自动根据宽度和比例进行变化，容器内的布局得以变得符合预期。</p>
+
+    <span class='date end-date'>2018-12-21</span>
+  </div>
+
+  
+
+  
+</div>
+
+    </section>
+  </div>
+</div>
+
+    </div>
+  </div>
+  <footer class=footer-content>
+  <div class=container>
+    <div class=row>
+      <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about'>
+        <h2>About</h2>
+        <section>
+          Theme developed by <a href=//github.com/klugjo target=_blank>Jonathan Klughertz</a><br>Contents created by <a href=//github.com/xaios target=_blank>AIOS</a>
+        </section>
+      </div>
+      
+  <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about'>
+    <h2>New Contents</h2>
+    <ul>
+      
+        <li>
+          <a class=footer-post href='/2018/12/WeAppRichText/'>Rich Text in WeApp</a>
+        </li>
+      
+        <li>
+          <a class=footer-post href='/2018/05/SuitElement/'>Suit Element</a>
+        </li>
+      
+        <li>
+          <a class=footer-post href='/2018/03/HackWeApp/'>Hack WeApp</a>
+        </li>
+      
+        <li>
+          <a class=footer-post href='/2018/03/JustBabel/'>Just Babel</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+      
+
+    </div>
+    <div class=row>
+      <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+        <ul class='list-inline footer-social-icons'></ul>
+      </div>
+    </div>
+    <div class=row>
+      <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+        <div class=footer-copyright>@Untitled. All right reserved | Design & Hexo <a href=//www.codeblocq.com target=_blank>Jonathan Klughertz</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+<script src=//code.jquery.com/jquery-2.1.4.min.js></script>
+<script src=//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js></script>
+<script src=//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js></script>
+<script src=/js/main.js></script>
+
