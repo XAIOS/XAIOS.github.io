@@ -21,16 +21,10 @@
         <div class=col-sm-12>
           <header>
             <div class=logo>
-              <h1 id=main-title class=title><a href=/>艾芷枫 の Blog</a></h1>
+              <h1 id=main-title class=title>项目实例</h1>
             </div>
           </header>
-          <section class='main archive-container'>
-            <div class=archive-post>
-              <a href='/2018/12/WeAppRichText/'>
-                <span class=archive-date>Dec 2018</span>Rich Text in WeApp
-              </a>
-            </div>
-          </section>
+          <section class='main archive-container' id=content></section>
         </div>
       </div>
     </div>
@@ -45,3 +39,33 @@
     </div>
   </footer>
 </body>
+
+<script>
+  html = ''
+
+  content = [{
+    link: '00',
+    name: '七夕「饰」爱作战',
+    user: '唯品会,周生生'
+  }, {
+    link: '01',
+    name: '碗满中秋',
+    user: '雅仕维'
+  }, {
+    link: '02',
+    name: '泰丰超市消费抽奖',
+    user: '泰丰超市'
+  }, {
+    link: '03',
+    name: '私奔到月球',
+    user: '招商银行,周生生'
+  }, {
+    link: '04',
+    name: '蓄势待发 连线全城',
+    user: '太阳城集团,格兰披治大赛车'
+  }]
+
+  content.forEach(i => html += '<div class=archive-post><a href=./' + i.link + '><span class=archive-date>' + i.user.split(',').join('x') + '</span>' + i.name + '</a></div>')
+
+  document.getElementById('content').innerHTML = html
+</script>
