@@ -1,0 +1,121 @@
+<!--
+ title Example·七夕「饰」爱作战
+ path img img
+ path css css
+ path js js
+ css_min lib reset clever
+ css index index
+ js_min lib loading vue clever
+ js index index
+-->
+
+<root @click.once=Bgm(1)>
+  <page name=loading>
+    <canvas class=wh100 id=loading></canvas>
+    <div class=loading_error>{{error}}</div>
+  </page>
+  <page name=index once>
+    <img class=bg src=$index/bg$>
+    <img class=index_circle src=$index/bg_circle$ suit=689,1085>
+    <img class=index_vip src=$index/vip$ suit=109,90>
+    <img class=index_logo src=$logo$ suit=103,93>
+    <img class=index_rule src=$index/btn_rule$ suit=196,96 @click=Rule>
+    <img class=index_mine src=$index/btn_mine$ suit=196,96 @click=Mine>
+    <img class=index_cloud src=$index/cloud$ suit=165,163>
+    <img class=index_man src=$index/man$ suit=254,362>
+    <img class=index_tree_0 src=$index/tree_0$ suit=148,170>
+    <img class=index_tree_1 src=$index/tree_1$ suit=144,236>
+    <img class=index_music :src='"$music_" + bgm + "$"' @click=Bgm>
+    <img class=index_title src=$index/title$ suit=648,713>
+    <div class='p_center index_start_box' suit=469,156>
+      <img src=$index/btn_start$ suit=469,156 @click=ClickStart>
+      <img class=index_will src=$index/btn_will$ suit=168,156 @click=WillCome>
+    </div>
+    <div class='into_box index_into_box' @click=Into>
+      <img class='p_middle into' src=$btn_into$>
+      <img class='p_middle into into_word' src=$btn_into_word$>
+    </div>
+  </page>
+  <page name=game>
+    <img class=bg src=$game/bg$>
+    <img class=index_circle src=$index/bg_circle$ suit=689,1085>
+    <canvas class=wh100 id=game></canvas>
+    <img class=game_music :src='"$music_" + bgm + "$"' @click=Bgm>
+    <div class='f_middle game_score_box'>
+      <img class=game_score_gold src=$game/score$ freedom>
+      <span class=game_score_x>x</span>
+      <span class=game_score>{{score}}</span>
+    </div>
+  </page>
+  <wrap name=ralert>
+    <pop name=rule>
+      <img class=bg src=$pop/bg_long$>
+      <img class='p_center pop-title' src=$pop/title_rule$>
+      <img class=alert_cloud_0 src=$pop/cloud_0$>
+      <img class=alert_cloud_1 src=$pop/cloud_1$>
+      <roll class=rule_content :html=rule></roll>
+      <div class='p_center long_more'>向上滑动查看更多</div>
+      <img class='p_center alert_close' src=$pop/btn_close$ @click=RalertClose>
+    </pop>
+    <pop name=tips full @click.native=HowClose>
+      <img class=p_middle src=$pop/tips$ suit=514,1017>
+    </pop>
+    <pop name=will>
+      <img class=bg src=$pop/bg_long$>
+      <img class='p_center pop-title' src=$pop/title_will$>
+      <img class=alert_cloud_0 src=$pop/cloud_0$>
+      <img class=alert_cloud_1 src=$pop/cloud_1$>
+      <img class='p_center will_img' src=$pop/will$>
+      <img class='p_center alert_close' src=$pop/btn_close$ @click=RalertClose>
+    </pop>
+    <pop name=draw>
+      <img class=bg src=$pop/bg_draw$>
+      <img class=alert_cloud_0 src=$pop/cloud_0$>
+      <img class=alert_cloud_1 src=$pop/cloud_1$>
+      <div class=draw_tips><template v-if=score>你拿到了<span>{{score}}</span>个钻石,</template>获得<span class=color_pink>终极礼盒</span></div>
+      <img class='p_center draw_box' src=$pop/draw$ @click=Draw>
+    </pop>
+    <pop name=lucky bottom>
+      <div class='p_middle ex_box'>
+        <img class=bg src=$pop/bg_lucky$>
+        <img class=alert_cloud_0 src=$pop/cloud_0$>
+        <img class=alert_cloud_1 src=$pop/cloud_1$>
+        <img class='p_center lucky_img' src=$award$>
+        <div class='p_center lucky_name'>奖品示例</div>
+        <div class=input_group>
+          <input class=input :disabled=!!saved placeholder='请填写你的姓名' v-model.trim=name>
+          <input class=input type=tel :disabled=!!saved placeholder='请填写你的手机号码' v-model.trim=phone>
+          <input class=input :disabled=!!saved placeholder='请填写你的收货地址' v-model.trim=address>
+        </div>
+        <img class='p_center alert_close' src=$pop/btn_close$ @click=RalertClose v-if=saved>
+        <img class='p_center btn_submit' src=$pop/btn_submit$ @click=Submit v-else>
+      </div>
+    </pop>
+    <pop name=mine>
+      <img class=bg src=$pop/bg_long$>
+      <img class='p_center pop-title' src=$pop/title_mine$>
+      <img class=alert_cloud_0 src=$pop/cloud_0$>
+      <img class=alert_cloud_1 src=$pop/cloud_1$>
+      <div class=mine_list>
+        <div class='f_vetically mine_item' v-for='n in awards'>
+          <img class=mine_img src=$award$ freedom>
+          <div class=mine_name>奖品示例</div>
+          <img class=mine_btn_info src=$pop/btn_info$ freedom @click=Info>
+        </div>
+        <div class=mine_null v-if=!awards.length>暂无奖品</div>
+      </div>
+      <div class='p_center long_more'>向上滑动查看更多</div>
+      <img class='p_center alert_close' src=$pop/btn_close$ @click=RalertClose>
+    </pop>
+  </wrap>
+  <wrap name=alert>
+    <pop alive child_class=f_middle>
+      <img class=bg src=$pop/bg_msg$>
+      <img class='p_center pop-title' src=$pop/title_msg$>
+      <img class=alert_cloud_0 src=$pop/cloud_0$>
+      <img class=alert_cloud_1 src=$pop/cloud_1$>
+      <div class=alert_msg_line>{{alert}}</div>
+      <img class='p_center alert_close' src=$pop/btn_close$ @click=AlertClose>
+    </pop>
+  </wrap>
+</root>

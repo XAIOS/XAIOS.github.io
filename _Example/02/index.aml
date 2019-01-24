@@ -1,0 +1,111 @@
+<!--
+  title Example·消費抽獎
+  path img img
+  path css css
+  path js js
+  css_min lib reset clever
+  css index index
+  js_min lib vue clever
+  js index map index
+-->
+
+<root @click.once=Bgm(1)>
+  <page name=loading>
+    <div class='p_middle loading_box' suit=281,249>
+      <img class='p_center loading_bg' src=$loading/loading$>
+      <img class=loading_word src=$loading/word$ suit=198,23>
+      <img class=loading_dark src=$loading/bg$ suit=242,34>
+      <img class=loading_light src=$loading/light$ suit=280,72>
+      <div class=loading_progress>{{progress}}%</div>
+      <div class=loading_error>{{error}}</div>
+    </div>
+  </page>
+  <page name=game>
+    <div class=game_container :class='"game_container_at_" + area'>
+      <div class='game_area game_area_0'>
+        <img class=game_map src=$map/map_0$ suit=850,1306>
+        <div class=game_cell_box suit=720,1135>
+          <div class=game_cell_line v-for='l in map_0'>
+            <div class=game_cell v-for='n in l' :style=n.style ref=map_0 @click=Cell(n)></div>
+          </div>
+        </div>
+      </div>
+      <div class='game_area game_area_1'>
+        <img class=game_sun src=$map/sun$ suit=250,250>
+        <img class=game_map src=$map/map_1$ suit=850,1434>
+        <div class=game_cell_box id=cell_box suit=720,1135>
+          <div class=game_cell_line v-for='l in map_1'>
+            <div class=game_cell v-for='n in l' :style=n.style ref=map_1 @click=Cell(n)></div>
+          </div>
+        </div>
+      </div>
+      <div class='game_area game_area_2'>
+        <img class=game_map src=$map/map_2$ suit=850,1434>
+        <div class=game_cell_box suit=720,1135>
+          <div class=game_cell_line v-for='l in map_2'>
+            <div class=game_cell v-for='n in l' :style=n.style ref=map_2 @click=Cell(n)></div>
+          </div>
+        </div>
+      </div>
+      <div class='game_area game_area_3'>
+        <img class=game_map src=$map/map_3$ suit=850,1306>
+        <div class=game_cell_box suit=720,1135>
+          <div class=game_cell_line v-for='l in map_3'>
+            <div class=game_cell v-for='n in l' :style=n.style ref=map_3 @click=Cell(n)></div>
+          </div>
+        </div>
+      </div>
+      <div class=game_cell_people id=cell_people v-suit=140,168 :style='{transform: people,transition: people_transition}'>
+        <img class='p_middle game_cell_people_img' :src='"$people/" + people_face + people_img + "$"'>
+      </div>
+    </div>
+    <img class=game_rule src=$btn_rule$ suit=87,88 @click=Rule>
+    <img class=game_music :src='"$btn_music_" + bgm + "$"' suit=87,87 @click.stop=Bgm>
+    <div class=game_start suit=179,160 @click=Start>
+      <div class=game_life @click.stop>可投 <span class=game_life_val>{{life}}</span> 次</div>
+      <img class=bg src=$btn_dot_box$>
+      <img class=game_dot :class='{dot_shake: dot_shake}' :src='"$dot/" + dot + "$"' suit=86,89>
+      <img class=game_life_add src=$btn_add$ suit=68,68 @click.stop=AddLife>
+    </div>
+  </page>
+  <wrap name=ralert>
+    <pop name=rule>
+      <img class=bg src=$pop/bg_rule$>
+      <roll class=rule_content :html=rule></roll>
+      <img class='p_center alert_close' src=$pop/btn_close$ @click=RalertClose>
+    </pop>
+    <pop name=desc>
+      <img class=bg src=$pop/bg_coin$>
+      <div class=desc_coin_line>到達這裡,你將有機會獲得</div>
+      <div class='desc_coin_line color_gold'>隨機{{desc_luck ? '獎品' : '積分'}}</div>
+      <img class='p_center alert_close' src=$pop/btn_close$ @click=RalertClose>
+    </pop>
+    <pop name=get_coin>
+      <img class=bg src=$pop/bg_coin$>
+      <img class='p_center title' src=$pop/title_get$>
+      <div class=desc_coin_line><span style='font-weight:bold;'>{{get_coin}}</span>積分</div>
+      <img class='p_center alert_close' src=$pop/btn_close$ @click=RalertClose>
+    </pop>
+    <pop name=lucky>
+      <img class=bg src=$pop/bg_lucky$>
+      <img class='light light_big' src=$pop/light$>
+      <img class='p_center lucky_img' src=$award$>
+      <div class=lucky_name>奖品示例</div>
+      <img class='p_center alert_close' src=$pop/btn_close$ @click=RalertClose>
+    </pop>
+    <pop name=gift_light>
+      <img class=light src=$pop/light$>
+      <img class='wh100 giftbox_0' src=$pop/gift_1$ :style='{opacity: gift_open ? 0 : 1}'>
+      <img class=giftbox_1 src=$pop/gift_2$ :style='{opacity: gift_open ? 1 : 0}'>
+    </pop>
+  </wrap>
+  <wrap name=alert>
+    <pop alive>
+      <img class=bg src=$pop/bg_msg$>
+      <div class='f_middle alert_msg_box'>
+        <div class=alert_msg_line>{{alert}}</div>
+      </div>
+      <img class='p_center alert_close' src=$pop/btn_close$ @click=AlertClose>
+    </pop>
+  </wrap>
+</root>

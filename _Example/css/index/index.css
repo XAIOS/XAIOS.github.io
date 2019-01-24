@@ -1,0 +1,15 @@
+ul {
+  padding: .6rem 0;
+}
+
+li {
+  padding-left: .2rem;
+}
+
+li+li {
+  margin-top: .2rem;
+}
+
+a {
+  font-size: .32rem;
+}

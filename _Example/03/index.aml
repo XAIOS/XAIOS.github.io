@@ -1,0 +1,100 @@
+<!--
+ title Example·私奔到月球
+ path img img
+ path css css
+ path js js
+ css_min lib reset clever
+ css index index
+ js_min lib loading vue clever
+ js index index
+-->
+
+<root @click.once=Bgm(1)>
+  <page name=loading>
+    <canvas class=wh100 id=loading></canvas>
+    <div class=loading_error>{{error}}</div>
+  </page>
+  <page name=index once>
+    <img src=$index/bg$ class=bg>
+    <img src=$logo$ class=index_logo suit=108,94>
+    <img src=$index/title$ class='p_center index_title' suit=532,115>
+    <img :src='"$music_" + bgm + "$"' class=index_music suit=72,72 @click.stop=Bgm>
+    <img src=$index/earth$ class='p_center index_earth' suit=1122,1116>
+    <div class='p_center index_cat_box' suit=720,700>
+      <img src=$index/gift$ class=index_gift suit=110,139 @click=AwardList>
+      <img src=$index/rule$ class=index_rule suit=113,151 @click=Rule>
+      <img src=$index/flower_l$ class=index_flower_l suit=156,134>
+      <img src=$index/flower_r$ class=index_flower_r suit=134,226>
+      <img src=$index/cat$ class='p_center index_cat' suit=541,618>
+    </div>
+    <img src=$index/start$ class='p_center index_start' suit=458,125 @click=Start>
+    <div class='p_center index_into_box' suit=720,77 @click=Into>
+      <img src=$index/arrow_0$ class='p_vetically arrow_0' suit=27,12>
+      <img src=$index/into$ suit=720,77>
+      <img src=$index/arrow_1$ class='p_vetically arrow_1' suit=27,12>
+    </div>
+  </page>
+  <page name=game>
+    <img src=$game/bg$ class=bg>
+    <img src=$game/earth$ class='p_center game_earth' suit=1241,1236>
+    <canvas class=wh100 id=game></canvas>
+    <div class='f_vetically game_score'>
+      <span class=game_score_tips>逃离距离</span>
+      <div>
+        <span class=game_score_num>{{score | fixed}}</span>
+        <span class=game_score_km>KM</span>
+      </div>
+    </div>
+    <img :src='"$music_" + bgm + "$"' class=game_music suit=72,72 @click=Bgm>
+  </page>
+  <wrap name=ralert>
+    <pop name=tips full @click.native=GameStart>
+      <img src=$pop/tips$ class=p_middle suit=621,656>
+    </pop>
+    <pop name=rule>
+      <img src=$pop/bg_rule$ class=bg>
+      <roll class='p_center rule_content' :html=rule></roll>
+      <img src=$pop/btn_close$ class='p_center alert_close' @click=RalertClose>
+    </pop>
+    <pop name=award>
+      <img src=$pop/bg_award$ class=bg>
+      <div class='p_center award_null' v-if=!list.length>暂时没有奖品哦</div>
+      <ul class='p_center award_list' v-else>
+        <li v-for='n in list' class='f_vetically award_item'>
+          <img class=award_info_img src=$game/g2$ freedom>
+          <div class='f_middle award_info_name_box'>
+            <p class=award_info_name>奖品示例</p>
+          </div>
+          <img src=$pop/btn_info$ class=award_info_btn freedom @click=Info>
+        </li>
+      </ul>
+      <img src=$pop/btn_close$ class='p_center alert_close' @click=RalertClose>
+    </pop>
+    <pop name=lucky bottom>
+      <div class='p_middle lucky_box'>
+        <img src=$pop/bg_lucky$ class=bg>
+        <img class='p_center lucky_img' src=$game/g2$>
+        <span class='p_center lucky_name'>奖品示例</span>
+        <input class=input placeholder='请填写您的姓名' v-model.trim=name :disabled=saved>
+        <input type=tel class=input placeholder='请填写您的手机号码' v-model.trim=phone :disabled=saved>
+        <input class=input placeholder='请填写您的联系地址' v-model.trim=address :disabled=saved>
+        <img src=$pop/btn_submit$ class='p_center alert_btn btn_into' @click=Submit v-if=!saved>
+        <img src=$pop/btn_sure$ class='p_center alert_btn btn_into' @click=RalertClose v-else>
+      </div>
+    </pop>
+    <pop name=draw>
+      <img src=$pop/bg_gift$ class=bg>
+      <span class='p_center gift_score'>达到 <em class=gift_score_num>{{score | fixed}}KM</em></span>
+      <img src=$pop/gift$ class='p_center gift' @click=Draw>
+    </pop>
+  </wrap>
+  <wrap name=alert>
+    <pop alive>
+      <img src=$pop/bg_msg$ class=bg>
+      <div class='p_center f_middle alert_msg_box'>
+        <div class=alert_msg>{{alert}}</div>
+      </div>
+      <img src=$pop/btn_close$ class='p_center alert_close' @click=AlertClose>
+    </pop>
+  </wrap>
+</root>

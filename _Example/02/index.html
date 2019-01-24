@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<meta charset=utf-8>
+<title>Example·消費抽獎</title>
+<meta name=viewport content='width=device-width, initial-scale=1, user-scalable=0'>
+<script>
+  document.getElementsByTagName('html')[0].style.fontSize = innerWidth / 7.2 + 'px'
+</script>
+<link rel=stylesheet href=css/lib/reset.min.css>
+<link rel=stylesheet href=css/lib/clever.min.css>
+<link rel=stylesheet href=css/index/index.css>
+
+<div id=app v-cloak v-on:click.once=Bgm(1)>
+  <div is=cp-page name=loading>
+    <div class='p_middle loading_box' v-suit=281,249>
+      <img class='p_center loading_bg' src=img/loading/loading.png>
+      <img class=loading_word src=img/loading/word.png v-suit=198,23>
+      <img class=loading_dark src=img/loading/bg.png v-suit=242,34>
+      <img class=loading_light src=img/loading/light.png v-suit=280,72>
+      <div class=loading_progress>{{progress}}%</div>
+      <div class=loading_error>{{error}}</div>
+    </div>
+  </div>
+  <div is=cp-page name=game>
+    <div class=game_container v-bind:class='"game_container_at_" + area'>
+      <div class='game_area game_area_0'>
+        <img class=game_map src=img/map/map_0.png v-suit=850,1306>
+        <div class=game_cell_box v-suit=720,1135>
+          <div class=game_cell_line v-for='l in map_0'>
+            <div class=game_cell v-for='n in l' v-bind:style=n.style ref=map_0 v-on:click=Cell(n)></div>
+          </div>
+        </div>
+      </div>
+      <div class='game_area game_area_1'>
+        <img class=game_sun src=img/map/sun.png v-suit=250,250>
+        <img class=game_map src=img/map/map_1.png v-suit=850,1434>
+        <div class=game_cell_box id=cell_box v-suit=720,1135>
+          <div class=game_cell_line v-for='l in map_1'>
+            <div class=game_cell v-for='n in l' v-bind:style=n.style ref=map_1 v-on:click=Cell(n)></div>
+          </div>
+        </div>
+      </div>
+      <div class='game_area game_area_2'>
+        <img class=game_map src=img/map/map_2.png v-suit=850,1434>
+        <div class=game_cell_box v-suit=720,1135>
+          <div class=game_cell_line v-for='l in map_2'>
+            <div class=game_cell v-for='n in l' v-bind:style=n.style ref=map_2 v-on:click=Cell(n)></div>
+          </div>
+        </div>
+      </div>
+      <div class='game_area game_area_3'>
+        <img class=game_map src=img/map/map_3.png v-suit=850,1306>
+        <div class=game_cell_box v-suit=720,1135>
+          <div class=game_cell_line v-for='l in map_3'>
+            <div class=game_cell v-for='n in l' v-bind:style=n.style ref=map_3 v-on:click=Cell(n)></div>
+          </div>
+        </div>
+      </div>
+      <div class=game_cell_people id=cell_people v-suit=140,168 v-bind:style='{transform: people,transition: people_transition}'>
+        <img class='p_middle game_cell_people_img' v-bind:src='"img/people/" + people_face + people_img + ".png"'>
+      </div>
+    </div>
+    <img class=game_rule src=img/btn_rule.png v-suit=87,88 touchable v-on:click.prevent=Rule>
+    <img class=game_music v-bind:src='"img/btn_music_" + bgm + ".png"' v-suit=87,87 touchable v-on:click.prevent.stop=Bgm>
+    <div class=game_start v-suit=179,160 v-on:click=Start>
+      <div class=game_life v-on:click.stop>可投 <span class=game_life_val>{{life}}</span> 次</div>
+      <img class=bg src=img/btn_dot_box.png>
+      <img class=game_dot v-bind:class='{dot_shake: dot_shake}' v-bind:src='"img/dot/" + dot + ".png"' v-suit=86,89>
+      <img class=game_life_add src=img/btn_add.png v-suit=68,68 touchable v-on:click.prevent.stop=AddLife>
+    </div>
+  </div>
+  <div is=cp-wrap name=ralert>
+    <div is=cp-pop name=rule>
+      <img class=bg src=img/pop/bg_rule.png>
+      <div is=cp-roll class=rule_content v-bind:html=rule></div>
+      <img class='p_center alert_close' src=img/pop/btn_close.png touchable v-on:click.prevent=RalertClose>
+    </div>
+    <div is=cp-pop name=desc>
+      <img class=bg src=img/pop/bg_coin.png>
+      <div class=desc_coin_line>到達這裡,你將有機會獲得</div>
+      <div class='desc_coin_line color_gold'>隨機{{desc_luck ? '獎品' : '積分'}}</div>
+      <img class='p_center alert_close' src=img/pop/btn_close.png touchable v-on:click.prevent=RalertClose>
+    </div>
+    <div is=cp-pop name=get_coin>
+      <img class=bg src=img/pop/bg_coin.png>
+      <img class='p_center title' src=img/pop/title_get.png>
+      <div class=desc_coin_line><span style='font-weight:bold;'>{{get_coin}}</span>積分</div>
+      <img class='p_center alert_close' src=img/pop/btn_close.png touchable v-on:click.prevent=RalertClose>
+    </div>
+    <div is=cp-pop name=lucky>
+      <img class=bg src=img/pop/bg_lucky.png>
+      <img class='light light_big' src=img/pop/light.png>
+      <img class='p_center lucky_img' src=img/award.png>
+      <div class=lucky_name>奖品示例</div>
+      <img class='p_center alert_close' src=img/pop/btn_close.png touchable v-on:click.prevent=RalertClose>
+    </div>
+    <div is=cp-pop name=gift_light>
+      <img class=light src=img/pop/light.png>
+      <img class='wh100 giftbox_0' src=img/pop/gift_1.png v-bind:style='{opacity: gift_open ? 0 : 1}'>
+      <img class=giftbox_1 src=img/pop/gift_2.png v-bind:style='{opacity: gift_open ? 1 : 0}'>
+    </div>
+  </div>
+  <div is=cp-wrap name=alert>
+    <div is=cp-pop alive>
+      <img class=bg src=img/pop/bg_msg.png>
+      <div class='f_middle alert_msg_box'>
+        <div class=alert_msg_line>{{alert}}</div>
+      </div>
+      <img class='p_center alert_close' src=img/pop/btn_close.png touchable v-on:click.prevent=AlertClose>
+    </div>
+  </div>
+</div>
+
+<script src=js/lib/vue.min.js></script>
+<script src=js/lib/clever.min.js></script>
+<script src=js/index/map.js></script>
+<script src=js/index/index.js></script>

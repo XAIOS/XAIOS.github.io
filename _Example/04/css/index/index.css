@@ -1,0 +1,264 @@
+#app {
+  background: #000;
+}
+
+.page_loading {
+  background: #252525;
+}
+
+.loading_logo {
+  top: 23%;
+}
+
+.load_box {
+  position: absolute;
+  top: 42%;
+  width: 3.2rem;
+  height: .14rem;
+  background: #1a1a1a;
+}
+
+@keyframes loading {
+  from {
+    transform: translate(-50%, -120%) rotate(0);
+  }
+  to {
+    transform: translate(-50%, -120%) rotate(360deg);
+  }
+}
+
+.load_img {
+  top: 0;
+  width: .63rem;
+  height: .63rem;
+  transition: all .5s;
+  animation: loading .4s linear infinite;
+}
+
+.load_val {
+  height: 100%;
+  background: #9b8b5c;
+  transition: all .4s;
+}
+
+.load_error {
+  position: absolute;
+  bottom: -1rem;
+  color: #fff;
+  font-size: .3rem;
+  white-space: nowrap;
+}
+
+.page_index img {
+  opacity: 0;
+  transition-duration: .6s;
+  transition-property: all;
+}
+
+.show.page_index img {
+  opacity: 1;
+}
+
+.index_bg {
+  width: 100%;
+}
+
+.index_light {
+  bottom: 0;
+  width: 100%;
+  transition-delay: .6s;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0);
+  }
+}
+
+.rotate {
+  right: -30%;
+  bottom: 10%;
+  transition-delay: 1.2s;
+  animation: rotate 4s linear infinite;
+}
+
+.index_title {
+  top: 17.5%;
+  transition-delay: 1.6s;
+}
+
+.index_sl_box {
+  position: absolute;
+  top: 29%;
+  right: 0;
+}
+
+.index_sl_0, .index_sl_1 {
+  transition-delay: 2.2s;
+}
+
+.index_sl_0 {
+  right: -100%;
+}
+
+.index_sl_1 {
+  left: calc(100% - 7.2rem);
+  bottom: 0;
+  transform: translate(-100%, 100%);
+}
+
+.show.page_index .index_sl_0 {
+  right: 0;
+}
+
+.show.page_index .index_sl_1 {
+  transform: translateY(100%);
+}
+
+.index_award_box {
+  position: absolute;
+  bottom: 0;
+}
+
+.index_award {
+  transition-delay: 2.8s;
+}
+
+@keyframes blink {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.index_blink {
+  top: -5%;
+  transition-delay: 2.8s;
+  animation: blink 1.4s 2.8s linear infinite alternate;
+}
+
+.law, .rule {
+  transition-delay: 3.4s;
+}
+
+.law {
+  top: 0;
+  right: 0;
+  width: 2.04rem;
+  height: .84rem;
+}
+
+.rule {
+  top: 0;
+  right: 1.4rem;
+  width: 2.4rem;
+  height: .84rem;
+}
+
+.index_logo {
+  top: 4.5%;
+  width: 3.08rem;
+  height: 1.44rem;
+  transition-delay: 3.4s;
+}
+
+.index_start {
+  top: 48.5%;
+  transition-delay: 3.4s;
+}
+
+.game_logo {
+  top: 1.5%;
+  left: 5.5%;
+}
+
+.game_box {
+  position: absolute;
+  top: 12%;
+  width: 6.55rem;
+  height: 6.33rem;
+}
+
+#game {
+  position: absolute;
+}
+
+.game_core {
+  position: relative;
+  width: 1.12rem;
+  height: 1.11rem;
+  background: url(../../img/game/core.png) no-repeat;
+  background-size: contain;
+}
+
+.game_core_blink {
+  width: 1.23rem;
+  height: 1.23rem;
+  animation: blink 1s linear infinite alternate;
+}
+
+.game_start {
+  top: 72%;
+}
+
+.cp-pop:not(.ralert_rule) {
+  top: 46%;
+}
+
+.rule_close {
+  top: 2.6%;
+  right: 8%;
+  width: .54rem;
+  height: .54rem;
+}
+
+.ralert_law {
+  width: 5.57rem;
+  height: 8.26rem;
+}
+
+.law_content {
+  position: absolute;
+  top: 1.5rem;
+  width: 4.2rem;
+  height: 5.5rem;
+  font-size: .24rem;
+  line-height: 1.5em;
+  text-align: justify;
+}
+
+.law_tips {
+  position: absolute;
+  top: 7.3rem;
+  color: #787878;
+  font-size: .24rem;
+  white-space: nowrap;
+}
+
+.alert_close {
+  bottom: -1.4rem;
+  width: 5.68rem;
+  height: 1.09rem;
+}
+
+.pop_alert {
+  width: 5.66rem;
+  height: 4.25rem;
+}
+
+.alert_msg_box {
+  position: absolute;
+  top: 1.5rem;
+  width: 4rem;
+  height: 1.5rem;
+  text-align: center;
+}
+
+.alert_msg {
+  font-size: .28rem;
+}
