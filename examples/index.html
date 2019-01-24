@@ -65,7 +65,7 @@
     user: '太阳城集团,格兰披治大赛车'
   }]
 
-  content.forEach(i => html += '<div class=archive-post><a href=./' + i.link + '><span class=archive-date>' + i.user.split(',').join('x') + '</span>' + i.name + '</a></div>')
+  content.forEach(i => html += '<div class=archive-post><a href=./' + i.link + '>' + i.user.split(',').join('x') + '-' + i.name + '</a></div>')
 
   document.getElementById('content').innerHTML = html
 </script>
