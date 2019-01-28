@@ -14,7 +14,7 @@
   <div is=cp-page name=index>
     <van-nav-bar title='项目案例 by AIOS'></van-nav-bar>
     <div is=cp-roll class=content>
-      <van-cell class=f_vetically is-link v-for='n in db' v-bind:url='"repo/" + n.link'>
+      <van-cell class=f_vetically is-link v-for='n in db' v-bind:url='"repo/" + n.link + "/index.html"'>
         <div class='f_vetically item'>
           <img class=item_img v-bind:src=n.imgs[0] touchable v-on:click.prevent.stop=Pre(n)>
           <div class=item_info>
