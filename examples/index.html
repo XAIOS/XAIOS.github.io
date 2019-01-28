@@ -1,71 +1,42 @@
 <!DOCTYPE HTML>
 <meta charset=utf-8>
-<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-<meta name=viewport content='width=device-width, initial-scale=1, user-scalable=no'>
-<title>项目示例</title>
-<meta name=author content='AIOS'>
-<!--[if IE]>
-  <meta http-equiv=refresh content='0, http://browsehappy.com'>
-<![endif]-->
-<link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css>
-<link rel=stylesheet href=//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css>
-<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css>
-<link rel=stylesheet href=/css/style.css>
+<title>Examples</title>
+<meta name=viewport content='width=device-width, initial-scale=1, user-scalable=0'>
+<script>
+  document.getElementsByTagName('html')[0].style.fontSize = innerWidth / 7.2 + 'px'
+</script>
+<link rel=stylesheet href=css/lib/reset.min.css?01281425>
+<link rel=stylesheet href=css/lib/clever.min.css?01281425>
+<link rel=stylesheet href=css/lib/vant.min.css?01281425>
+<link rel=stylesheet href=css/index/index.css?01281425>
 
-<body oncontextmenu='return false'>
-  <div class=aios_content>
-    <div class=bg-gradient></div>
-    <div class=bg-pattern></div>
-    <div class=container style='padding-bottom:40px'>
-      <div class=row>
-        <div class=col-sm-12>
-          <header>
-            <div class=logo>
-              <h1 id=main-title class=title>项目示例</h1>
+<div id=app v-cloak>
+  <div is=cp-page name=index>
+    <van-nav-bar title='项目案例 by AIOS'></van-nav-bar>
+    <div is=cp-roll class=content>
+      <van-cell class=f_vetically is-link v-for='n in db' v-bind:url='"repo/" + n.link'>
+        <div class='f_vetically item'>
+          <img class=item_img v-bind:src=n.imgs[0] touchable v-on:click.prevent.stop=Pre(n)>
+          <div class=item_info>
+            <div class=item_title>{{n.name}}</div>
+            <div class='h_wrap item_desc'>{{n.desc}}</div>
+            <div class=item_user>
+              <van-tag class=item_user_item type=primary v-for='u in n.user'>{{u}}</van-tag>
             </div>
-          </header>
-          <section class='main archive-container' id=content></section>
+            <div class=item_tips>点击图片预览项目</div>
+          </div>
         </div>
-      </div>
+      </van-cell>
+      <div class=null>更多案例等待补充中</div>
     </div>
   </div>
-  <footer class=footer-content>
-    <div class=container>
-      <div class=row>
-        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-          <div class=footer-copyright>@Untitled. All right reserved | Design & Hexo <a href=//www.codeblocq.com target=_blank>Jonathan Klughertz</a></div>
-        </div>
-      </div>
-    </div>
-  </footer>
-</body>
+</div>
 
-<script>
-  html = ''
-
-  content = [{
-    link: '00',
-    name: '七夕「饰」爱作战',
-    user: '唯品会,周生生'
-  }, {
-    link: '01',
-    name: '碗满中秋',
-    user: '雅仕维'
-  }, {
-    link: '02',
-    name: '泰丰超市消费抽奖',
-    user: '泰丰超市'
-  }, {
-    link: '03',
-    name: '私奔到月球',
-    user: '招商银行,周生生'
-  }, {
-    link: '04',
-    name: '蓄势待发 连线全城',
-    user: '太阳城集团,格兰披治大赛车'
-  }]
-
-  content.forEach(i => html += '<div class=archive-post><a href=./' + i.link + '>' + i.user.split(',').join('x') + '-' + i.name + '</a></div>')
-
-  document.getElementById('content').innerHTML = html
-</script>
+<script src=js/lib/vue@2.5.22.min.js?01281425></script>
+<script src=js/lib/clever.min.js?01281425></script>
+<script src=js/lib/vant.min.js?01281425></script>
+<script src=js/lib/ua.min.js?01281425></script>
+<script src=js/lib/qrcode.min.js?01281425></script>
+<script src=js/lib/example.min.js?01281425></script>
+<script src=js/index/db.js?01281425></script>
+<script src=js/index/index.js?01281425></script>
