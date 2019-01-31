@@ -5,9 +5,10 @@
 <script>
   document.getElementsByTagName('html')[0].style.fontSize = innerWidth / 7.2 + 'px'
 </script>
-<link rel=stylesheet href=./../../css/lib/reset.min.css>
-<link rel=stylesheet href=./../../css/lib/clever.min.css>
-<link rel=stylesheet href=./css/index/index.css>
+<link rel=stylesheet href=./../../css/lib/reset.min.css?201901311529>
+<link rel=stylesheet href=./../../css/lib/clever.min.css?201901311529>
+<link rel=stylesheet href=./../../css/lib/example.min.css?201901311529>
+<link rel=stylesheet href=./css/index/index.css?201901311529>
 
 <div id=app v-cloak v-on:click.once=Bgm(1)>
   <div is=cp-page name=loading>
@@ -21,18 +22,11 @@
     <img v-bind:src='"img/music_" + bgm + ".png"' class=index_music v-suit=72,72 touchable v-on:click.prevent.stop=Bgm>
     <img src=img/index/earth.png class='p_center index_earth' v-suit=1122,1116>
     <div class='p_center index_cat_box' v-suit=720,700>
-      <img src=img/index/gift.png class=index_gift v-suit=110,139 touchable v-on:click.prevent=AwardList>
-      <img src=img/index/rule.png class=index_rule v-suit=113,151 touchable v-on:click.prevent=Rule>
       <img src=img/index/flower_l.png class=index_flower_l v-suit=156,134>
       <img src=img/index/flower_r.png class=index_flower_r v-suit=134,226>
       <img src=img/index/cat.png class='p_center index_cat' v-suit=541,618>
     </div>
     <img src=img/index/start.png class='p_center index_start' v-suit=458,125 touchable v-on:click.prevent=Start>
-    <div class='p_center index_into_box' v-suit=720,77 v-on:click=Into>
-      <img src=img/index/arrow_0.png class='p_vetically arrow_0' v-suit=27,12>
-      <img src=img/index/into.png v-suit=720,77>
-      <img src=img/index/arrow_1.png class='p_vetically arrow_1' v-suit=27,12>
-    </div>
   </div>
   <div is=cp-page name=game>
     <img src=img/game/bg.png class=bg>
@@ -51,42 +45,6 @@
     <div is=cp-pop name=tips full v-on:click.native=GameStart>
       <img src=img/pop/tips.png class=p_middle v-suit=621,656>
     </div>
-    <div is=cp-pop name=rule>
-      <img src=img/pop/bg_rule.png class=bg>
-      <div is=cp-roll class='p_center rule_content' v-bind:html=rule></div>
-      <img src=img/pop/btn_close.png class='p_center alert_close' touchable v-on:click.prevent=RalertClose>
-    </div>
-    <div is=cp-pop name=award>
-      <img src=img/pop/bg_award.png class=bg>
-      <div class='p_center award_null' v-if=!list.length>暂时没有奖品哦</div>
-      <ul class='p_center award_list' v-else>
-        <li v-for='n in list' class='f_vetically award_item'>
-          <img class=award_info_img src=img/game/g2.png freedom>
-          <div class='f_middle award_info_name_box'>
-            <p class=award_info_name>奖品示例</p>
-          </div>
-          <img src=img/pop/btn_info.png class=award_info_btn freedom touchable v-on:click.prevent=Info>
-        </li>
-      </ul>
-      <img src=img/pop/btn_close.png class='p_center alert_close' touchable v-on:click.prevent=RalertClose>
-    </div>
-    <div is=cp-pop name=lucky bottom>
-      <div class='p_middle lucky_box'>
-        <img src=img/pop/bg_lucky.png class=bg>
-        <img class='p_center lucky_img' src=img/game/g2.png>
-        <span class='p_center lucky_name'>奖品示例</span>
-        <input type=text class=input placeholder='请填写您的姓名' v-model.trim=name v-bind:disabled=saved>
-        <input type=tel class=input placeholder='请填写您的手机号码' v-model.trim=phone v-bind:disabled=saved>
-        <input type=text class=input placeholder='请填写您的联系地址' v-model.trim=address v-bind:disabled=saved>
-        <img src=img/pop/btn_submit.png class='p_center alert_btn btn_into' touchable v-on:click.prevent=Submit v-if=!saved>
-        <img src=img/pop/btn_sure.png class='p_center alert_btn btn_into' touchable v-on:click.prevent=RalertClose v-else>
-      </div>
-    </div>
-    <div is=cp-pop name=draw>
-      <img src=img/pop/bg_gift.png class=bg>
-      <span class='p_center gift_score'>达到 <em class=gift_score_num>{{score | fixed}}KM</em></span>
-      <img src=img/pop/gift.png class='p_center gift' touchable v-on:click.prevent=Draw>
-    </div>
   </div>
   <div is=cp-wrap name=alert>
     <div is=cp-pop alive>
@@ -99,10 +57,10 @@
   </div>
 </div>
 
-<script src=./../../js/lib/loading.min.js></script>
-<script src=./../../js/lib/vue@2.5.22.min.js></script>
-<script src=./../../js/lib/clever.min.js></script>
-<script src=./../../js/lib/ua.min.js></script>
-<script src=./../../js/lib/qrcode.min.js></script>
-<script src=./../../js/lib/example.min.js></script>
-<script src=./js/index/index.js></script>
+<script src=./../../js/lib/loading.min.js?201901311529></script>
+<script src=./../../js/lib/vue@2.5.22.min.js?201901311529></script>
+<script src=./../../js/lib/clever.min.js?201901311529></script>
+<script src=./../../js/lib/ua.min.js?201901311529></script>
+<script src=./../../js/lib/qrcode.min.js?201901311529></script>
+<script src=./../../js/index/example.js?201901311529></script>
+<script src=./js/index/index.js?201901311529></script>

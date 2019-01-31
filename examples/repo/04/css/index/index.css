@@ -142,21 +142,14 @@
   animation: blink 1.4s 2.8s linear infinite alternate;
 }
 
-.law, .rule {
+.rule {
   transition-delay: 3.4s;
-}
-
-.law {
-  top: 0;
-  right: 0;
-  width: 2.04rem;
-  height: .84rem;
 }
 
 .rule {
   top: 0;
-  right: 1.4rem;
-  width: 2.4rem;
+  right: 0;
+  width: 2.04rem;
   height: .84rem;
 }
 
@@ -206,40 +199,6 @@
   top: 72%;
 }
 
-.cp-pop:not(.ralert_rule) {
-  top: 46%;
-}
-
-.rule_close {
-  top: 2.6%;
-  right: 8%;
-  width: .54rem;
-  height: .54rem;
-}
-
-.ralert_law {
-  width: 5.57rem;
-  height: 8.26rem;
-}
-
-.law_content {
-  position: absolute;
-  top: 1.5rem;
-  width: 4.2rem;
-  height: 5.5rem;
-  font-size: .24rem;
-  line-height: 1.5em;
-  text-align: justify;
-}
-
-.law_tips {
-  position: absolute;
-  top: 7.3rem;
-  color: #787878;
-  font-size: .24rem;
-  white-space: nowrap;
-}
-
 .alert_close {
   bottom: -1.4rem;
   width: 5.68rem;
@@ -260,5 +219,5 @@
 }
 
 .alert_msg {
-  font-size: .28rem;
+  font-size: .32rem;
 }

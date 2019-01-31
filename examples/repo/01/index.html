@@ -5,9 +5,10 @@
 <script>
   document.getElementsByTagName('html')[0].style.fontSize = innerWidth / 7.2 + 'px'
 </script>
-<link rel=stylesheet href=./../../css/lib/reset.min.css>
-<link rel=stylesheet href=./../../css/lib/clever.min.css>
-<link rel=stylesheet href=./css/index/index.css>
+<link rel=stylesheet href=./../../css/lib/reset.min.css?201901311503>
+<link rel=stylesheet href=./../../css/lib/clever.min.css?201901311503>
+<link rel=stylesheet href=./../../css/lib/example.min.css?201901311503>
+<link rel=stylesheet href=./css/index/index.css?201901311503>
 
 <div id=app v-cloak v-on:click.once=Bgm(1)>
   <div is=cp-page name=loading>
@@ -27,8 +28,6 @@
     <img class=music v-bind:src='"img/music_" + bgm + ".png"' v-suit=71,72 touchable v-on:click.prevent.stop=Bgm>
     <img class='p_center title' src=img/title.png v-suit=648,223>
     <img class=index_moon src=img/moon.png v-suit=528,483>
-    <img class=index_rule src=img/btn_rule.png touchable v-on:click.prevent=Rule>
-    <div class='p_center index_word'>雅仕維與您中秋送暖！<br>參與疊碗慈善賽，雅仕維將送出同等數量的愛心飯盒！</div>
     <div class=floor_area>
       <img class=index_floor src=img/floor.png>
       <div class=index_floor_plus></div>
@@ -62,31 +61,10 @@
     </div>
   </div>
   <div is=cp-wrap name=ralert>
-    <div is=cp-pop name=rule>
-      <img class=bg src=img/pop/bg_rule.png>
-      <div is=cp-roll class='p_center rule_content' v-bind:html=rule></div>
-      <img class='p_center alert_close' src=img/pop/close.png touchable v-on:click.prevent=RalertClose>
-    </div>
     <div is=cp-pop name=tips full v-on:click.native=TipsEnd>
       <img class=tips_0 src=img/pop/tips_0.png v-suit=237,181>
       <img class=tips_1 src=img/pop/tips_1.png v-suit=475,538>
       <img class=tips_2 src=img/pop/tips_2.png v-suit=364,431>
-    </div>
-    <div is=cp-pop name=score full>
-      <img class=logo src=img/logo.png>
-      <img class='p_center score_title' src=img/pop/score_title.png v-suit=506,222>
-      <div class='p_center score_now_box' v-suit=130,130>
-        <img class=score_light src=img/pop/score_light.png v-suit=1090,1090>
-        <span class=score_txt>{{score}}</span>
-        <img class=score_plus src=img/pop/score_plus.png v-suit=146,146>
-      </div>
-      <img class='p_center score_hand' src=img/pop/score_hand.png v-suit=522,136>
-      <div class='p_center score_box' v-suit=506,165>
-        <img class='bg bg_score' src=img/pop/bg_score.png>
-        <div class='p_middle score_high'>個人最高得分： <span class=color_yellow>{{score_high}}</span> </div>
-      </div>
-      <img v-suit=245,84 class='score_l score_btn' src=img/pop/btn_again.png touchable v-on:click.prevent=PlayAgain>
-      <img v-suit=245,84 class='score_r score_btn' src=img/pop/btn_index.png touchable v-on:click.prevent=ToIndex>
     </div>
   </div>
   <div is=cp-wrap name=alert>
@@ -100,12 +78,11 @@
   </div>
 </div>
 
-<script src=./../../js/lib/loading.min.js></script>
-<script src=./../../js/lib/vue@2.5.22.min.js></script>
-<script src=./../../js/lib/clever.min.js></script>
-<script src=./../../js/lib/ua.min.js></script>
-<script src=./../../js/lib/qrcode.min.js></script>
-<script src=./../../js/lib/example.min.js></script>
-<script src=./js/lib/matter.min.js></script>
-<script src=./js/lib/to.min.js></script>
-<script src=./js/index/index.js></script>
+<script src=./../../js/lib/vue@2.5.22.min.js?201901311503></script>
+<script src=./../../js/lib/clever.min.js?201901311503></script>
+<script src=./../../js/lib/ua.min.js?201901311503></script>
+<script src=./../../js/lib/qrcode.min.js?201901311503></script>
+<script src=./../../js/lib/matter.min.js?201901311503></script>
+<script src=./../../js/lib/to.min.js?201901311503></script>
+<script src=./../../js/index/example.js?201901311503></script>
+<script src=./js/index/index.js?201901311503></script>

@@ -5,9 +5,10 @@
 <script>
   document.getElementsByTagName('html')[0].style.fontSize = innerWidth / 7.2 + 'px'
 </script>
-<link rel=stylesheet href=./../../css/lib/reset.min.css>
-<link rel=stylesheet href=./../../css/lib/clever.min.css>
-<link rel=stylesheet href=./css/index/index.css>
+<link rel=stylesheet href=./../../css/lib/reset.min.css?201901311547>
+<link rel=stylesheet href=./../../css/lib/clever.min.css?201901311547>
+<link rel=stylesheet href=./../../css/lib/example.min.css?201901311547>
+<link rel=stylesheet href=./css/index/index.css?201901311547>
 
 <div id=app v-cloak>
   <div is=cp-page name=loading>
@@ -32,16 +33,12 @@
       <img class='wh100 index_award' src=img/index/award.png>
     </div>
     <img class='p_center index_logo' src=img/logo.png>
-    <img class=rule src=img/rule.png touchable v-on:click.prevent=Rule>
-    <img class=law src=img/law.png touchable v-on:click.prevent=Law>
     <img class='p_center index_start' src=img/index/start.png v-suit=573,149 touchable v-on:click.prevent=ToGame>
   </div>
   <div is=cp-page name=game>
     <img class=index_bg src=img/bg.png>
     <img class=index_light src=img/index/light.png>
     <img class=rotate src=img/rotate.png v-suit=457,458>
-    <img class=rule src=img/rule.png touchable v-on:click.prevent=Rule>
-    <img class=law src=img/law.png touchable v-on:click.prevent=Law>
     <img class=game_logo src=img/logo.png v-suit=210,100>
     <div class='p_center game_box'>
       <img class=bg src=img/game/base.png>
@@ -53,15 +50,8 @@
     <img class='p_center game_start' src=img/game/start.png touchable v-on:click.prevent=Start v-suit=683,148>
   </div>
   <div is=cp-wrap name=ralert>
-    <div is=cp-pop name=rule suit=720,1135>
+    <div is=cp-pop name=rule suit=720,1135 v-on:click.native=RalertClose>
       <img class=wh100 src=img/pop/rule.png>
-      <img class=rule_close src=img/pop/rule_close.png touchable v-on:click.prevent=RalertClose>
-    </div>
-    <div is=cp-pop name=law>
-      <img class=bg src=img/pop/bg_law.png>
-      <div is=cp-roll class='p_center law_content' v-bind:html=rule></div>
-      <p class='p_center law_tips'>上下滑动查看更多游戏规则</p>
-      <img class='p_center alert_close' src=img/pop/close.png touchable v-on:click.prevent=RalertClose>
     </div>
   </div>
   <div is=cp-wrap name=alert>
@@ -75,10 +65,9 @@
   </div>
 </div>
 
-<script src=./../../js/lib/loading.min.js></script>
-<script src=./../../js/lib/vue@2.5.22.min.js></script>
-<script src=./../../js/lib/clever.min.js></script>
-<script src=./../../js/lib/ua.min.js></script>
-<script src=./../../js/lib/qrcode.min.js></script>
-<script src=./../../js/lib/example.min.js></script>
-<script src=./js/index/index.js></script>
+<script src=./../../js/lib/vue@2.5.22.min.js?201901311547></script>
+<script src=./../../js/lib/clever.min.js?201901311547></script>
+<script src=./../../js/lib/ua.min.js?201901311547></script>
+<script src=./../../js/lib/qrcode.min.js?201901311547></script>
+<script src=./../../js/index/example.js?201901311547></script>
+<script src=./js/index/index.js?201901311547></script>

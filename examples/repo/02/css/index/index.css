@@ -60,6 +60,7 @@
   color: #fff;
   font-size: .26rem;
   text-align: center;
+  white-space: nowrap;
 }
 
 .loading_kidding {
@@ -154,13 +155,8 @@
   max-height: 100%;
 }
 
-.game_rule {
-  top: 2%;
-  right: 3%;
-}
-
 .game_music {
-  top: 11%;
+  top: 2%;
   right: 3%;
 }
 
@@ -247,7 +243,7 @@
   animation: shake .3s linear infinite;
 }
 
-.cp-pop:not(.pop_ex-scan) {
+.cp-wrap-ralert .cp-pop:not(.ralert_gift_light), .pop_alert {
   top: 46%;
   width: 6.47rem;
 }
@@ -288,19 +284,6 @@
 
 .alert_btn_r {
   right: .25rem;
-}
-
-.ralert_rule {
-  height: 8.71rem;
-}
-
-.rule_content {
-  width: 5rem;
-  height: 6.6rem;
-  margin: 1.3rem auto;
-  color: #fff;
-  font-size: .26rem;
-  text-align: justify;
 }
 
 .ralert_desc, .ralert_get_coin {
