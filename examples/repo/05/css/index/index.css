@@ -1,0 +1,248 @@
+.bg_bottom {
+  bottom: 0;
+  width: 100%;
+}
+
+.page_loading {
+  background: #b2c3c9;
+}
+
+.loading_logo {
+  top: 2%;
+  left: 4%;
+}
+
+.loading_txt {
+  position: absolute;
+  top: 25.5%;
+  left: 10%;
+  width: 1.2rem;
+  color: #5f7a81;
+  font-size: .22rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.page_index img {
+  opacity: 0;
+  transition-property: all;
+  transition-duration: .6s;
+  transition-timing-function: linear;
+}
+
+.show.page_index img {
+  opacity: 1;
+}
+
+.logo {
+  top: 2%;
+  left: 3.5%;
+  transition-delay: 1.8s;
+  z-index: 9;
+}
+
+.start_box {
+  position: absolute;
+  flex-direction: column;
+  top: 76%;
+}
+
+.title {
+  transition-delay: .6s;
+}
+
+.start {
+  margin-top: .2rem;
+  transition-delay: 1.2s;
+}
+
+.upload_bg {
+  position: absolute;
+  background: rgba(255, 255, 255, .6);
+}
+
+.upload_box {
+  position: absolute;
+  top: 11%;
+  border: .08rem solid rgba(79, 79, 79, .15);
+}
+
+.upload_box_border {
+  z-index: 9;
+}
+
+.border_1 {
+  right: 0;
+  transform: rotate(90deg);
+}
+
+.border_2 {
+  right: 0;
+  bottom: 0;
+  transform: rotate(180deg);
+}
+
+.border_3 {
+  bottom: 0;
+  transform: rotate(270deg);
+}
+
+.upload_img_box {
+  position: absolute;
+}
+
+.h100 {
+  height: 100%;
+}
+
+.upload {
+  position: absolute;
+  top: 85%;
+}
+
+.create_bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 33%;
+  background: rgba(0, 0, 0, .85);
+  z-index: 9;
+}
+
+.create_swiper {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+}
+
+.create_page {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 2% 4%;
+  height: 75%;
+  box-sizing: border-box;
+}
+
+.create_item {
+  background: rgba(255, 255, 255, .1) center no-repeat;
+  background-size: contain;
+}
+
+.create_arrow_l, .create_arrow_r {
+  top: 34%;
+  z-index: 9;
+}
+
+.create_arrow_l {
+  left: 2.5%;
+  transform: rotateY(180deg);
+}
+
+.create_arrow_r {
+  right: 2.5%;
+}
+
+.create_handle {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 25%;
+}
+
+.create_hr {
+  width: .02rem;
+  height: .26rem;
+  margin: 0 23%;
+  background: rgba(255, 255, 255, .27);
+}
+
+.handle_bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1.15rem;
+  padding: 0 1.1rem;
+  background: rgba(0, 0, 0, .85);
+  box-sizing: border-box;
+  z-index: 9;
+}
+
+.handle_item {
+  flex-direction: column;
+}
+
+.handle_name {
+  margin-top: .1rem;
+  color: rgba(255, 255, 255, .58);
+  font-size: .22rem;
+}
+
+.handle_item+.handle_item {
+  margin-left: 1rem;
+}
+
+.create_img {
+  top: 11%;
+  border: .06rem solid rgba(79, 79, 79, .15);
+}
+
+.end_btn {
+  top: 88%;
+}
+
+.pop_box {
+  position: relative;
+  overflow: hidden;
+  border-radius: .1rem;
+}
+
+.alert_close {
+  bottom: -.8rem;
+  width: .48rem;
+  height: .48rem;
+}
+
+.pop_alert {
+  width: 4.63rem;
+  height: 2.64rem;
+}
+
+.alert_msg_box {
+  position: absolute;
+  top: .8rem;
+  width: 4.1rem;
+  height: 1.5rem;
+}
+
+.alert_msg {
+  width: 90%;
+  color: #5e5e5e;
+  font-size: .22rem;
+  text-align: center;
+}
+
+.pop_confirm {
+  width: 4.63rem;
+  height: 3.8rem;
+}
+
+.confirm_msg_box {
+  position: absolute;
+  top: .85rem;
+  width: 4.1rem;
+  height: 1.9rem;
+}
+
+.confirm_btn {
+  bottom: .45rem;
+  width: 1.48rem;
+  height: .38rem;
+}
+
+.confirm_btn_l {
+  left: .6rem;
+}
+
+.confirm_btn_r {
+  right: .6rem;
+}

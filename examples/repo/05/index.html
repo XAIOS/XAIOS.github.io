@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<meta charset=utf-8>
+<title>Example·重启先锋</title>
+<meta name=viewport content='width=device-width, initial-scale=1, user-scalable=0'>
+<script>
+  document.getElementsByTagName('html')[0].style.fontSize = innerWidth / 7.2 + 'px'
+</script>
+<link rel=stylesheet href=./../../css/lib/reset.min.css?201902011221>
+<link rel=stylesheet href=./../../css/lib/clever.min.css?201902011221>
+<link rel=stylesheet href=./../../css/lib/example.min.css?201902011221>
+<link rel=stylesheet href=./css/index/index.css?201902011221>
+
+<div id=app v-cloak>
+  <div is=cp-page name=loading>
+    <img class=bg_bottom src=img/bg.png>
+    <img class=loading_logo src=img/logo.png v-suit=89,54>
+    <div class=loading_txt v-if=error>{{error}}</div>
+    <div class=loading_txt v-else>
+      <span>加载中</span>
+      <span v-for='n in loading_dot'>.</span>
+    </div>
+  </div>
+  <div is=cp-page name=index>
+    <img class=bg_bottom src=img/bg.png>
+    <img class=logo src=img/logo.png v-suit=89,54>
+    <div class='f_vetically p_center start_box'>
+      <img class=title src=img/title.png v-suit=337,93 freedom>
+      <img class=start src=img/start.png v-suit=193,47 freedom touchable v-on:click.prevent=Start>
+    </div>
+  </div>
+  <div is=cp-page name=upload>
+    <img class=bg_bottom src=img/bg.png>
+    <img class=logo src=img/logo.png v-suit=89,54>
+    <div class='wh100 tl0 upload_bg'></div>
+    <div class='p_center upload_box' v-suit=502,805>
+      <img class=wh100 src=img/demo.png>
+      <img class=upload_box_border src=img/bor.png v-for='(n,i) in 4' v-bind:class='"border_" + i' v-suit=128,128>
+    </div>
+    <form>
+      <label class='p_center upload' for=upload v-suit=133,128>
+        <img class=bg src=img/btn_upload.png>
+      </label>
+      <input type=file id=upload accept='image/*' style='display:none' v-on:change=Upload>
+    </form>
+  </div>
+  <div is=cp-page name=create id=create_box>
+    <div class=create_bar v-show=!doing>
+      <div class='f_vetically create_page'>
+        <div class=create_item v-for='n in create_hub' v-bind:style='{backgroundImage: "url(img/create/" + n + ".png)"}' v-suit=150,120 v-on:click=AddElement(n)></div>
+      </div>
+      <div class='f_middle create_handle'>
+        <img class=create_handle_img src=img/btn_back.png touchable v-on:click.prevent=ToUpload v-suit=42,42 freedom>
+        <div class=create_hr></div>
+        <img class=create_handle_img src=img/btn_submit.png touchable v-on:click.prevent=ToSubmit v-suit=45,42 freedom>
+      </div>
+    </div>
+    <div class='f_middle handle_bar' v-show=doing>
+      <div class='f_vetically handle_item'>
+        <img class=handle_img freedom src=img/btn_back.png touchable v-on:click.prevent=ToUpload v-suit=42,42>
+        <span class=handle_name>返回</span>
+      </div>
+      <div class='f_vetically handle_item'>
+        <img class=handle_img freedom src=img/btn_del.png touchable v-on:click.prevent=DelElement v-suit=37,42>
+        <span class=handle_name>删除</span>
+      </div>
+      <div class='f_vetically handle_item'>
+        <img class=handle_img freedom src=img/btn_hub.png touchable v-on:click.prevent=ShowCreateHub v-suit=42,42>
+        <span class=handle_name>贴纸</span>
+      </div>
+      <div class='f_vetically handle_item'>
+        <img class=handle_img freedom src=img/btn_submit.png touchable v-on:click.prevent=ToSubmit v-suit=45,42>
+        <span class=handle_name>提交</span>
+      </div>
+    </div>
+  </div>
+  <div is=cp-page name=end>
+    <img class=bg_bottom src=img/bg.png>
+    <img class=logo src=img/logo.png v-suit=89,54>
+    <div class='wh100 tl0 upload_bg'></div>
+    <img class='p_center create_img' v-bind:src=create_img touchable v-on:click.prevent v-suit=504,794.5>
+    <img class='p_center end_btn' src=img/btn_continue.png touchable v-on:click.prevent=Start v-suit=185,38>
+  </div>
+  <div is=cp-wrap name=confirm>
+    <div is=cp-pop alive>
+      <img class=bg src=img/pop/bg_confirm.png>
+      <div class='p_center f_middle confirm_msg_box'>
+        <div class=alert_msg>{{confirm}}</div>
+      </div>
+      <img class='confirm_btn confirm_btn_l' src=img/pop/btn_sure.png touchable v-on:click.prevent=SureConfirm>
+      <img class='confirm_btn confirm_btn_r' src=img/pop/btn_cancel.png touchable v-on:click.prevent=ConfirmClose>
+    </div>
+  </div>
+  <div is=cp-wrap name=alert>
+    <div is=cp-pop alive>
+      <img class=bg src=img/pop/bg_msg.png>
+      <div class='p_center f_middle alert_msg_box'>
+        <div class=alert_msg>{{alert}}</div>
+      </div>
+      <img class='p_center alert_close' src=img/pop/close.png touchable v-on:click.prevent=AlertClose>
+    </div>
+  </div>
+</div>
+
+<script src=./../../js/lib/vue@2.5.22.min.js?201902011221></script>
+<script src=./../../js/lib/clever.min.js?201902011221></script>
+<script src=./../../js/lib/laya.core.min.js?201902011221></script>
+<script src=./../../js/lib/laya.webgl.min.js?201902011221></script>
+<script src=./../../js/lib/ua.min.js?201902011221></script>
+<script src=./../../js/lib/qrcode.min.js?201902011221></script>
+<script src=./../../js/index/example.js?201902011221></script>
+<script src=./js/index/index.js?201902011221></script>
