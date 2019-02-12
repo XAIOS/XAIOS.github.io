@@ -1,0 +1,423 @@
+@keyframes bounceInDown {
+  0%, 60%, 75%, 90%, 100% {
+    animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+  }
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, -30.25rem, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0);
+  }
+  75% {
+    transform: translate3d(-50%, -.35rem, 0);
+  }
+  90% {
+    transform: translate3d(-50%, -.2rem, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.bounceInDown {
+  animation-name: bounceInDown;
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both
+}
+
+#app {
+  background: url(../../img/index/bg.png);
+  background-size: 100%;
+}
+
+.loading_error {
+  position: absolute;
+  top: 54%;
+  width: 100%;
+  color: #fff;
+  font-size: .3rem;
+  text-align: center;
+}
+
+.page_index img {
+  opacity: 0;
+  transition-property: all;
+  transition-duration: .6s;
+  transition-timing-function: ease-out;
+}
+
+.show.page_index img {
+  opacity: 1;
+}
+
+.index_bg {
+  width: 100%;
+}
+
+.ani_0 {
+  width: 10rem;
+  left: 50%;
+  transform: translate(-55%);
+  transition-timing-function: ease-out;
+}
+
+.show .ani_0 {
+  transform: translate(-50%);
+}
+
+.ani_1_box {
+  position: absolute;
+  left: 50%;
+  animation-delay: .6s;
+}
+
+.ani_2 {
+  transition-delay: 1.2s;
+  z-index: -2;
+}
+
+.ani_3 {
+  top: 31.5%;
+  left: -3%;
+  transition-delay: 1.8s;
+  transform: scale3d(.3, .3, .3)
+}
+
+.ani_4 {
+  top: 37.8%;
+  right: -5%;
+  transition-delay: 2s;
+  transform: scale3d(.3, .3, .3)
+}
+
+.show .ani_3, .show .ani_4 {
+  transform: none;
+}
+
+.ani_5 {
+  top: 8.6%;
+  transition-delay: 1.8s;
+}
+
+.ani_6 {
+  top: 30%;
+  left: 25%;
+}
+
+.page_index .ani_fin {
+  transition-delay: 2.6s;
+}
+
+.logo {
+  top: 1.5%;
+  right: 2.4%;
+}
+
+.index_title {
+  left: 53.2%;
+  transition-delay: .6s;
+  transform: translate(-50%);
+}
+
+.index_flower {
+  top: 70.5%;
+  left: 9%;
+}
+
+@keyframes blink {
+  from {
+    filter: none;
+  }
+  to {
+    filter: drop-shadow(0 0 .4rem rgba(255, 132, 0, .6));
+  }
+}
+
+.index_start {
+  top: 82%;
+  animation: blink 1s linear infinite alternate;
+}
+
+.cards, .tips_cards {
+  position: absolute;
+  top: 7%;
+  bottom: 29.4%;
+  width: 100%;
+}
+
+.swiper-wrapper {
+  transition-duration: 0ms;
+  transform: translate3d(1.52rem, 0, 0);
+}
+
+.swiper-slide {
+  width: 66.7%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.swiper-slide-active {
+  z-index: 9;
+}
+
+.swiper_item {
+  position: absolute;
+  top: 50%;
+  height: 100%;
+  transform-origin: center;
+  transition: transform .1s;
+}
+
+.swiper_item.dark {
+  filter: brightness(.6);
+}
+
+.card_bg, .card_inner {
+  position: absolute;
+  transition: all 1s;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: .08rem;
+}
+
+.open .card_bg, .card_inner {
+  transform: rotateY(180deg);
+}
+
+.open .card_inner {
+  transform: rotateY(0);
+}
+
+.card {
+  position: relative;
+}
+
+.card_get.blink {
+  animation: blink 1s linear infinite alternate;
+}
+
+@keyframes card_rotate {
+  from {
+    transform: translate(440%);
+  }
+  to {
+    transform: translate(440%) rotateY(-180deg);
+  }
+}
+
+.card_rotate {
+  position: absolute;
+  top: 5.4%;
+  height: 5.6%;
+  transform: translate(440%);
+}
+
+.page_game .card_rotate {
+  animation: card_rotate .6s linear infinite alternate;
+  opacity: 0;
+}
+
+.card_rotate.show {
+  opacity: 1;
+}
+
+.card_get {
+  position: absolute;
+  top: 72%;
+}
+
+.num_box {
+  position: absolute;
+  color: #c22039;
+  font-size: .22rem;
+  text-align: center;
+  line-height: .42rem;
+  background: url(//viva.vipstatic.com/uploadfiles/viva-act-static/zss-web/img/game/bg_num.png) no-repeat;
+  background-size: contain;
+}
+
+.card_get .num_box {
+  top: -2%;
+  right: 3%;
+}
+
+.card_bar {
+  justify-content: space-between;
+  position: absolute;
+  left: .2rem;
+  width: 6.8rem;
+  bottom: 8%;
+  z-index: 9;
+  transform: translateY(50%);
+}
+
+.card_item {
+  position: relative;
+  width: 1.32rem;
+  height: 1.46rem;
+}
+
+.card_sel {
+  top: .02rem;
+  width: 1.18rem;
+}
+
+.card_name {
+  bottom: .2rem;
+  width: .66rem;
+  height: .2rem;
+}
+
+.card_item .num_box {
+  top: -5%;
+  right: -5%;
+}
+
+.pop_build, .build_img {
+  width: 6.3rem;
+  height: 7.76rem;
+}
+
+.build_wrap {
+  position: absolute;
+  z-index: 999;
+}
+
+.build_img {
+  position: absolute;
+  top: 46%;
+  left: 7.5%;
+  z-index: 9999;
+  transform: translateY(-3.88rem);
+  transition: all .8s ease-in-out, opacity 1.4s ease-out;
+}
+
+.build_tips {
+  top: 5.72rem;
+  height: .58rem;
+  z-index: 9999;
+}
+
+.cp-wrap-ralert .cp-pop:not(.cp-pop-full), .pop_alert {
+  top: 46%;
+}
+
+.alert_close {
+  bottom: -.9rem;
+  width: .88rem;
+  height: .89rem;
+}
+
+.pop_alert {
+  width: 6.3rem;
+  height: 3.86rem;
+}
+
+.alert_msg {
+  position: absolute;
+  width: 70%;
+}
+
+.alert_msg_line {
+  color: #fff;
+  font-size: .26rem;
+  text-align: center;
+}
+
+.pop-title {
+  top: .7rem;
+  width: 1.63rem;
+  height: .45rem;
+}
+
+.build_btn, .get_close {
+  bottom: -.9rem;
+  width: 3.48rem;
+  height: .89rem;
+}
+
+.ralert_get, .ralert_get_first {
+  width: 6.3rem;
+  height: 7.48rem;
+}
+
+.get_title {
+  top: -.8rem;
+  width: 3.9rem;
+  height: .84rem;
+}
+
+.get_first_title {
+  top: -1.35rem;
+  width: 3.9rem;
+  height: 1.35rem;
+}
+
+.ralert_wrap_tips {
+  background: rgba(0, 0, 0, .5);
+}
+
+.ralert_tips .swiper-wrapper {
+  transform: translate3d(62.5px, 0px, 0px);
+}
+
+.ralert_tips .swiper_item {
+  transform: translateY(-50%);
+}
+
+.ralert_tips .swiper-slide {
+  transform: translate3d(-0.02%, 0, 0);
+}
+
+.ralert_tips .swiper_item {
+  height: 100%;
+}
+
+.ralert_tips .card {
+  opacity: 0;
+}
+
+.tips_light {
+  filter: drop-shadow(0 0 .14rem rgba(255, 156, 0, .3));
+}
+
+.img_inner {
+  display: block;
+  height: 100%;
+}
+
+.tips_0 {
+  right: 0;
+  bottom: 0;
+  transform: translateY(140%);
+}
+
+.tips_1 {
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 85%);
+}
+
+.tips_close {
+  position: absolute;
+  bottom: 3%;
+}
+
+.get_close {
+  bottom: -1.3rem;
+}
+
+.get_card_img {
+  transform: scale(.2);
+  transform-origin: center;
+  transition: all .6s linear;
+}
+
+.show .get_card_img {
+  transform: none;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<meta charset=utf-8>
+<title>Example·集合吧！2019年福气</title>
+<meta name=viewport content='width=device-width, initial-scale=1, user-scalable=0'>
+<script>
+  document.getElementsByTagName('html')[0].style.fontSize = innerWidth / 7.2 + 'px'
+</script>
+<link rel=stylesheet href=./../../css/lib/reset.min.css?2019020121424>
+<link rel=stylesheet href=./../../css/lib/clever.min.css?2019020121424>
+<link rel=stylesheet href=./../../css/lib/swiper.min.css?2019020121424>
+<link rel=stylesheet href=./../../css/lib/example.min.css?2019020121424>
+<link rel=stylesheet href=./css/index/index.css?2019020121424>
+
+<div id=app v-cloak>
+  <div is=cp-page name=loading>
+    <img class=bg src=img/index/bg_mask.png>
+    <canvas class=wh100 id=loading></canvas>
+    <div class=loading_error>{{error}}</div>
+  </div>
+  <div is=cp-page name=index>
+    <img class=bg src=img/index/bg_mask.png>
+    <img class=ani_0 src=img/index/ani_0.png>
+    <div class='animated bounceInDown ani_1_box' v-suit=565,1164>
+      <img class=bg src=img/index/ani_1.png>
+      <img class='p_middle ani_2' src=img/index/ani_2.png v-suit=1114,1274>
+      <img class='p_center ani_5' src=img/index/ani_5.png v-suit=575,251>
+      <img class=ani_3 src=img/index/ani_3.png v-suit=287,438>
+      <img class=ani_4 src=img/index/ani_4.png v-suit=309,383>
+      <img class='ani_fin ani_6' src=img/index/ani_6.png v-suit=383,591>
+    </div>
+    <img class='ani_fin logo' src=img/index/logo.png v-suit=215,59>
+    <img class='ani_fin index_flower' src=img/index/flower.png v-suit=629,334>
+    <img class='p_center ani_fin index_start' src=img/index/btn_start.png v-suit=434,187 touchable v-on:click.prevent=Start>
+  </div>
+  <div is=cp-page name=game>
+    <img class=bg src=img/index/bg_mask.png>
+    <img class='p_vetically index_bg' src=img/index/bg_plus.png>
+    <div class='swiper-container cards'>
+      <div class=swiper-wrapper>
+        <div class=swiper-slide v-for='(n,i) in card'>
+          <div class='p_center swiper_item' v-bind:class='{open: n.open, dark: !n.num}'>
+            <div class='wh100 card_bg'>
+              <img class='p_center img_inner card' v-bind:src='"img/game/c" + i + ".png"' freedom touchable v-on:click.prevent=Rotate(i)>
+              <img class=card_rotate v-bind:class='{show: n.rotate == 1}' src=img/game/btn_rotate.png touchable v-on:click.prevent=Rotate(i)>
+            </div>
+            <div class='wh100 card_inner'>
+              <img class='p_center img_inner card' v-bind:src='"img/game/i" + i + ".png"' freedom touchable v-on:click.prevent=Rotate(i)>
+              <img class=card_rotate v-bind:class='{show: n.rotate == 2}' src=img/game/btn_rotate.png touchable v-on:click.prevent=Rotate(i)>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='p_center card_get blink' v-suit=402,112 v-on:click=GetNew>
+      <img class=bg src=img/game/btn_get.png>
+    </div>
+    <div class='f_vetically card_bar'>
+      <div class=card_item v-for='(n,i) in card' v-on:click=Sel(i)>
+        <img class=wh100 v-bind:src='"img/game/p" + i + ".png"'>
+        <img class='p_center card_sel' src=img/game/sel.png v-show='swiper_index == i'>
+        <img class='p_center card_name' v-bind:src='"img/game/n" + i + ".png"'>
+        <div class=num_box v-suit=44,44>{{n.num}}</div>
+      </div>
+    </div>
+    <div class='wh100 tl0 build_wrap' v-show=build_img></div>
+    <div is=cp-wrap name=build>
+      <div is=cp-pop alive>
+        <img class='p_center build_btn' src=img/game/btn_build.png touchable v-on:click.prevent=Build>
+      </div>
+    </div>
+    <img class=build_img src=img/game/build.png v-bind:style=build_style v-show=build_img>
+  </div>
+  <div is=cp-wrap name=ralert v-bind:class='"ralert_wrap_" + ralert'>
+    <div is=cp-pop name=get>
+      <img class='p_center get_title' src=img/pop/title_get.png>
+      <img class='wh100 get_card_img' v-bind:src='"img/pop/g" + get_id + ".png"'>
+      <img class='p_center get_close' src=img/pop/btn_take.png touchable v-on:click.prevent=RalertClose>
+    </div>
+    <div is=cp-pop name=get_first>
+      <img class='p_center get_first_title' src=img/pop/title_first.png>
+      <img class='wh100 get_card_img' v-bind:src='"img/pop/g" + get_id + ".png"'>
+      <img class='p_center get_close' src=img/pop/btn_take.png touchable v-on:click.prevent=RalertClose>
+    </div>
+    <div is=cp-pop name=tips full>
+      <div class='swiper-container tips_cards'>
+        <div class=swiper-wrapper>
+          <div class=swiper-slide>
+            <div class='p_center swiper_item'>
+              <div class='wh100 card_bg'>
+                <img class='p_center img_inner card' src=img/game/c4.png freedom>
+                <div class=card_rotate>
+                  <img class='img_inner tips_light' src=img/game/btn_rotate.png freedom>
+                  <img class=tips_0 src=img/pop/t0.png v-suit=283,49>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='p_center card_get' v-suit=402,112>
+        <img class='bg tips_light' src=img/game/btn_get.png>
+        <img class=tips_1 src=img/pop/t1.png v-suit=154,49>
+      </div>
+      <img class='p_center tips_close' src=img/pop/tips_close.png touchable v-on:click.prevent=TipsClose v-suit=326,66>
+    </div>
+  </div>
+  <div is=cp-wrap name=alert>
+    <div is=cp-pop alive>
+      <img class=bg src=img/pop/bg_msg.png>
+      <div class='p_middle alert_msg'>
+        <div class=alert_msg_line>{{alert}}</div>
+      </div>
+      <img class='p_center alert_close' src=img/pop/btn_close.png touchable v-on:click.prevent=AlertClose>
+    </div>
+  </div>
+</div>
+
+<script src=./../../js/lib/vue@2.5.22.min.js?2019020121424></script>
+<script src=./../../js/lib/clever.min.js?2019020121424></script>
+<script src=./../../js/lib/swiper.min.js?2019020121424></script>
+<script src=./../../js/lib/loading.min.js?2019020121424></script>
+<script src=./../../js/lib/ua.min.js?2019020121424></script>
+<script src=./../../js/lib/qrcode.min.js?2019020121424></script>
+<script src=./../../js/index/example.js?2019020121424></script>
+<script src=./js/index/index.js?2019020121424></script>

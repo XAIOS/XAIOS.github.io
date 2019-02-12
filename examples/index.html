@@ -5,15 +5,15 @@
 <script>
   document.getElementsByTagName('html')[0].style.fontSize = innerWidth / 7.2 + 'px'
 </script>
-<link rel=stylesheet href=css/lib/reset.min.css?201901311645>
-<link rel=stylesheet href=css/lib/clever.min.css?201901311645>
-<link rel=stylesheet href=css/lib/vant.min.css?201901311645>
-<link rel=stylesheet href=css/lib/example.min.css?201901311645>
-<link rel=stylesheet href=css/index/index.css?201901311645>
+<link rel=stylesheet href=css/lib/reset.min.css?201902111011>
+<link rel=stylesheet href=css/lib/clever.min.css?201902111011>
+<link rel=stylesheet href=css/lib/vant.min.css?201902111011>
+<link rel=stylesheet href=css/lib/example.min.css?201902111011>
+<link rel=stylesheet href=css/index/index.css?201902111011>
 
 <div id=app v-cloak>
   <div is=cp-page name=index>
-    <van-nav-bar title='项目案例'></van-nav-bar>
+    <van-nav-bar v-bind:title='"项目案例(x" + db.length + ")"'></van-nav-bar>
     <div is=cp-roll class=content>
       <van-cell class=f_vetically is-link v-for='n in db' v-bind:url='"repo/" + n.link + "/index.html"'>
         <div class='f_vetically item'>
@@ -33,11 +33,11 @@
   </div>
 </div>
 
-<script src=js/lib/vue@2.5.22.min.js?201901311645></script>
-<script src=js/lib/clever.min.js?201901311645></script>
-<script src=js/lib/vant.min.js?201901311645></script>
-<script src=js/lib/ua.min.js?201901311645></script>
-<script src=js/lib/qrcode.min.js?201901311645></script>
-<script src=js/index/db.js?201901311645></script>
-<script src=js/index/example.js?201901311645></script>
-<script src=js/index/index.js?201901311645></script>
+<script src=js/lib/vue@2.5.22.min.js?201902111011></script>
+<script src=js/lib/clever.min.js?201902111011></script>
+<script src=js/lib/vant.min.js?201902111011></script>
+<script src=js/lib/ua.min.js?201902111011></script>
+<script src=js/lib/qrcode.min.js?201902111011></script>
+<script src=js/index/db.js?201902111011></script>
+<script src=js/index/example.js?201902111011></script>
+<script src=js/index/index.js?201902111011></script>
