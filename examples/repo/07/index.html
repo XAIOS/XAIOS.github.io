@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<meta charset=utf-8>
+<title>Example·武林群英會</title>
+<meta name=viewport content='width=device-width, initial-scale=1, user-scalable=0'>
+<script>
+  document.getElementsByTagName('html')[0].style.fontSize = innerWidth / 7.2 + 'px'
+</script>
+<link rel=stylesheet href=./../../css/lib/reset.min.css?2019020131509>
+<link rel=stylesheet href=./../../css/lib/clever.min.css?2019020131509>
+<link rel=stylesheet href=./../../css/lib/swiper.min.css?2019020131509>
+<link rel=stylesheet href=./../../css/lib/example.min.css?2019020131509>
+<link rel=stylesheet href=./css/index/index.css?2019020131509>
+
+<div id=app v-cloak>
+  <div is=cp-page name=loading>
+    <div class='p_center loading_box'>
+      <img class=bg src=img/loading.png>
+      <img class=loading_plus src=img/index/macao.png>
+    </div>
+    <div class='p_center loading_progress_box'>
+      <div class=loading_progress v-bind:style='{width: progress}'></div>
+    </div>
+    <div class='p_center loading_error'>{{error}}</div>
+  </div>
+  <div is=cp-page name=index>
+    <img class=index_time src=img/index/time.png v-suit=137,182>
+    <img class='p_center index_belt' src=img/index/belt.png v-suit=393,888>
+    <img class='p_center index_word' src=img/index/word.png v-suit=602,635>
+    <img class=index_man src=img/index/man.png v-suit=361,763>
+    <img class=index_title src=img/index/title.png v-suit=486,675>
+    <img class=index_macao src=img/index/macao.png>
+    <img class=index_address src=img/index/address.png v-suit=120,549>
+    <img class=index_bottom_l src=img/index/bottom_l.png v-suit=190,307>
+    <img class=index_bottom_r src=img/index/bottom_r.png v-suit=172,375>
+    <img class='p_center index_start' src=img/index/start.png v-suit=354,172 touchable v-on:click.prevent=ToGame>
+    <div class=ft>
+      <img class=p_middle src=img/logo_bottom.png v-suit=411,47>
+    </div>
+  </div>
+  <div is=cp-page name=game id=game_area>
+    <div class=game_hd>
+      <img class=bg src=img/game/hd.png>
+      <div class='f_vetically game_info game_score'>
+        <span class=game_info_txt>得分：</span>
+        <div class=game_score_num>{{score}}</div>
+      </div>
+      <div class='f_vetically game_info game_time'>
+        <span class=game_info_txt>倒計時：</span>
+        <div class=game_time_num>{{time}}</div>
+        <span class=game_info_txt>秒</span>
+      </div>
+    </div>
+    <transition name=cp-fade>
+      <img class='p_center game_start' src=img/game/btn_start.png v-suit=200,196 touchable v-on:click.prevent=StartGame v-show=!playing>
+    </transition>
+    <div class=ft>
+      <img class=p_middle src=img/logo_bottom.png v-suit=411,47>
+    </div>
+  </div>
+  <div is=cp-wrap name=ralert>
+    <div is=cp-pop name=how full v-on:click.native=RalertClose>
+      <img class='p_center how_title' src=img/pop/title_how.png>
+      <div class='p_middle game_core' v-suit=630,650>
+        <div class=game_item v-for='(n,i) in 3' v-bind:style='{opacity: i ? 0 : 1}' v-suit=180,190>
+          <img class=game_pile src=img/game/pile.png v-suit=108,188>
+        </div>
+      </div>
+      <img class=how_point_1 src=img/pop/how_1.png>
+      <img class=how_point_2 src=img/pop/how_2.png>
+      <img class='p_center game_start' src=img/game/btn_start.png v-suit=200,196>
+    </div>
+    <div is=cp-pop name=end>
+      <img class=bg src=img/pop/bg_msg.png>
+      <img class='p_center title' src=img/pop/title_end.png>
+      <div class='f_vetically alert_msg_box'>
+        <div class=alert_msg>遊戲結束</div>
+      </div>
+      <img class='p_center alert_close' src=img/pop/btn_close.png touchable v-on:click.prevent=RalertClose>
+    </div>
+  </div>
+  <div is=cp-wrap name=alert>
+    <div is=cp-pop alive>
+      <img class=bg src=img/pop/bg_msg.png>
+      <img class='p_center title' src=img/pop/title_msg.png>
+      <div class='f_middle alert_msg_box'>
+        <div class=alert_msg>{{alert}}</div>
+      </div>
+      <img class='p_center alert_close' src=img/pop/btn_close.png touchable v-on:click.prevent=AlertClose>
+    </div>
+  </div>
+</div>
+
+<script src=./../../js/lib/vue@2.5.22.min.js?2019020131509></script>
+<script src=./../../js/lib/clever.min.js?2019020131509></script>
+<script src=./../../js/lib/swiper.min.js?2019020131509></script>
+<script src=./../../js/lib/loading.min.js?2019020131509></script>
+<script src=./../../js/lib/ua.min.js?2019020131509></script>
+<script src=./../../js/lib/qrcode.min.js?2019020131509></script>
+<script src=./../../js/lib/laya.core.min.js?2019020131509></script>
+<script src=./../../js/lib/laya.webgl.min.js?2019020131509></script>
+<script src=./../../js/index/example.js?2019020131509></script>
+<script src=./js/index.source/index.js?2019020131509></script>

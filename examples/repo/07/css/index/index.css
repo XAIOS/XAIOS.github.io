@@ -1,0 +1,282 @@
+#app {
+  background: linear-gradient(#335655, #487473 30%, #335555 80%);
+}
+
+.page_loading {
+  background: #2d5856;
+}
+
+.loading_box {
+  position: absolute;
+  top: 32%;
+  width: 4.16rem;
+  height: 1.24rem;
+}
+
+.loading_plus {
+  right: -.4rem;
+  bottom: 0;
+  width: .8rem;
+}
+
+.loading_progress_box {
+  position: absolute;
+  top: 44%;
+  width: 6rem;
+  height: .06rem;
+  background: #213b3a;
+  border-radius: .06rem;
+  overflow: hidden;
+}
+
+.loading_progress {
+  width: 0%;
+  height: 100%;
+  border-radius: .06rem;
+  background: #fff;
+  transition: all .6s;
+}
+
+.loading_error {
+  position: absolute;
+  top: 50%;
+  color: #fff;
+  font-size: .24rem;
+}
+
+.page_index img {
+  opacity: 0;
+  transition-property: all;
+  transition-duration: .6s;
+}
+
+.show.page_index img {
+  opacity: 1;
+}
+
+.page_index .ft {
+  opacity: 0;
+  transition: all .6s 1.5s;
+}
+
+.show.page_index .ft {
+  opacity: 1;
+}
+
+.index_time {
+  top: 3%;
+  left: 4%;
+  transition-delay: 1.5s;
+}
+
+.index_belt {
+  transition-delay: .1s;
+  transition-duration: .1s;
+}
+
+.index_word {
+  top: 7%;
+  transition-delay: .3s;
+  transition-duration: .1s;
+}
+
+.index_man {
+  top: 9.5%;
+  left: 26%;
+  transition-delay: .5s;
+  transition-duration: .1s;
+}
+
+.index_title {
+  top: 17.5%;
+  left: 10%;
+  transition-delay: .7s;
+  transition-duration: .1s;
+}
+
+.index_address {
+  top: 3%;
+  right: 2%;
+  transition-delay: 1.5s;
+}
+
+.index_macao {
+  top: 50%;
+  left: 70%;
+  width: 1.03rem;
+  transition-delay: .9s;
+  transition-duration: .1s;
+}
+
+.index_bottom_l {
+  bottom: 4%;
+  transition-delay: 1.1s;
+  transition-duration: .1s;
+  transform: translate(-100%);
+}
+
+.index_bottom_r {
+  right: 0;
+  bottom: 4%;
+  transition-delay: 1.1s;
+  transition-duration: .1s;
+  transform: translate(100%);
+}
+
+.show .index_bottom_l, .show .index_bottom_r {
+  transform: translate(0);
+}
+
+.index_start {
+  bottom: 8%;
+  transition-delay: 1.5s;
+}
+
+.page_game {
+  background: url(../../img/game/block.png);
+  background-size: contain;
+}
+
+.game_hd {
+  position: relative;
+  height: 2.55rem;
+}
+
+.game_info {
+  position: absolute;
+  width: 2.54rem;
+  height: .54rem;
+  padding: 0 .2rem;
+  background: url(../../img/game/score.png);
+  background-size: cover;
+  box-sizing: border-box;
+}
+
+.game_score {
+  top: 73%;
+  left: 13%;
+}
+
+.game_time {
+  top: 73%;
+  right: 13%;
+}
+
+.game_life {
+  top: 81%;
+  right: 8%;
+  width: 2rem;
+  background-image: url(../../img/game/life.png);
+}
+
+.game_info_txt {
+  color: #79b2af;
+  font-size: .22rem;
+  white-space: nowrap;
+}
+
+.game_score_num {
+  flex: 1;
+  color: #ffd279;
+  font-size: .28rem;
+  text-align: center;
+}
+
+.game_time_num {
+  flex: 1;
+  color: #d25252;
+  font-size: .28rem;
+  text-align: center;
+}
+
+.game_start {
+  top: 78%;
+  z-index: 9;
+}
+
+.ft {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: .65rem;
+  background: #fff;
+}
+
+@media (min-height: 700px) {
+  .ft {
+    padding-bottom: .2rem;
+  }
+}
+
+.alert_close {
+  bottom: -1rem;
+  width: .81rem;
+}
+
+.how_title {
+  top: 1rem;
+  width: 3.9rem;
+}
+
+.game_core {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+}
+
+.game_item {
+  position: relative;
+  border-radius: 0 0 50% 50% / 0 0 18% 18%;
+  overflow: hidden;
+}
+
+.game_pile {
+  bottom: -10%;
+  left: 65.6%;
+  transform: translate(-50%);
+}
+
+.how_point_1 {
+  top: 70%;
+  left: 20%;
+  width: 4.25rem;
+}
+
+.how_point_2 {
+  top: 42%;
+  left: 17%;
+  width: 4.92rem;
+}
+
+.game_pile {
+  filter: drop-shadow(0 0 .1rem rgba(255, 255, 255, .4));
+}
+
+.ralert_how .game_start {
+  filter: drop-shadow(0 0 .14rem rgba(255, 255, 255, .4));
+}
+
+.ralert_end, .pop_alert {
+  width: 6.35rem;
+  height: 3.92rem;
+}
+
+.title {
+  top: .9rem;
+  width: 2.99rem;
+}
+
+.alert_msg_box {
+  flex-direction: column;
+  justify-content: center;
+  width: 4.4rem;
+  height: 1.2rem;
+  margin: 1.8rem auto;
+}
+
+.alert_msg {
+  color: #444;
+  font-size: .26rem;
+  text-align: justify;
+  word-break: break-all;
+}
