@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<meta charset=utf-8>
+<title>Example·测测你的人生里程</title>
+<meta name=viewport content='width=device-width, initial-scale=1, user-scalable=0'>
+<script>
+  document.getElementsByTagName('html')[0].style.fontSize = innerWidth / 7.2 + 'px'
+</script>
+<link rel=stylesheet href=./../../css/lib/reset.min.css?201902131545>
+<link rel=stylesheet href=./../../css/lib/clever.min.css?201902131545>
+<link rel=stylesheet href=./../../css/lib/example.min.css?201902131545>
+<link rel=stylesheet href=./css/index/index.css?201902131545>
+
+<div id=app v-cloak v-on:click.once=Bgm(1)>
+  <img class=bg src=img/bg.png>
+  <div is=cp-page name=loading>
+    <canvas class=wh100 id=loading></canvas>
+    <span class='p_center loading_error'>{{error}}</span>
+  </div>
+  <div is=cp-page name=index>
+    <img class=music v-bind:src='"img/music_"+ bgm +".png"' v-suit=54,54 touchable v-on:click.prevent.stop=Bgm>
+    <img class='p_center hill_0' src=img/index_hill_0.png v-suit=1771,849>
+    <img class='p_center hill_1' src=img/index_hill_1.png v-suit=998,777>
+    <img class=sun src=img/index_sun.png v-suit=149,119>
+    <img class=bird src=img/index_bird.png v-suit=188,120>
+    <img class=plane src=img/index_plane.png v-suit=77,36>
+    <div class=word>
+      <div class=word_line>电影《卡萨布兰卡》里说</div>
+      <div class=word_line>如今你的气质里,藏着你走过的路,</div>
+      <div class=word_line>读过的书和爱过的人。</div>
+    </div>
+    <div class=word_test>
+      <div class=word_test_line>测试下你的人生里程，</div>
+      <div class=word_test_line>看看你能抵达最远的地方是哪？</div>
+      <input type=text id=name class=word_input placeholder='请输入你的名字' maxlength=6 v-model.trim=name v-bind:disabled=!cando>
+    </div>
+    <img class='p_center start' src=img/btn_start.png v-suit=196,67 touchable v-on:click.prevent=Start>
+  </div>
+  <div is=cp-page name=ask>
+    <img class=music v-bind:src='"img/music_"+ bgm +".png"' v-suit=54,54 touchable v-on:click.prevent.stop=Bgm>
+    <div class=ask_content>
+      <div class=ask_title>
+        <div class=ask_title_line v-for='n in ask.title'>{{n}}</div>
+      </div>
+      <ol class=ask_list>
+        <li class='f_vetically ask_item' v-for='(n,i) in ask.content' v-on:click=Sel(i)>{{n}}</li>
+      </ol>
+      <img class=ask1_no v-bind:src='"img/5-" + ask_no + ".png"' v-if='ask_no > -1'>
+    </div>
+    <div class=ask_ani_box v-bind:class='{show: ask_no == 0}'>
+      <img class=ask_img_base src=img/ani/ask_0.png freedom>
+      <img class=ask_cloud_0 src=img/ani/cloud_0.png v-suit=287,276>
+      <img class=ask_cloud_1 src=img/ani/cloud_1.png v-suit=307,343>
+    </div>
+    <div class=ask_ani_box v-bind:class='{show: ask_no == 1}'>
+      <img class='ask_img_base ask_img_1_1' src=img/ani/ask_1_1.png freedom>
+      <img class=ask_img_1_0 src=img/ani/ask_1_0.png v-suit=48,97>
+    </div>
+    <div class=ask_ani_box v-bind:class='{show: ask_no == 2}'>
+      <img class=ask_img_base src=img/ani/ask_2_1.png freedom>
+      <img class=ask_img_2_0 src=img/ani/ask_2_0.png v-suit=210,56>
+    </div>
+    <div class=ask_ani_box v-bind:class='{show: ask_no == 3}'>
+      <img class=ask_img_base src=img/ani/ask_3_1.png freedom>
+      <img class=ask_img_3_0 src=img/ani/ask_3_0.png v-suit=159,85>
+    </div>
+    <div class='ask_ani_box ask_ani_4' v-bind:class='{show: ask_no == 4}'>
+      <img class=ask_img_base src=img/ani/ask_4_1.png freedom>
+      <img class=ask_img_4_0 src=img/ani/ask_4_0.png v-suit=119,147>
+    </div>
+  </div>
+  <div is=cp-page name=card>
+    <img class=music v-bind:src='"img/music_"+ bgm +".png"' v-suit=54,54 touchable v-on:click.prevent.stop=Bgm>
+    <div class=card_area>
+      <img id=card_img v-bind:src=poster v-suit=1127,492 freedom touchable v-on:click.prevent>
+    </div>
+  </div>
+</div>
+
+<script src=./../../js/lib/vue@2.5.22.min.js?201902131545></script>
+<script src=./../../js/lib/clever.min.js?201902131545></script>
+<script src=./../../js/lib/loading.min.js?201902131545></script>
+<script src=./../../js/lib/ua.min.js?201902131545></script>
+<script src=./../../js/lib/qrcode.min.js?201902131545></script>
+<script src=./../../js/index/example.js?201902131545></script>
+<script src=./js/index/index.js?201902131545></script>
