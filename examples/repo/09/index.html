@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<meta charset=utf-8>
+<title>Example·威廉祝你新春快樂</title>
+<meta name=viewport content='width=device-width, initial-scale=1, user-scalable=0'>
+<script>
+  document.getElementsByTagName('html')[0].style.fontSize = innerWidth / 7.2 + 'px'
+</script>
+<link rel=stylesheet href=./../../css/lib/reset.min.css?201902131616>
+<link rel=stylesheet href=./../../css/lib/clever.min.css?201902131616>
+<link rel=stylesheet href=./../../css/lib/example.min.css?201902131616>
+<link rel=stylesheet href=./../../css/lib/animate.min.css?201902131616>
+<link rel=stylesheet href=./css/index/index.css?201902131616>
+
+<div id=app v-cloak v-on:click.once=Bgm(1)>
+  <div is=cp-page name=loading>
+    <div class='f_vetically p_middle loading_box'>
+      <img class=loading_logo src=img/logo.png freedom>
+      <div class=loading_progress>
+        <div class=loading_progress_val v-bind:style='{width: progress}'></div>
+      </div>
+      <div class=loading_tips>L O A D I N G...</div>
+      <div class='p_center loading_error'>{{error}}</div>
+    </div>
+  </div>
+  <div is=cp-page name=card v-on:touchstart.native=TouchStart v-on:touchmove.native=TouchMove v-on:touchend.native=TouchEnd>
+    <card-item v-bind:card=card v-bind:mode=touch_mode v-bind:near=near no=0>
+      <div class='bg card_bg'>
+        <img class=card_bg_img src=img/0/bg.png freedom>
+        <div class=card_bg_color></div>
+      </div>
+      <img class='animated fadeIn logo' src=img/logo.png v-suit=86,119>
+      <img class=ci_0_0 src=img/0/0.png v-suit=136,238>
+      <div class='animated fadeInRight ci_0_1' v-suit=315,367>
+        <img class=wh100 src=img/0/1_0.png>
+        <img class=ci_0_1_1 src=img/0/1_1.png v-suit=87,214>
+      </div>
+      <div class='animated zoomIn ci_0_2' v-suit=356,321>
+        <img class=wh100 src=img/0/2_0.png>
+        <img class=ci_0_2_1 src=img/0/2_1.png v-suit=227,214>
+        <img class=ci_0_2_2 src=img/0/2_2.png v-suit=316,271>
+        <div class=ci_0_2_3 v-suit=212,179>
+          <div class=ci_word_content>
+            <img src=img/0/2_3.png?2 v-suit=212,179>
+          </div>
+        </div>
+        <div class=ci_0_2_4 v-suit=142,108>
+          <div class=ci_word_content>
+            <img src=img/0/2_4.png v-suit=142,108>
+          </div>
+        </div>
+      </div>
+      <div class='animated fadeInRight ci_0_f' v-suit=200,140>
+        <img class=wh100 src=img/0/5.png>
+        <img class='animated zoomIn ci_0_f_img' v-bind:class='"ci_0_f_" + n' src=img/flower.png v-for='n in 7'>
+      </div>
+      <div class='animated zoomIn ci_0_3' v-suit=348,388>
+        <img class=wh100 src=img/0/3_0.png>
+        <img class=ci_0_3_1 src=img/0/3_1.png v-suit=301,292>
+      </div>
+      <div class='animated fadeInLeft ci_0_4' v-suit=199,329>
+        <img class=wh100 src=img/0/4_0.png>
+        <img class=ci_0_4_1 src=img/0/4_1.png v-suit=114,111>
+      </div>
+      <img class='animated fadeIn tips' src=img/tips.png v-suit=34,190>
+    </card-item>
+    <card-item v-bind:card=card v-bind:mode=touch_mode v-bind:near=near no=1>
+      <div class='bg card_bg'>
+        <img class=card_bg_img src=img/1/bg.png freedom>
+        <div class=card_bg_color></div>
+      </div>
+      <img class='animated fadeIn logo' src=img/logo.png v-suit=86,119>
+      <div class=ci_1_0>
+        <img class=wh100 src=img/1/0_0.png>
+        <img class=ci_1_0_1 src=img/1/0_1.png v-suit=77,121>
+        <img class=ci_1_0_2 src=img/1/0_1.png v-suit=77,121>
+      </div>
+      <div class='animated fadeInRight ci_1_f' v-suit=507,195>
+        <img class=wh100 src=img/1/3.png>
+        <img class='animated zoomIn ci_1_f_img' v-bind:class='"ci_1_f_" + n' src=img/flower.png v-for='n in 8'>
+      </div>
+      <div class='animated fadeInLeft ci_1_1' v-suit=429,382>
+        <img class=wh100 src=img/1/1_0.png>
+        <img class=ci_1_1_1 src=img/1/1_1.png v-suit=72,66>
+      </div>
+      <div class='animated fadeInRight ci_1_2' v-suit=438,493>
+        <img class=wh100 src=img/1/2_0.png>
+        <img class=ci_1_2_1 src=img/1/2_1.png v-suit=129,192>
+      </div>
+      <div class=ci_1_4 v-suit=150,444>
+        <div class=ci_word_content>
+          <img src=img/1/4.png v-suit=150,444>
+        </div>
+      </div>
+      <img class='animated fadeIn ci_1_5' src=img/1/5.png v-suit=333,168>
+      <img class='animated fadeIn tips' src=img/tips.png v-suit=34,190>
+    </card-item>
+    <card-item v-bind:card=card v-bind:mode=touch_mode v-bind:near=near no=2>
+      <div class='bg card_bg'>
+        <img class=card_bg_img src=img/2/bg.png freedom>
+        <div class=card_bg_color></div>
+      </div>
+      <img class='animated fadeIn logo' src=img/logo.png v-suit=86,119>
+      <div class='animated fadeIn ci_2_f' v-suit=504,218>
+        <img class=wh100 src=img/2/4.png>
+        <img class='animated zoomIn ci_2_f_img' v-bind:class='"ci_1_f_" + n' src=img/flower.png v-for='n in 10'>
+      </div>
+      <div class='animated zoomIn ci_2_0' v-suit=270,267>
+        <img class=wh100 src=img/2/0_0.png>
+        <img class=ci_2_0_1 src=img/2/0_1.png v-suit=215,205>
+        <img class=ci_2_0_2 src=img/2/0_2.png v-suit=203,178>
+      </div>
+      <div class='animated zoomIn ci_2_1' v-suit=286,244>
+        <img class=wh100 src=img/2/1_0.png>
+        <img class=ci_2_1_1 src=img/2/1_1.png v-suit=207,222>
+        <img class=ci_2_1_2 src=img/2/1_2.png v-suit=318,200>
+      </div>
+      <div class='animated zoomIn ci_2_2' v-suit=358,293>
+        <img class=wh100 src=img/2/2_0.png>
+        <img class=ci_2_2_1 src=img/2/2_1.png v-suit=254,208>
+        <img class=ci_2_2_2 src=img/1/2_1.png v-suit=129,192>
+      </div>
+      <div class='animated zoomIn ci_2_3' v-suit=358,412>
+        <img class=wh100 src=img/2/3_0.png>
+        <img class=ci_2_3_1 src=img/2/3_1.png v-suit=97,239>
+      </div>
+      <img class='animated fadeIn card_2_tips' src=img/tips.png v-suit=34,190>
+    </card-item>
+    <img class=btn_bgm v-bind:src='"img/music_" + bgm + ".png"' v-suit=82,82 touchable v-on:click.prevent=Bgm v-on:touchend.stop v-on:touchmove.stop v-on:touchstart.stop>
+  </div>
+</div>
+
+<script src=./../../js/lib/vue@2.5.22.min.js?201902131616></script>
+<script src=./../../js/lib/clever.min.js?201902131616></script>
+<script src=./../../js/lib/ua.min.js?201902131616></script>
+<script src=./../../js/lib/qrcode.min.js?201902131616></script>
+<script src=./../../js/index/example.js?201902131616></script>
+<script src=./js/index/index.js?201902131616></script>
