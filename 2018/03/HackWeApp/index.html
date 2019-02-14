@@ -1,68 +1,41 @@
 <!DOCTYPE HTML>
-<meta charset=utf-8>
-<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-<meta name=viewport content='width=device-width, initial-scale=1, user-scalable=no'>
-<title>Hack WeApp</title>
-<meta name=author content='AIOS'>
-<!--[if IE]>
-  <meta http-equiv=refresh content='0, http://browsehappy.com'>
-<![endif]-->
-<link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css>
-<link rel=stylesheet href=//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css>
-<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css>
-<link rel=stylesheet href=/css/style.css>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content='width=device-width, initial-scale=1, maximum-scale=1'>
+  <title>艾芷枫 の Blog</title>
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
 
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-HackWeApp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hack WeApp
+    </h1>
+  
 
-<body oncontextmenu='return false'>
-  <div class=aios_content>
-    <div class=bg-gradient></div>
-    <div class=bg-pattern></div>
-    <div class=menu-bg>
-  <div class=menu-container>
-    <ul>
-      
-        <li class=menu-item>
-          <a href='/'>Home</a>
-        </li>
-      
-        <li class=menu-item>
-          <a href='/archives'>Docs</a>
-        </li>
-      
-    </ul>
-  </div>
-</div>
-
-<nav>
-  <a></a>
-</nav>
-
-    <div class=container style='padding-bottom:40px'>
-      <div class=row>
-  <div class=col-sm-12>
-    <header>
-  <div class=logo>
-    <h1 id=main-title class=title><a href=/>艾芷枫 の Blog</a></h1>
-  </div>
-</header>
-
-
-    <section class=main>
-      <div class=post>
-  <div class=post-header>
-    <h1 class=title>Hack WeApp</h1>
-    <div class=post-info>
-      <span class=date>2018-03-09</span>
-
-      
-    </div>
-  </div>
-
-  <div class=content>
-    <!-- Gallery -->
+      </header>
     
 
-    <p><em>About：封装微信小程序中的 setData 方法，像 Vue 一样，通过直接修改 this 的属性，实现视图更新</em></p>
+    
+      <div class="article-meta">
+        <div class="article-date">
+  <time datetime="2018-03-09T09:18:46.000Z" itemprop="datePublished">2018-03-09</time>
+</div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em>About：封装微信小程序中的 setData 方法，像 Vue 一样，通过直接修改 this 的属性，实现视图更新</em></p>
 <a id="more"></a>
 <h1>前言</h1><p>实际上这个方法在几个月前就已经被我给 hack 出来了，但因为某（ge）些（ren）原（tai）因（lan），一直拖到今天才写下这篇博文，用以记载我开发小程序几个月来，最大的收获。</p>
 <p>微信小程序是什么，在 2018 年的今天已经不需要再多叙述了，它通过对底层的高度封装以及简单的 API 暴露，让开发者可以简答地进行复杂应用的开发，虽然看起来很厉害，但将复杂的事情变简单，是很不容易的，所以自小程序诞生以来，官方的 bug 就一直没有停止过修复，一些架构开发初期的问题也逐渐暴露出来（也可能是因为情况需要不得不采用的方案，但在使用者看来的确是架构设计的问题，这就见仁见智了），其中最为明显的，就是视图更新的控制了。</p>
@@ -89,73 +62,71 @@
 </ul>
 <p>副作用虽有，但影响其实是不大的，虽然会对性能有影响，但开发的过程会因为十余行代码的 hack，而变得很愉快。</p>
 
-    <span class='date end-date'>2018-03-09</span>
-  </div>
-
-  
-
-  
-</div>
-
-    </section>
-  </div>
-</div>
-
+      
     </div>
+    <footer class="article-footer">
+      
+    </footer>
   </div>
-  <footer class=footer-content>
-  <div class=container>
-    <div class=row>
-      <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about'>
-        <h2>About</h2>
-        <section>
-          Theme developed by <a href=//github.com/klugjo target=_blank>Jonathan Klughertz</a><br>Contents created by <a href=//github.com/xaios target=_blank>AIOS</a>
-        </section>
-      </div>
-      
-  <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about'>
-    <h2>New Contents</h2>
-    <ul>
-      
-        <li>
-          <a class=footer-post href='/2018/12/WeAppRichText/'>Rich Text in WeApp</a>
-        </li>
-      
-        <li>
-          <a class=footer-post href='/2018/05/SuitElement/'>Suit Element</a>
-        </li>
-      
-        <li>
-          <a class=footer-post href='/2018/03/HackWeApp/'>Hack WeApp</a>
-        </li>
-      
-        <li>
-          <a class=footer-post href='/2018/03/JustBabel/'>Just Babel</a>
-        </li>
-      
+</article>
+
+</section>
+  <footer class="footer">
+  
+  <div class="outer">
+    <ul class="list-inline">
+      <li>&copy; 2019 艾芷枫 の Blog</li>
+      <li>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme by  <a href="https://zhwangart.github.io" target=_blank>zhwangart</a></li>
+      <li>Content by <a href="https://github.com/xaios" target=_blank>AIOS</a></li>
     </ul>
-  </div>
-
-
-      
-
-    </div>
-    <div class=row>
-      <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-        <ul class='list-inline footer-social-icons'></ul>
-      </div>
-    </div>
-    <div class=row>
-      <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-        <div class=footer-copyright>@Untitled. All right reserved | Design & Hexo <a href=//www.codeblocq.com target=_blank>Jonathan Klughertz</a></div>
-      </div>
-    </div>
   </div>
 </footer>
 
-</body>
-<script src=//code.jquery.com/jquery-2.1.4.min.js></script>
-<script src=//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js></script>
-<script src=//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js></script>
-<script src=/js/main.js></script>
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
 
+<nav class="navbar">
+  
+    <div class="logo">
+      <img src="/img/hexo.svg" alt="艾芷枫 の Blog">
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/examples">Examples</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Suche">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="输入关键字搜索">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+
+</div>
+
+</aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/search.js"></script>
+<script src="/js/ocean.js"></script>
+
+</body>

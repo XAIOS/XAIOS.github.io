@@ -1,68 +1,41 @@
 <!DOCTYPE HTML>
-<meta charset=utf-8>
-<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-<meta name=viewport content='width=device-width, initial-scale=1, user-scalable=no'>
-<title>Create blog by Hexo</title>
-<meta name=author content='AIOS'>
-<!--[if IE]>
-  <meta http-equiv=refresh content='0, http://browsehappy.com'>
-<![endif]-->
-<link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css>
-<link rel=stylesheet href=//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css>
-<link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css>
-<link rel=stylesheet href=/css/style.css>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content='width=device-width, initial-scale=1, maximum-scale=1'>
+  <title>艾芷枫 の Blog</title>
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
 
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-CreateBlogByHexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Create blog by Hexo
+    </h1>
+  
 
-<body oncontextmenu='return false'>
-  <div class=aios_content>
-    <div class=bg-gradient></div>
-    <div class=bg-pattern></div>
-    <div class=menu-bg>
-  <div class=menu-container>
-    <ul>
-      
-        <li class=menu-item>
-          <a href='/'>Home</a>
-        </li>
-      
-        <li class=menu-item>
-          <a href='/archives'>Docs</a>
-        </li>
-      
-    </ul>
-  </div>
-</div>
-
-<nav>
-  <a></a>
-</nav>
-
-    <div class=container style='padding-bottom:40px'>
-      <div class=row>
-  <div class=col-sm-12>
-    <header>
-  <div class=logo>
-    <h1 id=main-title class=title><a href=/>艾芷枫 の Blog</a></h1>
-  </div>
-</header>
-
-
-    <section class=main>
-      <div class=post>
-  <div class=post-header>
-    <h1 class=title>Create blog by Hexo</h1>
-    <div class=post-info>
-      <span class=date>2017-12-12</span>
-
-      
-    </div>
-  </div>
-
-  <div class=content>
-    <!-- Gallery -->
+      </header>
     
 
-    <p><em>About：本文将由 0 开始搭建一个 Github 上的部落格，而你只需要一点简单易懂的 markdown 知识，如果需要搭建得更完美，还需要一点编程能力</em></p>
+    
+      <div class="article-meta">
+        <div class="article-date">
+  <time datetime="2017-12-12T10:04:26.000Z" itemprop="datePublished">2017-12-12</time>
+</div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em>About：本文将由 0 开始搭建一个 Github 上的部落格，而你只需要一点简单易懂的 markdown 知识，如果需要搭建得更完美，还需要一点编程能力</em></p>
 <a id="more"></a>
 <h1>一、事前准备</h1><h2>1. 安装 Git</h2><p>访问 Git 的<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">下载网站</a>，根据系统版本下载对应的 Git 安装包，并进行安装，因为一些众所周知的原因，下载速度可能会较慢，可自备梯子。安装过程中一般情况下无需进行额外的配置，可以选择一直下一步，最后完成安装操作，关闭安装程序。</p>
 <h2>2. 安装 Node.js</h2><p>访问 Node.js 的中文网 <a href="http://nodejs.cn/download" target="_blank" rel="noopener">nodejs.cn</a>，根据系统版本下载对应的 Node.js 安装包，并进行安装，安装过程中一般情况下无需进行额外的配置，可以选择一直下一步，最后完成安装操作，关闭安装程序。</p>
@@ -80,10 +53,10 @@
 <p><code>themes</code> 目录下，包含的是我们部落格的主题文件夹，主题可以通过 Hexo 的<a href="https://hexo.io/themes" target="_blank" rel="noopener">主题档案页</a>下载，也可以自行去创作属于自己的主题，或基于下载的主题进行二次创作。</p>
 <p><em>注意：即使是从 <a href="https://github.com" target="_blank" rel="noopener">Github</a> 上下载的主题，也请留意其开源许可证的内容，尊重原创。</em></p>
 <p><code>_config.yml</code> 文件是整个部落格的配置文件，如作者和标题等信息都可在这里面配置，使用的是 YAML 语言，只需要你一点小小的英语基础，或者可以选择谷歌翻译。</p>
-<h2>2. 安装主题</h2><p>Hexo 默认提供的主题可能对你来说不太适合，你可以选择前往<a href="https://hexo.io/themes" target="_blank" rel="noopener">主题档案页</a>下载你所喜欢的主题，本部落格所使用的主题是由 <a href="https://github.com/klugjo" target="_blank" rel="noopener">Jonathan Klughertz</a> 设计并开发的 <a href="https://github.com/klugjo/hexo-theme-alpha-dust" target="_blank" rel="noopener">AlphaDust</a> 主题，并在其基础上进行一些移动端的适配优化和代码结构梳理，本文的末尾将会提供经修改后的主题文件。</p>
+<h2>2. 安装主题</h2><p>Hexo 默认提供的主题可能对你来说不太适合，你可以选择前往<a href="https://hexo.io/themes" target="_blank" rel="noopener">主题档案页</a>下载你所喜欢的主题，本部落格所使用的主题是由 <a href="https://github.com/zhwangart" target="_blank" rel="noopener">zhwangart</a> 设计并开发的 <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a> 主题，并在其基础上进行一些移动端的适配优化和代码结构梳理，本文的末尾将会提供经修改后的主题文件。</p>
 <p>前往 Github 下载后，会得到一个压缩包，将其中的文件夹解压到 <code>themes</code> 目录下后，就算是主题安装完毕了，个人建议对该文件夹进行一次重命名以便清晰化目录结构。</p>
 <p>安装完成的主题并不能立即生效，我们需要在 Hexo 的主配置文件 <code>_config.yml</code> 上进行简单的配置，才可以完成整个操作，打开文件，在其中找到 <code>theme:</code> 字段，修改其值为你的主题文件夹名字，如：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">'AlphaDust'</span>   <span class="string">//你的主题文件夹名</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">'Ocean'</span>   <span class="string">//你的主题文件夹名</span></span><br></pre></td></tr></table></figure>
 <p>至此，部落格的主题便完成了修改，而如果你希望对其进行二次开发或调整，则需要修改主题文件夹内的文件，主要包含以 ejs 语法编写的 HTML 模板，以及 stylus 语法编写的 CSS 文件，如果有一点 HTML 和 CSS 基础，这不会是一件很难的事，如果想进行更深的修改，就需要你对 Node.js 有一定的了解了，更详细的内容可以前往官网 <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">hexo.io</a>了解。</p>
 <h1>三、生成文章并发到云端</h1><h2>1. 文章内容调试以及部落格生成</h2><p>进行到这一步，部落格已经完成了一半了，你可以选择先看看 markdown 语法，试着写一篇文章，或者使用默认的 hello-world.md 文件，作为接下来的操作示例。</p>
 <p>Hexo 在本地提供了一个服务器环境的支持，你只需要到你的部落格文件夹下，执行以下命令，即可开启服务器，进行文章上传云端前的调节：</p>
@@ -108,75 +81,74 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d    // hexo deploy 的缩写</span><br></pre></td></tr></table></figure>
 <p><em>备注：第一次配置 git 进行同步时，需要输入 github 的用户名和密码</em></p>
 <h1>四、写在最后</h1><p>花了几天时间熟悉 Hexo 的架构，修改主题文件为我喜欢的样子（还顺带解决了一个 Hexo 的 BUG），将搭建过程作为我的第一篇文章写下来，可能写的不太好，但会是一个不错的开端（至少我是这样子觉得的）。想着在未来的一段时间内，将我从事前端开发的这几个月间遇到的问题和解决方案，一个个写成文章并发到这里，感觉也是一个不错的成就呢 ~ ~</p>
-<p>当前被我修改过的主题的 Git 地址：<a href="https://github.com/XAIOS/Hexo-AlphaDust-Mine" target="_blank" rel="noopener">AlphaDust</a></p>
+<p>之前被我修改过的主题的 Git 地址：<a href="https://github.com/XAIOS/Hexo-AlphaDust-Mine" target="_blank" rel="noopener">AlphaDust</a></p>
+<p>当前被我修改过的主题的 Git 地址：<a href="https://github.com/XAIOS/Hexo-Ocean-Mine" target="_blank" rel="noopener">Ocean</a></p>
 
-    <span class='date end-date'>2017-12-12</span>
-  </div>
-
-  
-
-  
-</div>
-
-    </section>
-  </div>
-</div>
-
+      
     </div>
+    <footer class="article-footer">
+      
+    </footer>
   </div>
-  <footer class=footer-content>
-  <div class=container>
-    <div class=row>
-      <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about'>
-        <h2>About</h2>
-        <section>
-          Theme developed by <a href=//github.com/klugjo target=_blank>Jonathan Klughertz</a><br>Contents created by <a href=//github.com/xaios target=_blank>AIOS</a>
-        </section>
-      </div>
-      
-  <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about'>
-    <h2>New Contents</h2>
-    <ul>
-      
-        <li>
-          <a class=footer-post href='/2018/12/WeAppRichText/'>Rich Text in WeApp</a>
-        </li>
-      
-        <li>
-          <a class=footer-post href='/2018/05/SuitElement/'>Suit Element</a>
-        </li>
-      
-        <li>
-          <a class=footer-post href='/2018/03/HackWeApp/'>Hack WeApp</a>
-        </li>
-      
-        <li>
-          <a class=footer-post href='/2018/03/JustBabel/'>Just Babel</a>
-        </li>
-      
+</article>
+
+</section>
+  <footer class="footer">
+  
+  <div class="outer">
+    <ul class="list-inline">
+      <li>&copy; 2019 艾芷枫 の Blog</li>
+      <li>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme by  <a href="https://zhwangart.github.io" target=_blank>zhwangart</a></li>
+      <li>Content by <a href="https://github.com/xaios" target=_blank>AIOS</a></li>
     </ul>
-  </div>
-
-
-      
-
-    </div>
-    <div class=row>
-      <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-        <ul class='list-inline footer-social-icons'></ul>
-      </div>
-    </div>
-    <div class=row>
-      <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-        <div class=footer-copyright>@Untitled. All right reserved | Design & Hexo <a href=//www.codeblocq.com target=_blank>Jonathan Klughertz</a></div>
-      </div>
-    </div>
   </div>
 </footer>
 
-</body>
-<script src=//code.jquery.com/jquery-2.1.4.min.js></script>
-<script src=//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js></script>
-<script src=//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js></script>
-<script src=/js/main.js></script>
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
 
+<nav class="navbar">
+  
+    <div class="logo">
+      <img src="/img/hexo.svg" alt="艾芷枫 の Blog">
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/examples">Examples</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Suche">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="输入关键字搜索">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+
+</div>
+
+</aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/search.js"></script>
+<script src="/js/ocean.js"></script>
+
+</body>
