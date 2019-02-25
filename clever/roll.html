@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Clever Page Document</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/clever/assets/css/0.styles.c4426992.css" as="style"><link rel="preload" href="/clever/assets/js/app.a8223df1.js" as="script"><link rel="preload" href="/clever/assets/js/13.5be111e9.js" as="script"><link rel="prefetch" href="/clever/assets/js/10.c0b41853.js"><link rel="prefetch" href="/clever/assets/js/11.272cf98d.js"><link rel="prefetch" href="/clever/assets/js/12.6baee495.js"><link rel="prefetch" href="/clever/assets/js/14.06c8888c.js"><link rel="prefetch" href="/clever/assets/js/15.1d17601b.js"><link rel="prefetch" href="/clever/assets/js/16.506b5623.js"><link rel="prefetch" href="/clever/assets/js/17.f81308b2.js"><link rel="prefetch" href="/clever/assets/js/2.724f0695.js"><link rel="prefetch" href="/clever/assets/js/3.f1652913.js"><link rel="prefetch" href="/clever/assets/js/4.7dcf6bc2.js"><link rel="prefetch" href="/clever/assets/js/5.908d4707.js"><link rel="prefetch" href="/clever/assets/js/6.de1841ce.js"><link rel="prefetch" href="/clever/assets/js/7.1dfa4009.js"><link rel="prefetch" href="/clever/assets/js/8.2b17bbb9.js"><link rel="prefetch" href="/clever/assets/js/9.e0e2c74e.js">
+    <link rel="stylesheet" href="/clever/assets/css/0.styles.c4426992.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/clever/" class="home-link router-link-active"><!----> <span class="site-name">Clever Page Document</span></a> <div class="links" style="max-width:nullpx;"><!----> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://xaios.github.io" target="_blank" rel="noopener noreferrer" class="nav-link">
+  AIOS's Blog
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://xaios.github.io" target="_blank" rel="noopener noreferrer" class="nav-link">
+  AIOS's Blog
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/clever/" class="sidebar-link">开始</a></li><li><a href="/clever/preinstall.html" class="sidebar-link">对全局环境的影响</a></li><li><a href="/clever/preinstall_app.html" class="sidebar-link">对实例内部环境的影响</a></li><li><a href="/clever/base.html" class="sidebar-link">基础页面架构</a></li><li><a href="/clever/page.html" class="sidebar-link">页面对象</a></li><li><a href="/clever/roll.html" class="active sidebar-link">滚动区域对象</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/clever/roll.html#对象的创建及使用" class="sidebar-link">对象的创建及使用</a></li></ul></li><li><a href="/clever/pop.html" class="sidebar-link">弹窗层及弹窗对象</a></li><li><a href="/clever/input.html" class="sidebar-link">输入框对象</a></li><li><a href="/clever/select.html" class="sidebar-link">选择器对象</a></li><li><a href="/clever/preload.html" class="sidebar-link">资源预加载</a></li><li><a href="/clever/wait.html" class="sidebar-link">加载提示</a></li><li><a href="/clever/bgm.html" class="sidebar-link">背景音乐</a></li><li><a href="/clever/suit.html" class="sidebar-link">元素自适应</a></li><li><a href="/clever/orientation.html" class="sidebar-link">横屏模式处理</a></li></ul> </div> <div class="page"> <div class="content"><h1 id="滚动区域对象"><a href="#滚动区域对象" aria-hidden="true" class="header-anchor">#</a> 滚动区域对象</h1> <p>内容滚动在页面开发中是非常常见的功能点，实现起来也不难，给定一个宽高的区域，设置一下 <code>overflow: auto</code>，在内容超出的时候就可以触发滚动了，但实际上这样子实现的滚动区域存在不少的问题：</p> <ul><li><p>在微信浏览器中允许下拉查看页面提供者，虽然这不是大问题，也可以提供一点防伪保障，但终归是会影响用户体验的，通常开发中会被要求将其禁用。</p></li> <li><p>iOS 奇葩的视图实现机制，可能导致滚动过程中出现模块漂移的情况，某些情况下甚至会闪动。</p></li></ul> <p>为了更加高效且稳定地开发，cp 在数个项目的经验中总结出了一套关于滚动区域的处理规则，通过嵌套多一层 div，监听触摸的相关事件等操作，提供了一个 api 简单且实用的组件，也就是 roll 对象。</p> <div class="warning custom-block"><p class="custom-block-title">WARNING</p> <p>虽然直接设置 <code>overflow</code> 在体验上会比较不好，但在实际开发中难免遇到奇奇怪怪的情况，如某些机型不支持之类的。这个时候最好的解决方法就是放弃使用 roll 对象，当然如果时间允许，慢慢调整也是可以的。</p></div> <h2 id="对象的创建及使用"><a href="#对象的创建及使用" aria-hidden="true" class="header-anchor">#</a> 对象的创建及使用</h2> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span>app</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- html 属性为 v-html 的代理，内容为富文本时推荐使用这个方式创建 roll 对象 --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cp-roll</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>rule</span> <span class="token attr-name">:html</span><span class="token attr-value"><span class="token punctuation">=</span>rule</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cp-roll</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- 不含 html 属性时可直接在对象内填充内容，内容高度超出 roll 对象高度时将允许滚动 --&gt;</span>
+  <span class="token comment">&lt;!-- roll 对象默认情况下高度不存在，每次都需要手动对其设置高度 --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cp-roll</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>list</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- &lt;div class=item v-for='n in list'&gt;&lt;/div&gt; --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cp-roll</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>查看渲染后的 DOM 结构可知 roll 对象是内含了一层 div 的，该 div 被设置了相对定位，也就是内部的元素设置绝对定位后，将相对于 roll 对象的内容区域定位。</p></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/clever/page.html" class="prev">
+          页面对象
+        </a></span> <span class="next"><a href="/clever/pop.html">
+          弹窗层及弹窗对象
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/clever/assets/js/app.a8223df1.js" defer></script><script src="/clever/assets/js/13.5be111e9.js" defer></script>
+  </body>
+</html>

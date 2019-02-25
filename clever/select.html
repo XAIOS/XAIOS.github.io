@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Clever Page Document</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/clever/assets/css/0.styles.c4426992.css" as="style"><link rel="preload" href="/clever/assets/js/app.a8223df1.js" as="script"><link rel="preload" href="/clever/assets/js/14.06c8888c.js" as="script"><link rel="prefetch" href="/clever/assets/js/10.c0b41853.js"><link rel="prefetch" href="/clever/assets/js/11.272cf98d.js"><link rel="prefetch" href="/clever/assets/js/12.6baee495.js"><link rel="prefetch" href="/clever/assets/js/13.5be111e9.js"><link rel="prefetch" href="/clever/assets/js/15.1d17601b.js"><link rel="prefetch" href="/clever/assets/js/16.506b5623.js"><link rel="prefetch" href="/clever/assets/js/17.f81308b2.js"><link rel="prefetch" href="/clever/assets/js/2.724f0695.js"><link rel="prefetch" href="/clever/assets/js/3.f1652913.js"><link rel="prefetch" href="/clever/assets/js/4.7dcf6bc2.js"><link rel="prefetch" href="/clever/assets/js/5.908d4707.js"><link rel="prefetch" href="/clever/assets/js/6.de1841ce.js"><link rel="prefetch" href="/clever/assets/js/7.1dfa4009.js"><link rel="prefetch" href="/clever/assets/js/8.2b17bbb9.js"><link rel="prefetch" href="/clever/assets/js/9.e0e2c74e.js">
+    <link rel="stylesheet" href="/clever/assets/css/0.styles.c4426992.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/clever/" class="home-link router-link-active"><!----> <span class="site-name">Clever Page Document</span></a> <div class="links" style="max-width:nullpx;"><!----> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://xaios.github.io" target="_blank" rel="noopener noreferrer" class="nav-link">
+  AIOS's Blog
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://xaios.github.io" target="_blank" rel="noopener noreferrer" class="nav-link">
+  AIOS's Blog
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/clever/" class="sidebar-link">开始</a></li><li><a href="/clever/preinstall.html" class="sidebar-link">对全局环境的影响</a></li><li><a href="/clever/preinstall_app.html" class="sidebar-link">对实例内部环境的影响</a></li><li><a href="/clever/base.html" class="sidebar-link">基础页面架构</a></li><li><a href="/clever/page.html" class="sidebar-link">页面对象</a></li><li><a href="/clever/roll.html" class="sidebar-link">滚动区域对象</a></li><li><a href="/clever/pop.html" class="sidebar-link">弹窗层及弹窗对象</a></li><li><a href="/clever/input.html" class="sidebar-link">输入框对象</a></li><li><a href="/clever/select.html" class="active sidebar-link">选择器对象</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/clever/select.html#基础选择器" class="sidebar-link">基础选择器</a></li><li class="sidebar-sub-header"><a href="/clever/select.html#手机地区选择" class="sidebar-link">手机地区选择</a></li></ul></li><li><a href="/clever/preload.html" class="sidebar-link">资源预加载</a></li><li><a href="/clever/wait.html" class="sidebar-link">加载提示</a></li><li><a href="/clever/bgm.html" class="sidebar-link">背景音乐</a></li><li><a href="/clever/suit.html" class="sidebar-link">元素自适应</a></li><li><a href="/clever/orientation.html" class="sidebar-link">横屏模式处理</a></li></ul> </div> <div class="page"> <div class="content"><h1 id="选择器对象"><a href="#选择器对象" aria-hidden="true" class="header-anchor">#</a> 选择器对象</h1> <h2 id="基础选择器"><a href="#基础选择器" aria-hidden="true" class="header-anchor">#</a> 基础选择器</h2> <p>开发中遇到添加选择器的需求时，很自然地会使用 <code>select</code> 标签，但这个标签存在不少的限制，如样式和事件等等，所以很多框架（主要是 UI 框架）都封装有自己的选择器，cp 也不例外，主要是为了统一 Android 和 iOS 两端的表现。</p> <p>由于样式与设计稿关联十分密切，所以 cp 只封装了最核心的逻辑框架，具体样式需要按设计进行开发，demo 如下：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span>app</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- 可使用 v-model 进行属性的双向绑定，实例中的同名属性值将为选择器的值，
+       可对其进行赋值更新选择器显示内容，但对其赋不存在于 list 中的值时操作将被无效化 --&gt;</span>
+
+  <span class="token comment">&lt;!-- placeholder 属性可用于设置占位文本，默认为'选择' --&gt;</span>
+
+  <span class="token comment">&lt;!-- 可用 lazy 属性表示 list 的传值可信任，存在该属性时将跳过内容格式化，该值无需动态 --&gt;</span>
+
+  <span class="token comment">&lt;!-- 可用 disabled 属性禁用 select 对象，支持隐式类型转换比较，为 true 值时组件将被禁用 --&gt;</span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cp-select</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>area</span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span>area</span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>例子<span class="token punctuation">'</span></span> <span class="token attr-name">:list</span><span class="token attr-value"><span class="token punctuation">=</span>list</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cp-select</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="language-stylus extra-class"><pre class="language-stylus"><code><span class="token comment">/* index.css */</span>
+<span class="token comment">/* cp 源码中不提供这部分样式，为了效果展示，提供简单的样式 demo */</span>
+<span class="token comment">/* select 对象带有格式为 `select_${name}` 的 class，设置 name 属性可以修改，可用于建立命名空间 */</span>
+<span class="token comment">/* 考虑到选择器在同一项目中很少存在多种样式的情况，编写 css 时也可以忽略命名空间 */</span>
+<span class="token comment">/* 如不考虑命名空间的问题，name 属性可以忽略，此时 select 对象将仅带有 cp-select-box 的 class */</span>
+<span class="token selector">.select_area</span>
+  <span class="token comment">/* 修改此类以提供 border、background 等外围容器样式，默认宽高 100% */</span>
+  <span class="token selector">&amp;.cp-select-box</span>
+    <span class="token property-declaration"><span class="token property">width</span> <span class="token number">60</span>px</span>
+    <span class="token property-declaration"><span class="token property">height</span> <span class="token number">26</span>px</span>
+    <span class="token property-declaration"><span class="token property">outline</span> <span class="token number">1</span>px solid <span class="token hexcode">#000</span></span>
+    <span class="token property-declaration"><span class="token property">background</span> <span class="token hexcode">#fff</span></span>
+
+  <span class="token comment">/* 修改此伪类以提供下拉提示小三角的样式，默认存在值为空字符串的 content 属性 */</span>
+  <span class="token selector">&amp;.cp-select-delta::after</span>
+    <span class="token property-declaration"><span class="token property">margin-left</span> <span class="token number">6</span>px</span>
+    <span class="token property-declaration"><span class="token property">border-top</span> <span class="token number">6</span>px solid <span class="token hexcode">#000</span></span>
+    <span class="token property-declaration"><span class="token property">border-left</span> <span class="token number">4</span>px solid transparent</span>
+    <span class="token property-declaration"><span class="token property">border-right</span> <span class="token number">4</span>px solid transparent</span>
+
+  <span class="token comment">/* 修改此类以提供选项组样式 */</span>
+  <span class="token selector">.cp-select-group</span>
+    <span class="token property-declaration"><span class="token property">outline</span> <span class="token number">1</span>px solid <span class="token hexcode">#000</span></span>
+    <span class="token property-declaration"><span class="token property">background</span> <span class="token hexcode">#fff</span></span>
+
+  <span class="token comment">/* 修改此类以提供选择项样式 */</span>
+  <span class="token selector">.cp-select-item</span>
+    <span class="token property-declaration"><span class="token property">height</span> <span class="token number">26</span>px</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// index.js</span>
+<span class="token keyword">new</span> <span class="token class-name">App</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// list 的修改将同步到 select 对象中，但值要求始终是数组，否则会报错</span>
+    list<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    area<span class="token punctuation">:</span> <span class="token string">''</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">/*
+      list 数组的格式应为 [{key: '显示文本', val: '选项值'}]，允许存在其他属性
+      当选择项不为对象值时，将选用该项的内容作为显示文本以及选项值，此时的 list 对象不可信任
+      注意当 lazy 属性添加后将始终存在，list 对象的可信度应在开发中进行考虑
+    */</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      key<span class="token punctuation">:</span> <span class="token string">'澳门'</span><span class="token punctuation">,</span>
+      val<span class="token punctuation">:</span> <span class="token string">'value'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'香港'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <p>创建 select 组件后将在 window 对象上注册名为 <code>__cp_select_group</code> 的数组，用于存放所有的 select 对象，开发中基本上不需用到。</p></div> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <p>select 对象一般用于简单的选择，复杂度较高的情况下建议使用其他 UI 框架或插件实现选择器。</p></div> <h2 id="手机地区选择"><a href="#手机地区选择" aria-hidden="true" class="header-anchor">#</a> 手机地区选择</h2> <p>基于 select 对象二次封装的组件，更方便地选择手机区号，demo 如下：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span>app</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- 使用上基本与 select 对象一样，但移除了 list 和 lazy 属性 --&gt;</span>
+
+  <span class="token comment">&lt;!-- 默认可选 ['澳门','香港','大陆','其他']，添加 tw 属性后将追加可选 '台湾' --&gt;</span>
+  <span class="token comment">&lt;!-- 选项顺序不提供更改，需在源码中处理，或修改编译后的代码 --&gt;</span>
+
+  <span class="token comment">&lt;!-- 默认显示为正体中文，添加 simple 属性可切换为简体中文，但不会作用于设置的 placeholder --&gt;</span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cp-phone-code</span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span>area</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cp-phone-code</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// index.js</span>
+<span class="token keyword">new</span> <span class="token class-name">App</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 根据选项返回对应区域的手机区号，不含 '+'，如选择大陆，值为 '86'</span>
+    area<span class="token punctuation">:</span> <span class="token string">''</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/clever/input.html" class="prev">
+          输入框对象
+        </a></span> <span class="next"><a href="/clever/preload.html">
+          资源预加载
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/clever/assets/js/app.a8223df1.js" defer></script><script src="/clever/assets/js/14.06c8888c.js" defer></script>
+  </body>
+</html>
