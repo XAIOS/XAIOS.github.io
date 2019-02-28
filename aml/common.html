@@ -7,17 +7,17 @@
     <meta name="description" content="">
     
     
-    <link rel="preload" href="/aml/assets/css/0.styles.440aa037.css" as="style"><link rel="preload" href="/aml/assets/js/app.98a4faec.js" as="script"><link rel="preload" href="/aml/assets/js/4.68d99661.js" as="script"><link rel="prefetch" href="/aml/assets/js/10.8f72202e.js"><link rel="prefetch" href="/aml/assets/js/11.275f24de.js"><link rel="prefetch" href="/aml/assets/js/2.82748f56.js"><link rel="prefetch" href="/aml/assets/js/3.98912a74.js"><link rel="prefetch" href="/aml/assets/js/5.cde57de3.js"><link rel="prefetch" href="/aml/assets/js/6.89eed8ff.js"><link rel="prefetch" href="/aml/assets/js/7.b22ef1e0.js"><link rel="prefetch" href="/aml/assets/js/8.0c5cbe6e.js"><link rel="prefetch" href="/aml/assets/js/9.40fd7635.js">
+    <link rel="preload" href="/aml/assets/css/0.styles.440aa037.css" as="style"><link rel="preload" href="/aml/assets/js/app.e3d74f6a.js" as="script"><link rel="preload" href="/aml/assets/js/4.68d99661.js" as="script"><link rel="prefetch" href="/aml/assets/js/10.8f72202e.js"><link rel="prefetch" href="/aml/assets/js/11.275f24de.js"><link rel="prefetch" href="/aml/assets/js/2.82748f56.js"><link rel="prefetch" href="/aml/assets/js/3.98912a74.js"><link rel="prefetch" href="/aml/assets/js/5.cde57de3.js"><link rel="prefetch" href="/aml/assets/js/6.89eed8ff.js"><link rel="prefetch" href="/aml/assets/js/7.b22ef1e0.js"><link rel="prefetch" href="/aml/assets/js/8.0c5cbe6e.js"><link rel="prefetch" href="/aml/assets/js/9.40fd7635.js">
     <link rel="stylesheet" href="/aml/assets/css/0.styles.440aa037.css">
   </head>
   <body>
     <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/aml/" class="home-link router-link-active"><!----> <span class="site-name">AIOS Markup Language</span></a> <div class="links" style="max-width:nullpx;"><!----> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://xaios.github.io" target="_blank" rel="noopener noreferrer" class="nav-link">
   AIOS's Blog
-</a></div><div class="nav-item"><a href="https://xaios.github.io/clever" target="_blank" rel="noopener noreferrer" class="nav-link">
+</a></div><div class="nav-item"><a href="https://xaios.github.io/clever/" target="_blank" rel="noopener noreferrer" class="nav-link">
   Clever Page Document
 </a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://xaios.github.io" target="_blank" rel="noopener noreferrer" class="nav-link">
   AIOS's Blog
-</a></div><div class="nav-item"><a href="https://xaios.github.io/clever" target="_blank" rel="noopener noreferrer" class="nav-link">
+</a></div><div class="nav-item"><a href="https://xaios.github.io/clever/" target="_blank" rel="noopener noreferrer" class="nav-link">
   Clever Page Document
 </a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/aml/" class="sidebar-link">开始</a></li><li><a href="/aml/dev.html" class="sidebar-link">开发准备</a></li><li><a href="/aml/doc.html" class="sidebar-link">文件内容</a></li><li><a href="/aml/template.html" class="sidebar-link">页面模板</a></li><li><a href="/aml/res.html" class="sidebar-link">资源引入</a></li><li><a href="/aml/clever.html" class="sidebar-link">Clever Page</a></li><li><a href="/aml/encode.html" class="sidebar-link">文件输出</a></li><li><a href="/aml/common.html" class="active sidebar-link">更多命令</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/aml/common.html#网页元数据" class="sidebar-link">网页元数据</a></li><li class="sidebar-sub-header"><a href="/aml/common.html#网页图标" class="sidebar-link">网页图标</a></li><li class="sidebar-sub-header"><a href="/aml/common.html#百度统计" class="sidebar-link">百度统计</a></li><li class="sidebar-sub-header"><a href="/aml/common.html#页面调试" class="sidebar-link">页面调试</a></li></ul></li></ul> </div> <div class="page"> <div class="content"><h1 id="更多命令"><a href="#更多命令" aria-hidden="true" class="header-anchor">#</a> 更多命令</h1> <h2 id="网页元数据"><a href="#网页元数据" aria-hidden="true" class="header-anchor">#</a> 网页元数据</h2> <p>aml 提供 <code>meta</code> 命令用于配置页面的元数据，输出结果将插入到模板的 meta 插槽中：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!--
   meta name content               // 配置插入的 meta 标签，多次配置将追加引入
@@ -74,6 +74,6 @@
         <a href="/aml/encode.html" class="prev">
           文件输出
         </a></span> <!----></p></div> </div> <!----></div></div>
-    <script src="/aml/assets/js/app.98a4faec.js" defer></script><script src="/aml/assets/js/4.68d99661.js" defer></script>
+    <script src="/aml/assets/js/app.e3d74f6a.js" defer></script><script src="/aml/assets/js/4.68d99661.js" defer></script>
   </body>
 </html>
