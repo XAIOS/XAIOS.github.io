@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>AIOS Markup Language</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/aml/assets/css/0.styles.440aa037.css" as="style"><link rel="preload" href="/aml/assets/js/app.98a4faec.js" as="script"><link rel="preload" href="/aml/assets/js/5.cde57de3.js" as="script"><link rel="prefetch" href="/aml/assets/js/10.8f72202e.js"><link rel="prefetch" href="/aml/assets/js/11.275f24de.js"><link rel="prefetch" href="/aml/assets/js/2.82748f56.js"><link rel="prefetch" href="/aml/assets/js/3.98912a74.js"><link rel="prefetch" href="/aml/assets/js/4.68d99661.js"><link rel="prefetch" href="/aml/assets/js/6.89eed8ff.js"><link rel="prefetch" href="/aml/assets/js/7.b22ef1e0.js"><link rel="prefetch" href="/aml/assets/js/8.0c5cbe6e.js"><link rel="prefetch" href="/aml/assets/js/9.40fd7635.js">
+    <link rel="stylesheet" href="/aml/assets/css/0.styles.440aa037.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/aml/" class="home-link router-link-active"><!----> <span class="site-name">AIOS Markup Language</span></a> <div class="links" style="max-width:nullpx;"><!----> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://xaios.github.io" target="_blank" rel="noopener noreferrer" class="nav-link">
+  AIOS's Blog
+</a></div><div class="nav-item"><a href="https://xaios.github.io/clever" target="_blank" rel="noopener noreferrer" class="nav-link">
+  Clever Page Document
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://xaios.github.io" target="_blank" rel="noopener noreferrer" class="nav-link">
+  AIOS's Blog
+</a></div><div class="nav-item"><a href="https://xaios.github.io/clever" target="_blank" rel="noopener noreferrer" class="nav-link">
+  Clever Page Document
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/aml/" class="sidebar-link">开始</a></li><li><a href="/aml/dev.html" class="active sidebar-link">开发准备</a></li><li><a href="/aml/doc.html" class="sidebar-link">文件内容</a></li><li><a href="/aml/template.html" class="sidebar-link">页面模板</a></li><li><a href="/aml/res.html" class="sidebar-link">资源引入</a></li><li><a href="/aml/clever.html" class="sidebar-link">Clever Page</a></li><li><a href="/aml/encode.html" class="sidebar-link">文件输出</a></li><li><a href="/aml/common.html" class="sidebar-link">更多命令</a></li></ul> </div> <div class="page"> <div class="content"><h1 id="开发准备"><a href="#开发准备" aria-hidden="true" class="header-anchor">#</a> 开发准备</h1> <p>aml 的开发基于以 aml 为后缀的文件，这些文件在最后会根据配置文件被转为 html、aspx 或 cshtml 后缀。在项目启动的时候，直接按原先的开发模式部署文件，只需要将 html 后缀的文件改为 aml 后缀即可，demo 如下：</p> <div class="language- extra-class"><pre class="language-text"><code>|- project_test
+|   |- css
+|   |- js
+|   |- index.html
+</code></pre></div><p>将 html 后缀的文件改为 aml 后缀：</p> <div class="language- extra-class"><pre class="language-text"><code>|- project_test
+|   |- css
+|   |- js
+|   |- index.aml
+</code></pre></div><p>然后创建一个处理文件的 js：</p> <div class="language- extra-class"><pre class="language-text"><code>|- project_test
+|   |- css
+|   |- js
+|   |- index.aml
+|
+|- aml_test.js
+</code></pre></div><p>在 js 文件中输入以下内容：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// aml_test.js</span>
+<span class="token comment">// 引入 aml 处理逻辑，具体指向需根据实际情况判断</span>
+<span class="token keyword">const</span> aml <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./AML/index'</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 第一个参数传入监听目录，预处理器将监听目录中所有 aml 文件的更改，实时输出文件</span>
+<span class="token comment">// 第二个参数为开始监听后的回调函数，用于在控制台中输出开始提示，无参数传入</span>
+<span class="token function">aml</span><span class="token punctuation">(</span><span class="token string">'project_test'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`\r\n  正在监听 aml 项目：project_test`</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><p>此时开发准备就完成了，将 js 的执行程序改为 node.js 后可以直接双击 js 文件运行，之后就可以开始对 aml 文件的编辑了，每次保存后都会更新输出文件。</p> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <p>aml 是通过监听目录进行转义的，适用于各种项目的目录配置，但和 Clever Page 一样，aml 诞生于非构建类项目，本身也可以看作一个构建器，所以并不适用于构建类项目，而且既然已经用到了构建工具，aml 的用处也就不大了。</p></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/aml/" class="prev router-link-active">
+          开始
+        </a></span> <span class="next"><a href="/aml/doc.html">
+          文件内容
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/aml/assets/js/app.98a4faec.js" defer></script><script src="/aml/assets/js/5.cde57de3.js" defer></script>
+  </body>
+</html>

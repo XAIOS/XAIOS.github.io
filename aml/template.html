@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>AIOS Markup Language</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/aml/assets/css/0.styles.440aa037.css" as="style"><link rel="preload" href="/aml/assets/js/app.98a4faec.js" as="script"><link rel="preload" href="/aml/assets/js/10.8f72202e.js" as="script"><link rel="prefetch" href="/aml/assets/js/11.275f24de.js"><link rel="prefetch" href="/aml/assets/js/2.82748f56.js"><link rel="prefetch" href="/aml/assets/js/3.98912a74.js"><link rel="prefetch" href="/aml/assets/js/4.68d99661.js"><link rel="prefetch" href="/aml/assets/js/5.cde57de3.js"><link rel="prefetch" href="/aml/assets/js/6.89eed8ff.js"><link rel="prefetch" href="/aml/assets/js/7.b22ef1e0.js"><link rel="prefetch" href="/aml/assets/js/8.0c5cbe6e.js"><link rel="prefetch" href="/aml/assets/js/9.40fd7635.js">
+    <link rel="stylesheet" href="/aml/assets/css/0.styles.440aa037.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/aml/" class="home-link router-link-active"><!----> <span class="site-name">AIOS Markup Language</span></a> <div class="links" style="max-width:nullpx;"><!----> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://xaios.github.io" target="_blank" rel="noopener noreferrer" class="nav-link">
+  AIOS's Blog
+</a></div><div class="nav-item"><a href="https://xaios.github.io/clever" target="_blank" rel="noopener noreferrer" class="nav-link">
+  Clever Page Document
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://xaios.github.io" target="_blank" rel="noopener noreferrer" class="nav-link">
+  AIOS's Blog
+</a></div><div class="nav-item"><a href="https://xaios.github.io/clever" target="_blank" rel="noopener noreferrer" class="nav-link">
+  Clever Page Document
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/aml/" class="sidebar-link">开始</a></li><li><a href="/aml/dev.html" class="sidebar-link">开发准备</a></li><li><a href="/aml/doc.html" class="sidebar-link">文件内容</a></li><li><a href="/aml/template.html" class="active sidebar-link">页面模板</a></li><li><a href="/aml/res.html" class="sidebar-link">资源引入</a></li><li><a href="/aml/clever.html" class="sidebar-link">Clever Page</a></li><li><a href="/aml/encode.html" class="sidebar-link">文件输出</a></li><li><a href="/aml/common.html" class="sidebar-link">更多命令</a></li></ul> </div> <div class="page"> <div class="content"><h1 id="页面模板"><a href="#页面模板" aria-hidden="true" class="header-anchor">#</a> 页面模板</h1> <p>aml 会读取 aml 文件的内容，将其整理后插入到预设模板，输出到目标格式中。提供两个预设模板，默认模板的内容如下：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token doctype">&lt;!DOCTYPE HTML&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span>utf-8</span><span class="token punctuation">&gt;</span></span>
+<span class="token comment">&lt;!-- title --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>viewport</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>width=device-width, initial-scale=1, user-scalable=0<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token comment">&lt;!-- meta --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+  document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>fontSize <span class="token operator">=</span> innerWidth <span class="token operator">/</span> <span class="token number">7.2</span> <span class="token operator">+</span> <span class="token string">'px'</span>
+<span class="token comment">// script</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>模板中的三个注释分别是页面标题，页面元数据，页面自定义脚本的插入接口，在 aml 文件中配置的相关内容将被处理后替换到指定地方，如果需要修改默认的页面架构，对模板页进行一点修改就可以了。</p> <p>模板的语法其实就是 HTML 的语法，借助三个接口，很简单的就可以完成模板创建了。</p> <p>有时候会遇到特别的项目，需要特别的模板来方便我们的开发，aml 中提供一个 <code>template</code> 命令，用于引入自定义的模板：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!--
+  template 1920 // 默认为 default，单行命令，重复配置将覆盖，可不配置 template
+--&gt;</span>
+</code></pre></div><p>这时 aml 会读取模板目录中的 1920.html 文件，将其作为模板使用，如果需要更多的自定义模板，只需要创建好之后将其移动到 aml 目录的 template 目录下，就可以在 <code>template</code> 命令中使用了，如果访问的文件不存在，将读取 default.html 作为模板。</p></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/aml/doc.html" class="prev">
+          文件内容
+        </a></span> <span class="next"><a href="/aml/res.html">
+          资源引入
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/aml/assets/js/app.98a4faec.js" defer></script><script src="/aml/assets/js/10.8f72202e.js" defer></script>
+  </body>
+</html>

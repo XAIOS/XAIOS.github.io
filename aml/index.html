@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>AIOS Markup Language</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/aml/assets/css/0.styles.440aa037.css" as="style"><link rel="preload" href="/aml/assets/js/app.98a4faec.js" as="script"><link rel="preload" href="/aml/assets/js/8.0c5cbe6e.js" as="script"><link rel="prefetch" href="/aml/assets/js/10.8f72202e.js"><link rel="prefetch" href="/aml/assets/js/11.275f24de.js"><link rel="prefetch" href="/aml/assets/js/2.82748f56.js"><link rel="prefetch" href="/aml/assets/js/3.98912a74.js"><link rel="prefetch" href="/aml/assets/js/4.68d99661.js"><link rel="prefetch" href="/aml/assets/js/5.cde57de3.js"><link rel="prefetch" href="/aml/assets/js/6.89eed8ff.js"><link rel="prefetch" href="/aml/assets/js/7.b22ef1e0.js"><link rel="prefetch" href="/aml/assets/js/9.40fd7635.js">
+    <link rel="stylesheet" href="/aml/assets/css/0.styles.440aa037.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/aml/" class="home-link router-link-exact-active router-link-active"><!----> <span class="site-name">AIOS Markup Language</span></a> <div class="links" style="max-width:nullpx;"><!----> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://xaios.github.io" target="_blank" rel="noopener noreferrer" class="nav-link">
+  AIOS's Blog
+</a></div><div class="nav-item"><a href="https://xaios.github.io/clever" target="_blank" rel="noopener noreferrer" class="nav-link">
+  Clever Page Document
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://xaios.github.io" target="_blank" rel="noopener noreferrer" class="nav-link">
+  AIOS's Blog
+</a></div><div class="nav-item"><a href="https://xaios.github.io/clever" target="_blank" rel="noopener noreferrer" class="nav-link">
+  Clever Page Document
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/aml/" class="active sidebar-link">开始</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/aml/#下载" class="sidebar-link">下载</a></li><li class="sidebar-sub-header"><a href="/aml/#闲谈" class="sidebar-link">闲谈</a></li></ul></li><li><a href="/aml/dev.html" class="sidebar-link">开发准备</a></li><li><a href="/aml/doc.html" class="sidebar-link">文件内容</a></li><li><a href="/aml/template.html" class="sidebar-link">页面模板</a></li><li><a href="/aml/res.html" class="sidebar-link">资源引入</a></li><li><a href="/aml/clever.html" class="sidebar-link">Clever Page</a></li><li><a href="/aml/encode.html" class="sidebar-link">文件输出</a></li><li><a href="/aml/common.html" class="sidebar-link">更多命令</a></li></ul> </div> <div class="page"> <div class="content"><h1 id="开始"><a href="#开始" aria-hidden="true" class="header-anchor">#</a> 开始</h1> <h2 id="下载"><a href="#下载" aria-hidden="true" class="header-anchor">#</a> 下载</h2> <p>暂未开放渠道</p> <h2 id="闲谈"><a href="#闲谈" aria-hidden="true" class="header-anchor">#</a> 闲谈</h2> <p>AIOS Markup Language（下称 aml）的雏形是 2018.05.25 那天，为了从千篇一律的 HTML 中得到解脱，基于 node.js 开发的 HTML 预处理器，由于是自定语法，所以起了这个名，意思是我的标记语言。</p> <p>最初那版的 js 源码只有 93 行，内容也仅包括几个标签的转义和图片路径的补全，还有一些资源插入，其中自然是有些 bug 的，页面模板也是写死，但已经可以在项目中省下成百上千的代码量了。</p> <p>同年的六月十七，重构了一次源码，还增加了读取模板文件的功能，之后在九月三号那天还增加了 aml 转 aspx 和 cshtml 的功能，百度统计和文件编码处理功能都被压缩为一行命令，自此真正达成了不写 HTML 的成就。配合 Clever Page 的话，开发效率之高，让人闲得无聊。</p> <p>虽然 aml 在那时已经成熟，也算是立了个项，但代码上因为能力问题，不能做得很优雅，所以版本号一直是 1.0.0，只作为私人项目在用。</p> <p>截至写下这段话，aml 的 js 源码已经达到了 233 行，因为定位的原因，文档一直没有写，直到写完了 Clever Page 的文档，才想着，还是写点什么吧，怎么说也是自己生的，于是就有了这堆内容。</p> <p><s>时间节点记得那么清，主要还是因为，发了朋友圈。</s></p></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/aml/dev.html">
+          开发准备
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/aml/assets/js/app.98a4faec.js" defer></script><script src="/aml/assets/js/8.0c5cbe6e.js" defer></script>
+  </body>
+</html>

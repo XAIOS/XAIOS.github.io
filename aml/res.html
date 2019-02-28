@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>AIOS Markup Language</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/aml/assets/css/0.styles.440aa037.css" as="style"><link rel="preload" href="/aml/assets/js/app.98a4faec.js" as="script"><link rel="preload" href="/aml/assets/js/9.40fd7635.js" as="script"><link rel="prefetch" href="/aml/assets/js/10.8f72202e.js"><link rel="prefetch" href="/aml/assets/js/11.275f24de.js"><link rel="prefetch" href="/aml/assets/js/2.82748f56.js"><link rel="prefetch" href="/aml/assets/js/3.98912a74.js"><link rel="prefetch" href="/aml/assets/js/4.68d99661.js"><link rel="prefetch" href="/aml/assets/js/5.cde57de3.js"><link rel="prefetch" href="/aml/assets/js/6.89eed8ff.js"><link rel="prefetch" href="/aml/assets/js/7.b22ef1e0.js"><link rel="prefetch" href="/aml/assets/js/8.0c5cbe6e.js">
+    <link rel="stylesheet" href="/aml/assets/css/0.styles.440aa037.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/aml/" class="home-link router-link-active"><!----> <span class="site-name">AIOS Markup Language</span></a> <div class="links" style="max-width:nullpx;"><!----> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://xaios.github.io" target="_blank" rel="noopener noreferrer" class="nav-link">
+  AIOS's Blog
+</a></div><div class="nav-item"><a href="https://xaios.github.io/clever" target="_blank" rel="noopener noreferrer" class="nav-link">
+  Clever Page Document
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://xaios.github.io" target="_blank" rel="noopener noreferrer" class="nav-link">
+  AIOS's Blog
+</a></div><div class="nav-item"><a href="https://xaios.github.io/clever" target="_blank" rel="noopener noreferrer" class="nav-link">
+  Clever Page Document
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/aml/" class="sidebar-link">开始</a></li><li><a href="/aml/dev.html" class="sidebar-link">开发准备</a></li><li><a href="/aml/doc.html" class="sidebar-link">文件内容</a></li><li><a href="/aml/template.html" class="sidebar-link">页面模板</a></li><li><a href="/aml/res.html" class="active sidebar-link">资源引入</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/aml/res.html#内部资源" class="sidebar-link">内部资源</a></li><li class="sidebar-sub-header"><a href="/aml/res.html#外部资源" class="sidebar-link">外部资源</a></li><li class="sidebar-sub-header"><a href="/aml/res.html#资源版本" class="sidebar-link">资源版本</a></li><li class="sidebar-sub-header"><a href="/aml/res.html#图片资源" class="sidebar-link">图片资源</a></li></ul></li><li><a href="/aml/clever.html" class="sidebar-link">Clever Page</a></li><li><a href="/aml/encode.html" class="sidebar-link">文件输出</a></li><li><a href="/aml/common.html" class="sidebar-link">更多命令</a></li></ul> </div> <div class="page"> <div class="content"><h1 id="资源引入"><a href="#资源引入" aria-hidden="true" class="header-anchor">#</a> 资源引入</h1> <h2 id="内部资源"><a href="#内部资源" aria-hidden="true" class="header-anchor">#</a> 内部资源</h2> <p>aml 中的资源引入，是通过配置全局路径、文件目录和文件名的方式来实现的，demo 如下：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!--
+  path_config php             // 默认值为 normal，单行命令，重复配置将覆盖，可不配置 path_config
+  path css css                // 配置 css 全局路径，单行命令，重复配置将覆盖，可不配置 path
+  css lib example             // 配置引入的 css 文件，多次配置将追加引入
+  css_min lib reset example   // 配置引入已压缩的 css 文件，多次配置将追加引入
+  css index index
+  js lib example              // 配置引入的 js 文件，多次配置将追加引入
+  js_min lib example          // 配置引入已压缩的 js 文件，多次配置将追加引入
+  js index index
+--&gt;</span>
+</code></pre></div><p>以上配置输出后将会变成：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token doctype">&lt;!DOCTYPE HTML&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span>utf-8</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>viewport</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>width=device-width, initial-scale=1, user-scalable=0<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+  document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>fontSize <span class="token operator">=</span> innerWidth <span class="token operator">/</span> <span class="token number">7.2</span> <span class="token operator">+</span> <span class="token string">'px'</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span>stylesheet</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span>css/lib/example.css</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span>stylesheet</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span>css/lib/reset.min.css</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span>stylesheet</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span>css/lib/example.min.css</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span>stylesheet</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span>css/index/index.css</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span>/static/js/lib/example.js</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span>/static/js/lib/example.min.js</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span>/static/js/index/index.js</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>css 和 js 的资源引入逻辑其实是一样的，都是用 <code>${全局路径}/${目录路径}/${文件名}${文件后缀}</code> 的格式将代码插入到模板当中，单行命令内的剩余参数会当做一个个的文件被追加进列表当中。</p> <p>两个命令的 min 版本其实只是在写入资源的时候，在文件名后面添加 min 后缀。</p> <p><code>path</code> 与 <code>path_config</code> 命令都是用于配置全局路径的，区别在于 <code>path</code> 用于配置单个资源路径，而 <code>path_config</code> 用于导入预设配置，预设配置一共有三个，全局路径的值分别如下：</p> <div class="language- extra-class"><pre class="language-text"><code>|- normal
+|   |- img img
+|   |- css css
+|   |- js js
+|
+|- dotnet
+|   |- img ../../Content/Images
+|   |- css ../../Content/CSS
+|   |- js ../../Scripts
+|
+|- php
+|   |- img /static/img
+|   |- css /static/css
+|   |- js /static/js
+</code></pre></div><h2 id="外部资源"><a href="#外部资源" aria-hidden="true" class="header-anchor">#</a> 外部资源</h2> <p>如果项目中需要引入外部资源，或资源路径独特，不便于配置的，可以使用 <code>res</code> 命令，写法如下：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!--
+  res css //a.b.c/d.css  // 配置引入的 css 文件，多次配置将追加引入
+  res js //e.f.g/h.js?2  // 配置引入的 js 文件，多次配置将追加引入
+--&gt;</span>
+</code></pre></div><p>输出结果：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token doctype">&lt;!DOCTYPE HTML&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span>utf-8</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>viewport</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>width=device-width, initial-scale=1, user-scalable=0<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+  document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>fontSize <span class="token operator">=</span> innerWidth <span class="token operator">/</span> <span class="token number">7.2</span> <span class="token operator">+</span> <span class="token string">'px'</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span>stylesheet</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span>//a.b.c/d.css</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span>//e.f.g/h.js?2</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <p>资源引入的顺序与配置时的顺序将保持一致。</p></div> <h2 id="资源版本"><a href="#资源版本" aria-hidden="true" class="header-anchor">#</a> 资源版本</h2> <p>为了解决浏览器资源缓存机制带来的烦恼，开发中会给引用的资源添加版本号，在 aml 中提供了 <code>version</code> 命令用于配置当前的资源版本号：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!--
+  js index index
+  version 02281507
+--&gt;</span>
+</code></pre></div><p>输出结果：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token doctype">&lt;!DOCTYPE HTML&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span>utf-8</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>viewport</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>width=device-width, initial-scale=1, user-scalable=0<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+  document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>fontSize <span class="token operator">=</span> innerWidth <span class="token operator">/</span> <span class="token number">7.2</span> <span class="token operator">+</span> <span class="token string">'px'</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span>js/index/index.js?02281507</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="warning custom-block"><p class="custom-block-title">WARNING</p> <p>使用 <code>res</code> 命令引入的资源将不受版本号配置影响。</p></div> <h2 id="图片资源"><a href="#图片资源" aria-hidden="true" class="header-anchor">#</a> 图片资源</h2> <p>开发离不开图片资源，为每一个图片标签写上一模一样的路径前缀，是很痛苦的事，虽然可以复制粘贴，但总归是不够灵动。为了解决这个问题，aml 提供了图片路径配置的解决方案，这也是 aml 诞生的目的。</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!----&gt;</span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span>$logo$</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">:src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span><span class="token punctuation">&quot;</span>$<span class="token punctuation">&quot;</span> + index + <span class="token punctuation">&quot;</span>$<span class="token punctuation">&quot;</span><span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>输出为：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token doctype">&lt;!DOCTYPE HTML&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span>utf-8</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>viewport</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>width=device-width, initial-scale=1, user-scalable=0<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+  document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>fontSize <span class="token operator">=</span> innerWidth <span class="token operator">/</span> <span class="token number">7.2</span> <span class="token operator">+</span> <span class="token string">'px'</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span>img/logo.png</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span><span class="token punctuation">&quot;</span>img/<span class="token punctuation">&quot;</span> + index + <span class="token punctuation">&quot;</span>.png<span class="token punctuation">&quot;</span><span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <p>aml 会将 img 标签的第一个 $ 替换为配置好的图片全局路径，第二个 $ 替换为 <code>.png</code>，所以在开发中需要注意，不要在 img 标签上使用 $ 符号。</p> <p>因为只检测 img 标签，所以对其他标签不存在效果。</p></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/aml/template.html" class="prev">
+          页面模板
+        </a></span> <span class="next"><a href="/aml/clever.html">
+          Clever Page
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/aml/assets/js/app.98a4faec.js" defer></script><script src="/aml/assets/js/9.40fd7635.js" defer></script>
+  </body>
+</html>

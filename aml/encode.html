@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>AIOS Markup Language</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/aml/assets/css/0.styles.440aa037.css" as="style"><link rel="preload" href="/aml/assets/js/app.98a4faec.js" as="script"><link rel="preload" href="/aml/assets/js/7.b22ef1e0.js" as="script"><link rel="prefetch" href="/aml/assets/js/10.8f72202e.js"><link rel="prefetch" href="/aml/assets/js/11.275f24de.js"><link rel="prefetch" href="/aml/assets/js/2.82748f56.js"><link rel="prefetch" href="/aml/assets/js/3.98912a74.js"><link rel="prefetch" href="/aml/assets/js/4.68d99661.js"><link rel="prefetch" href="/aml/assets/js/5.cde57de3.js"><link rel="prefetch" href="/aml/assets/js/6.89eed8ff.js"><link rel="prefetch" href="/aml/assets/js/8.0c5cbe6e.js"><link rel="prefetch" href="/aml/assets/js/9.40fd7635.js">
+    <link rel="stylesheet" href="/aml/assets/css/0.styles.440aa037.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/aml/" class="home-link router-link-active"><!----> <span class="site-name">AIOS Markup Language</span></a> <div class="links" style="max-width:nullpx;"><!----> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://xaios.github.io" target="_blank" rel="noopener noreferrer" class="nav-link">
+  AIOS's Blog
+</a></div><div class="nav-item"><a href="https://xaios.github.io/clever" target="_blank" rel="noopener noreferrer" class="nav-link">
+  Clever Page Document
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://xaios.github.io" target="_blank" rel="noopener noreferrer" class="nav-link">
+  AIOS's Blog
+</a></div><div class="nav-item"><a href="https://xaios.github.io/clever" target="_blank" rel="noopener noreferrer" class="nav-link">
+  Clever Page Document
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/aml/" class="sidebar-link">开始</a></li><li><a href="/aml/dev.html" class="sidebar-link">开发准备</a></li><li><a href="/aml/doc.html" class="sidebar-link">文件内容</a></li><li><a href="/aml/template.html" class="sidebar-link">页面模板</a></li><li><a href="/aml/res.html" class="sidebar-link">资源引入</a></li><li><a href="/aml/clever.html" class="sidebar-link">Clever Page</a></li><li><a href="/aml/encode.html" class="active sidebar-link">文件输出</a></li><li><a href="/aml/common.html" class="sidebar-link">更多命令</a></li></ul> </div> <div class="page"> <div class="content"><h1 id="文件输出"><a href="#文件输出" aria-hidden="true" class="header-anchor">#</a> 文件输出</h1> <p>为了达成开发中只编辑一个 aml 文件，通过配置生成 html、aspx 和 cshtml 的目的，aml 提供了一个 <code>mode</code> 命令，用于修改默认的输出类型：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!--
+  mode html    // 默认为 html，单行命令，重复配置将覆盖，可不配置 mode
+  mode php     // 输出为 html 文件，但可使用 php 的相关配置
+  mode aspx    // 输出为 aspx 文件，将添加 aspx 与 BOM 的头部信息
+  mode cshtml  // 输出为 cshtml 文件，将添加 BOM 的头部信息与 cshtml 的模板信息
+--&gt;</span>
+</code></pre></div><p>由于 cshtml 允许设置不同的模板，所以 aml 提供一个 <code>layout</code> 命令，用于修改 cshtml 引入的模板：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!--
+  mode cshtml
+  layout test  // 默认为 null，单行命令，重复配置将覆盖，可不配置 layout
+--&gt;</span>
+</code></pre></div><p>非完全前后端分离的项目，通常需要在页面中提供接口用于给后端注入数据，具体写法看后端注入的文本信息来判断，通常使用自定义 script 或 <code>data</code> 命令进行接口暴露：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!--
+  mode aspx
+  data data1 data2  // mode 为 html 的时候将不会注入 data，单行命令，重复配置将覆盖
+--&gt;</span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">mine</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+  _data <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token operator">%=</span>ViewData<span class="token punctuation">[</span><span class="token string">&quot;data3&quot;</span><span class="token punctuation">]</span><span class="token operator">%</span><span class="token operator">&gt;</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>输出结果如下：</p> <div class="language-html extra-class"><pre class="language-html"><code>&lt;%@ Page Language=&quot;C#&quot; Inherits=&quot;System.Web.Mvc.ViewPage<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dynamic</span><span class="token punctuation">&gt;</span></span>&quot;%&gt;
+<span class="token doctype">&lt;!DOCTYPE HTML&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span>utf-8</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>viewport</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>width=device-width, initial-scale=1, user-scalable=0<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+  document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>fontSize <span class="token operator">=</span> innerWidth <span class="token operator">/</span> <span class="token number">7.2</span> <span class="token operator">+</span> <span class="token string">'px'</span>
+  _data <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token operator">%=</span>ViewData<span class="token punctuation">[</span><span class="token string">&quot;data3&quot;</span><span class="token punctuation">]</span><span class="token operator">%</span><span class="token operator">&gt;</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+&lt;%=ViewData[&quot;data1&quot;]%&gt;
+&lt;%=ViewData[&quot;data2&quot;]%&gt;
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <p>自定义 script 可用于在页面模板的脚本插入位中插入内容，使输出文件结构更加整齐。</p></div> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <p><code>mode</code> 为 php 和 cshtml 时 <code>data</code> 的格式将为：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!-- php --&gt;</span>
+{$data1}
+<span class="token comment">&lt;!-- cshtml --&gt;</span>
+@Html.Raw(ViewBag.data1)
+</code></pre></div></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/aml/clever.html" class="prev">
+          Clever Page
+        </a></span> <span class="next"><a href="/aml/common.html">
+          更多命令
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/aml/assets/js/app.98a4faec.js" defer></script><script src="/aml/assets/js/7.b22ef1e0.js" defer></script>
+  </body>
+</html>

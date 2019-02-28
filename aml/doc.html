@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>AIOS Markup Language</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/aml/assets/css/0.styles.440aa037.css" as="style"><link rel="preload" href="/aml/assets/js/app.98a4faec.js" as="script"><link rel="preload" href="/aml/assets/js/6.89eed8ff.js" as="script"><link rel="prefetch" href="/aml/assets/js/10.8f72202e.js"><link rel="prefetch" href="/aml/assets/js/11.275f24de.js"><link rel="prefetch" href="/aml/assets/js/2.82748f56.js"><link rel="prefetch" href="/aml/assets/js/3.98912a74.js"><link rel="prefetch" href="/aml/assets/js/4.68d99661.js"><link rel="prefetch" href="/aml/assets/js/5.cde57de3.js"><link rel="prefetch" href="/aml/assets/js/7.b22ef1e0.js"><link rel="prefetch" href="/aml/assets/js/8.0c5cbe6e.js"><link rel="prefetch" href="/aml/assets/js/9.40fd7635.js">
+    <link rel="stylesheet" href="/aml/assets/css/0.styles.440aa037.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/aml/" class="home-link router-link-active"><!----> <span class="site-name">AIOS Markup Language</span></a> <div class="links" style="max-width:nullpx;"><!----> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://xaios.github.io" target="_blank" rel="noopener noreferrer" class="nav-link">
+  AIOS's Blog
+</a></div><div class="nav-item"><a href="https://xaios.github.io/clever" target="_blank" rel="noopener noreferrer" class="nav-link">
+  Clever Page Document
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://xaios.github.io" target="_blank" rel="noopener noreferrer" class="nav-link">
+  AIOS's Blog
+</a></div><div class="nav-item"><a href="https://xaios.github.io/clever" target="_blank" rel="noopener noreferrer" class="nav-link">
+  Clever Page Document
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/aml/" class="sidebar-link">开始</a></li><li><a href="/aml/dev.html" class="sidebar-link">开发准备</a></li><li><a href="/aml/doc.html" class="active sidebar-link">文件内容</a></li><li><a href="/aml/template.html" class="sidebar-link">页面模板</a></li><li><a href="/aml/res.html" class="sidebar-link">资源引入</a></li><li><a href="/aml/clever.html" class="sidebar-link">Clever Page</a></li><li><a href="/aml/encode.html" class="sidebar-link">文件输出</a></li><li><a href="/aml/common.html" class="sidebar-link">更多命令</a></li></ul> </div> <div class="page"> <div class="content"><h1 id="文件内容"><a href="#文件内容" aria-hidden="true" class="header-anchor">#</a> 文件内容</h1> <p>aml 文件本质上是一个文本文件，可以通过任何软件打开，当然还是推荐使用 Atom 了。</p> <p>一个 aml 文件，包含的基础内容可能如下：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!--
+  title 文档标题
+--&gt;</span>
+
+<span class="token comment">&lt;!--  --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!--  --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>aml 会将第一个注释作为配置信息读取，其后的内容作为文档的内容，在格式化后会插入到文档当中：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token doctype">&lt;!DOCTYPE HTML&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span>utf-8</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>文档标题<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>viewport</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>width=device-width, initial-scale=1, user-scalable=0<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+  document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>fontSize <span class="token operator">=</span> innerWidth <span class="token operator">/</span> <span class="token number">7.2</span> <span class="token operator">+</span> <span class="token string">'px'</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!--  --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!--  --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="warning custom-block"><p class="custom-block-title">WARNING</p> <p>接下来的文档中为了方便介绍，会在配置信息中添加注释，如下：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!--
+  title 文档标题  // 默认为空，单行命令，重复配置将覆盖，可不配置 title
+--&gt;</span>
+</code></pre></div><p>但实际开发中不能在配置信息中添加注释，因为 aml 的配置信息读取是逐行进行的，注释也会作为配置信息的一部分被读取和处理，这将会造成不可预计的问题。</p></div> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <p>aml 配置命令的格式为：</p> <div class="language- extra-class"><pre class="language-text"><code>common config1 config2
+</code></pre></div><p>以空格作为分隔符，取第一项为命令，其后每一项为参数。</p> <p><code>title</code> 及 <code>meta</code> 命令会将最后的参数用空格拼接起来，所以以下代码可以达到预期效果：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!--
+  title one two
+  meta three 'four five six'
+--&gt;</span>
+</code></pre></div></div> <div class="danger custom-block"><p class="custom-block-title">WARNING</p> <p>aml 获取配置后将按换行符将配置信息分割为一段段命令，并移除首尾两项，所以在写配置信息的时候请按文档中的例子格式来。</p></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/aml/dev.html" class="prev">
+          开发准备
+        </a></span> <span class="next"><a href="/aml/template.html">
+          页面模板
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/aml/assets/js/app.98a4faec.js" defer></script><script src="/aml/assets/js/6.89eed8ff.js" defer></script>
+  </body>
+</html>
