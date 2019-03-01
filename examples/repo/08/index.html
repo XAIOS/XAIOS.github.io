@@ -5,10 +5,10 @@
 <script>
   document.getElementsByTagName('html')[0].style.fontSize = innerWidth / 7.2 + 'px'
 </script>
-<link rel=stylesheet href=./../../css/lib/reset.min.css?201902131545>
-<link rel=stylesheet href=./../../css/lib/clever.min.css?201902131545>
-<link rel=stylesheet href=./../../css/lib/example.min.css?201902131545>
-<link rel=stylesheet href=./css/index/index.css?201902131545>
+<link rel=stylesheet href=./../../css/lib/reset.min.css?190301>
+<link rel=stylesheet href=//raw.githack.com/XAIOS/lib/master/clever/clever.min.css>
+<link rel=stylesheet href=./../../css/lib/example.min.css?190301>
+<link rel=stylesheet href=./css/index/index.css?190301>
 
 <div id=app v-cloak v-on:click.once=Bgm(1)>
   <img class=bg src=img/bg.png>
@@ -31,7 +31,7 @@
     <div class=word_test>
       <div class=word_test_line>测试下你的人生里程，</div>
       <div class=word_test_line>看看你能抵达最远的地方是哪？</div>
-      <input type=text id=name class=word_input placeholder='请输入你的名字' maxlength=6 v-model.trim=name v-bind:disabled=!cando>
+      <cp-input id=name class=word_input placeholder='请输入你的名字' maxlength=6 v-model.trim=name v-bind:disabled=!cando></cp-input>
     </div>
     <img class='p_center start' src=img/btn_start.png v-suit=196,67 touchable v-on:click.prevent=Start>
   </div>
@@ -76,10 +76,10 @@
   </div>
 </div>
 
-<script src=./../../js/lib/vue@2.5.22.min.js?201902131545></script>
-<script src=./../../js/lib/clever.min.js?201902131545></script>
-<script src=./../../js/lib/loading.min.js?201902131545></script>
-<script src=./../../js/lib/ua.min.js?201902131545></script>
-<script src=./../../js/lib/qrcode.min.js?201902131545></script>
-<script src=./../../js/index/example.js?201902131545></script>
-<script src=./js/index/index.js?201902131545></script>
+<script src=./../../js/lib/vue.min.js?190301></script>
+<script src=//raw.githack.com/XAIOS/lib/master/clever/clever.min.js></script>
+<script src=./../../js/lib/loading.min.js?190301></script>
+<script src=./../../js/lib/ua.min.js?190301></script>
+<script src=./../../js/lib/qrcode.min.js?190301></script>
+<script src=./../../js/index/example.js?190301></script>
+<script src=./js/index/index.js?190301></script>
