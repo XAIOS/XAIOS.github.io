@@ -5,19 +5,18 @@
 <script>
   document.getElementsByTagName('html')[0].style.fontSize = innerWidth / 7.2 + 'px'
 </script>
-<link rel=stylesheet href=./../../css/lib/reset.min.css?190301>
+<link rel=stylesheet href=//raw.githack.com/XAIOS/lib/master/reset.min.css>
 <link rel=stylesheet href=//raw.githack.com/XAIOS/lib/master/clever/clever.min.css>
-<link rel=stylesheet href=./../../css/lib/example.min.css?190301>
-<link rel=stylesheet href=./css/index/index.css?190301>
+<link rel=stylesheet href=./../../css/lib/example.min.css?190312>
+<link rel=stylesheet href=./css/index/index.css?190312>
 
-<div id=app v-cloak v-on:click.once=Bgm(1)>
+<div id=app v-cloak>
   <img class=bg src=img/bg.png>
   <div is=cp-page name=loading>
     <canvas class=wh100 id=loading></canvas>
     <span class='p_center loading_error'>{{error}}</span>
   </div>
   <div is=cp-page name=index>
-    <img class=music v-bind:src='"img/music_"+ bgm +".png"' v-suit=54,54 touchable v-on:click.prevent.stop=Bgm>
     <img class='p_center hill_0' src=img/index_hill_0.png v-suit=1771,849>
     <img class='p_center hill_1' src=img/index_hill_1.png v-suit=998,777>
     <img class=sun src=img/index_sun.png v-suit=149,119>
@@ -36,7 +35,6 @@
     <img class='p_center start' src=img/btn_start.png v-suit=196,67 touchable v-on:click.prevent=Start>
   </div>
   <div is=cp-page name=ask>
-    <img class=music v-bind:src='"img/music_"+ bgm +".png"' v-suit=54,54 touchable v-on:click.prevent.stop=Bgm>
     <div class=ask_content>
       <div class=ask_title>
         <div class=ask_title_line v-for='n in ask.title'>{{n}}</div>
@@ -69,17 +67,16 @@
     </div>
   </div>
   <div is=cp-page name=card>
-    <img class=music v-bind:src='"img/music_"+ bgm +".png"' v-suit=54,54 touchable v-on:click.prevent.stop=Bgm>
     <div class=card_area>
       <img id=card_img v-bind:src=poster v-suit=1127,492 freedom touchable v-on:click.prevent>
     </div>
   </div>
 </div>
 
-<script src=./../../js/lib/vue.min.js?190301></script>
+<script src=//raw.githack.com/XAIOS/lib/master/vue.min.js></script>
 <script src=//raw.githack.com/XAIOS/lib/master/clever/clever.min.js></script>
-<script src=./../../js/lib/loading.min.js?190301></script>
-<script src=./../../js/lib/ua.min.js?190301></script>
-<script src=./../../js/lib/qrcode.min.js?190301></script>
-<script src=./../../js/index/example.js?190301></script>
-<script src=./js/index/index.js?190301></script>
+<script src=./../../js/lib/loading.min.js?190312></script>
+<script src=./../../js/lib/ua.min.js?190312></script>
+<script src=./../../js/lib/qrcode.min.js?190312></script>
+<script src=./../../js/index/example.js?190312></script>
+<script src=./js/index/index.js?190312></script>

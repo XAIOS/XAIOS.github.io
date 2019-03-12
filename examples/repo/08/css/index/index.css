@@ -6,16 +6,6 @@
   white-space: nowrap;
 }
 
-.music {
-  top: 3%;
-  right: 5.7%;
-  z-index: 99;
-}
-
-.page_index .music {
-  transition-delay: 3.4s;
-}
-
 .page_index img, .word, .word_test {
   opacity: 0;
   transition-duration: .6s;
