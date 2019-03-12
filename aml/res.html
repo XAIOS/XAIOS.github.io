@@ -7,7 +7,7 @@
     <meta name="description" content="">
     
     
-    <link rel="preload" href="/aml/assets/css/0.styles.440aa037.css" as="style"><link rel="preload" href="/aml/assets/js/app.e3d74f6a.js" as="script"><link rel="preload" href="/aml/assets/js/9.40fd7635.js" as="script"><link rel="prefetch" href="/aml/assets/js/10.8f72202e.js"><link rel="prefetch" href="/aml/assets/js/11.275f24de.js"><link rel="prefetch" href="/aml/assets/js/2.82748f56.js"><link rel="prefetch" href="/aml/assets/js/3.98912a74.js"><link rel="prefetch" href="/aml/assets/js/4.68d99661.js"><link rel="prefetch" href="/aml/assets/js/5.cde57de3.js"><link rel="prefetch" href="/aml/assets/js/6.89eed8ff.js"><link rel="prefetch" href="/aml/assets/js/7.b22ef1e0.js"><link rel="prefetch" href="/aml/assets/js/8.0c5cbe6e.js">
+    <link rel="preload" href="/aml/assets/css/0.styles.440aa037.css" as="style"><link rel="preload" href="/aml/assets/js/app.413836ff.js" as="script"><link rel="preload" href="/aml/assets/js/9.69b4c012.js" as="script"><link rel="prefetch" href="/aml/assets/js/10.8f72202e.js"><link rel="prefetch" href="/aml/assets/js/11.275f24de.js"><link rel="prefetch" href="/aml/assets/js/2.82748f56.js"><link rel="prefetch" href="/aml/assets/js/3.98912a74.js"><link rel="prefetch" href="/aml/assets/js/4.68d99661.js"><link rel="prefetch" href="/aml/assets/js/5.cde57de3.js"><link rel="prefetch" href="/aml/assets/js/6.89eed8ff.js"><link rel="prefetch" href="/aml/assets/js/7.b22ef1e0.js"><link rel="prefetch" href="/aml/assets/js/8.0c5cbe6e.js">
     <link rel="stylesheet" href="/aml/assets/css/0.styles.440aa037.css">
   </head>
   <body>
@@ -72,10 +72,13 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span>stylesheet</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span>//a.b.c/d.css</span><span class="token punctuation">&gt;</span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span>//e.f.g/h.js?2</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
-</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <p>资源引入的顺序与配置时的顺序将保持一致。</p></div> <h2 id="资源版本"><a href="#资源版本" aria-hidden="true" class="header-anchor">#</a> 资源版本</h2> <p>为了解决浏览器资源缓存机制带来的烦恼，开发中会给引用的资源添加版本号，在 aml 中提供了 <code>version</code> 命令用于配置当前的资源版本号：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!--
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <p>资源引入的顺序与配置时的顺序将保持一致。</p></div> <h2 id="资源版本"><a href="#资源版本" aria-hidden="true" class="header-anchor">#</a> 资源版本</h2> <p>为了解决浏览器资源缓存机制带来的烦恼，开发中会给引用的资源添加版本号，在 aml 中提供了 <code>version</code> 与 <code>version_img</code> 命令用于配置当前的资源版本号：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!--
   js index index
   version 02281507
+  version_img 03121229
 --&gt;</span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span>$test$</span><span class="token punctuation">&gt;</span></span>
 </code></pre></div><p>输出结果：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token doctype">&lt;!DOCTYPE HTML&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span>utf-8</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
@@ -84,8 +87,10 @@
   document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>fontSize <span class="token operator">=</span> innerWidth <span class="token operator">/</span> <span class="token number">7.2</span> <span class="token operator">+</span> <span class="token string">'px'</span>
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span>img/test.png?03121229</span><span class="token punctuation">&gt;</span></span>
+
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span>js/index/index.js?02281507</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
-</code></pre></div><div class="warning custom-block"><p class="custom-block-title">WARNING</p> <p>使用 <code>res</code> 命令引入的资源将不受版本号配置影响。</p></div> <h2 id="图片资源"><a href="#图片资源" aria-hidden="true" class="header-anchor">#</a> 图片资源</h2> <p>开发离不开图片资源，为每一个图片标签写上一模一样的路径前缀，是很痛苦的事，虽然可以复制粘贴，但总归是不够灵动。为了解决这个问题，aml 提供了图片路径配置的解决方案，这也是 aml 诞生的目的。</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!----&gt;</span>
+</code></pre></div><div class="warning custom-block"><p class="custom-block-title">WARNING</p> <ul><li>使用 <code>res</code> 命令引入的资源将不受版本号配置影响。</li> <li><code>version_img</code> 命令处理的对象为 img 标签的第二个 $。</li></ul></div> <h2 id="图片资源"><a href="#图片资源" aria-hidden="true" class="header-anchor">#</a> 图片资源</h2> <p>开发离不开图片资源，为每一个图片标签写上一模一样的路径前缀，是很痛苦的事，虽然可以复制粘贴，但总归是不够灵动。为了解决这个问题，aml 提供了图片路径配置的解决方案，这也是 aml 诞生的目的。</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!----&gt;</span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span>$logo$</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">:src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span><span class="token punctuation">&quot;</span>$<span class="token punctuation">&quot;</span> + index + <span class="token punctuation">&quot;</span>$<span class="token punctuation">&quot;</span><span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>
@@ -108,6 +113,6 @@
         </a>
         →
       </span></p></div> </div> <!----></div></div>
-    <script src="/aml/assets/js/app.e3d74f6a.js" defer></script><script src="/aml/assets/js/9.40fd7635.js" defer></script>
+    <script src="/aml/assets/js/app.413836ff.js" defer></script><script src="/aml/assets/js/9.69b4c012.js" defer></script>
   </body>
 </html>

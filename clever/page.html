@@ -7,7 +7,7 @@
     <meta name="description" content="">
     
     
-    <link rel="preload" href="/clever/assets/css/0.styles.c4426992.css" as="style"><link rel="preload" href="/clever/assets/js/app.db4b6ad2.js" as="script"><link rel="preload" href="/clever/assets/js/8.2b17bbb9.js" as="script"><link rel="prefetch" href="/clever/assets/js/10.1cbf679d.js"><link rel="prefetch" href="/clever/assets/js/11.272cf98d.js"><link rel="prefetch" href="/clever/assets/js/12.6baee495.js"><link rel="prefetch" href="/clever/assets/js/13.5be111e9.js"><link rel="prefetch" href="/clever/assets/js/14.06c8888c.js"><link rel="prefetch" href="/clever/assets/js/15.1d17601b.js"><link rel="prefetch" href="/clever/assets/js/16.506b5623.js"><link rel="prefetch" href="/clever/assets/js/17.f81308b2.js"><link rel="prefetch" href="/clever/assets/js/2.724f0695.js"><link rel="prefetch" href="/clever/assets/js/3.f1652913.js"><link rel="prefetch" href="/clever/assets/js/4.7dcf6bc2.js"><link rel="prefetch" href="/clever/assets/js/5.908d4707.js"><link rel="prefetch" href="/clever/assets/js/6.de1841ce.js"><link rel="prefetch" href="/clever/assets/js/7.1dfa4009.js"><link rel="prefetch" href="/clever/assets/js/9.e0e2c74e.js">
+    <link rel="preload" href="/clever/assets/css/0.styles.c4426992.css" as="style"><link rel="preload" href="/clever/assets/js/app.13f4f07d.js" as="script"><link rel="preload" href="/clever/assets/js/8.0c843b4d.js" as="script"><link rel="prefetch" href="/clever/assets/js/10.1cbf679d.js"><link rel="prefetch" href="/clever/assets/js/11.272cf98d.js"><link rel="prefetch" href="/clever/assets/js/12.6baee495.js"><link rel="prefetch" href="/clever/assets/js/13.5be111e9.js"><link rel="prefetch" href="/clever/assets/js/14.a2d006da.js"><link rel="prefetch" href="/clever/assets/js/15.1d17601b.js"><link rel="prefetch" href="/clever/assets/js/16.506b5623.js"><link rel="prefetch" href="/clever/assets/js/17.f81308b2.js"><link rel="prefetch" href="/clever/assets/js/2.724f0695.js"><link rel="prefetch" href="/clever/assets/js/3.f1652913.js"><link rel="prefetch" href="/clever/assets/js/4.7dcf6bc2.js"><link rel="prefetch" href="/clever/assets/js/5.d7a88186.js"><link rel="prefetch" href="/clever/assets/js/6.de1841ce.js"><link rel="prefetch" href="/clever/assets/js/7.1dfa4009.js"><link rel="prefetch" href="/clever/assets/js/9.b52a8678.js">
     <link rel="stylesheet" href="/clever/assets/css/0.styles.c4426992.css">
   </head>
   <body>
@@ -45,11 +45,15 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
 </code></pre></div><p>添加 <code>roll</code> 属性，将把 roll 对象和 page 对象结合起来，实现滚动页面的效果，roll 对象将在后文进行讲解，目前只需要知道添加这个属性，在页面内容超出页面高度的时候，可以滚动，就行了。</p> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <p>页面可滚动之后，很常见的一个需求是在其上添加一个依据浏览器窗口定位的区域，虽然使用 <code>position: fixed</code> 可以很快解决这个问题，但在 iOS 上滚动时可能会出现元素闪动之类的问题，cp 中建议通过固定区域插槽来实现这个效果：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span>app</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cp-page</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>index</span> <span class="token attr-name">roll</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation">=</span>fixed</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation">=</span>fixed</span><span class="token punctuation">&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span><span class="token punctuation">&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- Vue@2.6.0 引入了新插槽语法，旧语法已被废弃，具体请参考官方文档中的具名插槽篇 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name"><span class="token namespace">v-slot:</span>fixed</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- 以下为无效语法 --&gt;</span>
+    <span class="token comment">&lt;!-- &lt;i v-slot:fixed&gt; --&gt;</span>
+    <span class="token comment">&lt;!-- 与旧有语法不同，多次声明插槽将覆盖内容 --&gt;</span>
+    <span class="token comment">&lt;!-- 旧有语法在 Vue@3.0.0 中将被废弃，在 Vue@2.x 中将被继续支持 --&gt;</span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cp-page</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
 </code></pre></div><p>fixed 插槽内的元素将处于单屏环境中，使用单屏页面的元素处理方案即可完成相应的布局处理。</p></div> <h2 id="页面的动效"><a href="#页面的动效" aria-hidden="true" class="header-anchor">#</a> 页面的动效</h2> <p>默认提供的页面切换效果是淡入淡出，如果定制的话，可以参考下面的例子：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span>app</span><span class="token punctuation">&gt;</span></span>
@@ -103,6 +107,6 @@
         </a>
         →
       </span></p></div> </div> <!----></div></div>
-    <script src="/clever/assets/js/app.db4b6ad2.js" defer></script><script src="/clever/assets/js/8.2b17bbb9.js" defer></script>
+    <script src="/clever/assets/js/app.13f4f07d.js" defer></script><script src="/clever/assets/js/8.0c843b4d.js" defer></script>
   </body>
 </html>

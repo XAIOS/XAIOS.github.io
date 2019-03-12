@@ -7,7 +7,7 @@
     <meta name="description" content="">
     
     
-    <link rel="preload" href="/clever/assets/css/0.styles.c4426992.css" as="style"><link rel="preload" href="/clever/assets/js/app.db4b6ad2.js" as="script"><link rel="preload" href="/clever/assets/js/14.06c8888c.js" as="script"><link rel="prefetch" href="/clever/assets/js/10.1cbf679d.js"><link rel="prefetch" href="/clever/assets/js/11.272cf98d.js"><link rel="prefetch" href="/clever/assets/js/12.6baee495.js"><link rel="prefetch" href="/clever/assets/js/13.5be111e9.js"><link rel="prefetch" href="/clever/assets/js/15.1d17601b.js"><link rel="prefetch" href="/clever/assets/js/16.506b5623.js"><link rel="prefetch" href="/clever/assets/js/17.f81308b2.js"><link rel="prefetch" href="/clever/assets/js/2.724f0695.js"><link rel="prefetch" href="/clever/assets/js/3.f1652913.js"><link rel="prefetch" href="/clever/assets/js/4.7dcf6bc2.js"><link rel="prefetch" href="/clever/assets/js/5.908d4707.js"><link rel="prefetch" href="/clever/assets/js/6.de1841ce.js"><link rel="prefetch" href="/clever/assets/js/7.1dfa4009.js"><link rel="prefetch" href="/clever/assets/js/8.2b17bbb9.js"><link rel="prefetch" href="/clever/assets/js/9.e0e2c74e.js">
+    <link rel="preload" href="/clever/assets/css/0.styles.c4426992.css" as="style"><link rel="preload" href="/clever/assets/js/app.13f4f07d.js" as="script"><link rel="preload" href="/clever/assets/js/14.a2d006da.js" as="script"><link rel="prefetch" href="/clever/assets/js/10.1cbf679d.js"><link rel="prefetch" href="/clever/assets/js/11.272cf98d.js"><link rel="prefetch" href="/clever/assets/js/12.6baee495.js"><link rel="prefetch" href="/clever/assets/js/13.5be111e9.js"><link rel="prefetch" href="/clever/assets/js/15.1d17601b.js"><link rel="prefetch" href="/clever/assets/js/16.506b5623.js"><link rel="prefetch" href="/clever/assets/js/17.f81308b2.js"><link rel="prefetch" href="/clever/assets/js/2.724f0695.js"><link rel="prefetch" href="/clever/assets/js/3.f1652913.js"><link rel="prefetch" href="/clever/assets/js/4.7dcf6bc2.js"><link rel="prefetch" href="/clever/assets/js/5.d7a88186.js"><link rel="prefetch" href="/clever/assets/js/6.de1841ce.js"><link rel="prefetch" href="/clever/assets/js/7.1dfa4009.js"><link rel="prefetch" href="/clever/assets/js/8.0c843b4d.js"><link rel="prefetch" href="/clever/assets/js/9.b52a8678.js">
     <link rel="stylesheet" href="/clever/assets/css/0.styles.c4426992.css">
   </head>
   <body>
@@ -29,7 +29,9 @@
 
   <span class="token comment">&lt;!-- 可用 disabled 属性禁用 select 对象，支持隐式类型转换比较，为 true 值时组件将被禁用 --&gt;</span>
 
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cp-select</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>area</span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span>area</span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>例子<span class="token punctuation">'</span></span> <span class="token attr-name">:list</span><span class="token attr-value"><span class="token punctuation">=</span>list</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cp-select</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- 可监听 select 事件用于捕获点击的选项，接收一个参数，代表当前点击项的值 --&gt;</span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cp-select</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>area</span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span>area</span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>例子<span class="token punctuation">'</span></span> <span class="token attr-name">:list</span><span class="token attr-value"><span class="token punctuation">=</span>list</span> <span class="token attr-name">@select</span><span class="token attr-value"><span class="token punctuation">=</span>Sel</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cp-select</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
 </code></pre></div><div class="language-stylus extra-class"><pre class="language-stylus"><code><span class="token comment">/* index.css */</span>
 <span class="token comment">/* cp 源码中不提供这部分样式，为了效果展示，提供简单的样式 demo */</span>
@@ -104,6 +106,6 @@
         </a>
         →
       </span></p></div> </div> <!----></div></div>
-    <script src="/clever/assets/js/app.db4b6ad2.js" defer></script><script src="/clever/assets/js/14.06c8888c.js" defer></script>
+    <script src="/clever/assets/js/app.13f4f07d.js" defer></script><script src="/clever/assets/js/14.a2d006da.js" defer></script>
   </body>
 </html>
